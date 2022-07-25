@@ -7,15 +7,19 @@ Written in [Markdown](https://revealjs.com/markdown), rendered by [Reveal.js](ht
 Note:
 This is a presenter's note. You can access it in a browser by pressing "S". See [speaker view](https://revealjs.com/speaker-view).
 
-If you'd like to render this locally (from a file system: for example, when editing `README.md`), you need to run a web server. Then you can access this in a web browser as (a part of) `index.html`. See [Reveal.js > Markdown > External Markdown](https://revealjs.com/markdown/#external-markdown).
+# Rendered with: Reveal.js
+If you'd like to render this locally (for example, when editing `README.md`), you need to run a web server. Then you can access this in a web browser as (a part of) `index.html`. See [Reveal.js > Markdown > External Markdown](https://revealjs.com/markdown/#external-markdown).
 
-This uses my (identical/clean) [clone of Reveal.js](). That's because, unfortunately, Reveal.js doesn't publish/document how to load its CSS & JS files online (and they don't seem to be public on CDN's, either). Instead, it wants us to [distribute its copies](https://revealjs.com/installation). However, that would make the actual presentation's repository much larger. It would also mean more work if updating (a copy of) Reveal.js for several presentations. Having the presentations refer to one clone of Remark.js makes it simpler.
+This uses my (identical/clean) [clone of Reveal.js](). That's because, unfortunately, Reveal.js doesn't publish/document how to load its CSS & JS files online (and they don't seem to be available for public on CDN's, either). Instead, it wants us to [distribute its copies](https://revealjs.com/installation). However, that would make the actual presentation's repository much larger. It would also mean more work when updating (a copy of) Reveal.js for several presentations. Having the presentations refer to one clone of Remark.js makes it simpler.
 
-Feel free to refer to my [clone of Reveal.js](https://peter-kehl.github.io/reveal.js). I will update it whenever Reveal.js has a new release. Or you can clone Reveal.js yourself.
+Feel free to refer to my [clone of Reveal.js](https://peter-kehl.github.io/reveal.js). I will update it whenever Reveal.js has a new release. Or you can clone Reveal.js yourself. (Unfortunately, https://hakimel.github.com/reveal.js/dist/reveal.js
 
+# Alternative: Remark.js
 If you don't want to clone and track Reveal.js, and if you're happy with simpler and lightweight alternative, try [Remark.js](https://remarkjs.com) (see also its [wiki](https://github.com/gnab/remark/wiki)). It allows your presentations to get Remark.js' JS files online (without copying and distributing them).
 
-For an example on how to render it online with Gitlab CLI, see an example of [slides](https://gitlab.com/indyrs/july2022) and their [source](https://gitlab.com/indyrs/july2022/-/blob/main/index.html). (This example is authored by Cameron Dersham, the leader of [Indy.rs](https://indy.rs), in July 2022. In addition to kindly sharing his knowledge, his presentation are a good source of important Rust news, both general and embedded.) As with [Reveal.js](https://revealjs.com), [Remark.js](https://remarkjs.com) also allows you to include a [separate Markdown file](https://github.com/gnab/remark/wiki#external-markdown=). And it has a [presenter mode](https://github.com/gnab/remark/wiki#getting-started=), too.
+For an example on how to render it online with Gitlab CLI, see an example of [slides](https://gitlab.com/indyrs/july2022) and their [source](https://gitlab.com/indyrs/july2022/-/blob/main/index.html). (This example is authored by Cameron Dersham, the leader of [Indy.rs](https://indy.rs), in July 2022. In addition to kindly sharing his knowledge, his presentation are a good source of important Rust news, both general and embedded.) As with [Reveal.js](https://revealjs.com), [Remark.js](https://remarkjs.com) also allows you to include a [separate Markdown file](https://github.com/gnab/remark/wiki#external-markdown=). And it has [slide notes](https://github.com/gnab/remark/wiki/Markdown#slide-notes=) and [presenter mode](https://github.com/gnab/remark/wiki#getting-started=), too.
+
+Both Reveal.js and Remark.js support code source highlighting. However, only Reveal.js can highlight specified parts of (lines), and display (parts of) external source files.
 ---
 
 ## Scope
