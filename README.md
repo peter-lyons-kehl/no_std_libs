@@ -1,15 +1,18 @@
 # Embedded, low level, no_std Rust resources
 
-See this as [published
+View this as [published
 slides](https://peter-kehl.github.io/embedded_low_level_rust). Or see the same
 content but as one [continuous
 document](https://github.com/peter-kehl/embedded_low_level_rust/blob/main/README.md).
 
 Written in [Markdown](https://revealjs.com/markdown), rendered by
-[Reveal.js](https://github.com/hakimel/reveal.js).
+[Reveal.js](https://github.com/hakimel/reveal.js) (see also
+[https://revealjs.com](revealjs.com)). See this [presentation's
+source](https://github.com/peter-kehl/embedded_low_level_rust/blob/main/README.md?plain=1).
 
-Note: This is a presenter's note. You can access it in a browser by pressing
-"S". See [speaker view](https://revealjs.com/speaker-view).
+Note: Content from here until the next horizontal line (`---` in README.md) is a
+presenter's note. You can access it in a browser by pressing "S". See [speaker
+view](https://revealjs.com/speaker-view).
 
 # Rendered with: Reveal.js
 If you'd like to render this locally (for example, when editing `README.md`),
@@ -29,7 +32,12 @@ presentations refer to one clone of Remark.js makes it simpler.
 Feel free to refer to my [clone of
 Reveal.js](https://peter-kehl.github.io/reveal.js). I will update it whenever
 Reveal.js has a new release. Or you can clone Reveal.js yourself.
-(Unfortunately, https://hakimel.github.com/reveal.js/dist/reveal.js
+(Unfortunately, https://hakimel.github.com/reveal.js/dist/reveal.js and related
+files are not available.)
+
+To make this GitHub repository show up [on GitHub
+Pages](https://peter-kehl.github.io/embedded_low_level_rust), I configured its
+GitHub repository's Settings > Pages > Source > Branch: `main` (and `/(root)`).
 
 # Alternative: Remark.js
 If you don't want to clone and track Reveal.js, and if you're happy with simpler
