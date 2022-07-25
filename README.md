@@ -2,23 +2,45 @@
 
 View this as [published
 slides](https://peter-kehl.github.io/embedded_low_level_rust). Or see the same
-content but as one [continuous
+content as one [continuous
 document](https://github.com/peter-kehl/embedded_low_level_rust/blob/main/README.md).
 
-Written in [Markdown](https://revealjs.com/markdown), rendered by
-[Reveal.js](https://github.com/hakimel/reveal.js) (see also
-[https://revealjs.com](revealjs.com)). See this [presentation's
-source](https://github.com/peter-kehl/embedded_low_level_rust/blob/main/README.md?plain=1).
+When viewing this as [published
+slides](https://peter-kehl.github.io/embedded_low_level_rust), zoom in or out
+(to fit it on your screen - because the slides can't be scrolled down,
+unfortunately). Zoom in/out with Ctrl-/Ctrl+ (or Command-/Command+ on Mac), or
+with Ctrl and mouse wheel up/down, until you see the following show up numbers
+down to 0:
+```
+    10
+    9
+    8
+    7
+    6
+    5
+    4
+    3
+    2
+    1
+    0
+```
 
-Note: Content from here until the next horizontal line (`---` in README.md) is a
-presenter's note. You can access it in a browser by pressing "S". See [speaker
+Note: The content from here until the next horizontal line (`---` in README.md)
+is a presenter's note. When viewing this in a browser, you can show it by
+pressing "S". (You may need to allow browser to open a new window). See [speaker
 view](https://revealjs.com/speaker-view).
+
+Written in [Markdown](https://revealjs.com/markdown), rendered by
+[Reveal.js](https://github.com/hakimel/reveal.js) (also
+[https://revealjs.com](revealjs.com)). See also this [presentation's
+source](https://github.com/peter-kehl/embedded_low_level_rust/blob/main/README.md?plain=1).
 
 # Rendered with: Reveal.js
 If you'd like to render this locally (for example, when editing `README.md`),
 you need to run a web server. Then you can access this in a web browser as (a
 part of) `index.html`. See [Reveal.js > Markdown > External
-Markdown](https://revealjs.com/markdown/#external-markdown).
+Markdown](https://revealjs.com/markdown/#external-markdown). You can also [test
+snippets of markdown](https://marked.js.org/demo).
 
 This uses my (identical/clean) [clone of Reveal.js](). That's because,
 unfortunately, Reveal.js doesn't publish/document how to load its CSS & JS files
@@ -51,7 +73,7 @@ For an example on how to render it online with Gitlab CLI, see an example of
 example is authored by Cameron Dersham, the leader of
 [Indy.rs](https://indy.rs), in July 2022. In addition to kindly sharing his
 knowledge, his presentation are a good source of important Rust news, both
-general and embedded.) As with [Reveal.js](https://revealjs.com),
+general and embedded.) As with [Reveal.js](revealjs.com),
 [Remark.js](https://remarkjs.com) also allows you to include a [separate
 Markdown file](https://github.com/gnab/remark/wiki#external-markdown=). And it
 has [slide notes](https://github.com/gnab/remark/wiki/Markdown#slide-notes=) and
@@ -62,7 +84,7 @@ Reveal.js can highlight specified parts of (lines), and display (parts of)
 external source files.
 ---
 
-## Scope
+# In scope
 An overview/introduction to embedded, low level, `no_std`, kernel and
 cross-platform development in Rust. Per-architecture dependencies or build
 configuration, too.
@@ -71,7 +93,7 @@ We also discuss conditional compilation and crate features. Those aspects of
 Rust are less involved in small general purpose crate. However, they are useful
 in (not low level-specific) development, too.
 
-## Out of scope
+# Out of scope
 Rust, as a systems programming language, is suitable for real time applications.
 (Especially because it doesn't have garbage collection, so no unexpected delays,
 but it's predictable.) That is true regardless of `no_std`. Indeed, it serves
@@ -86,7 +108,7 @@ but the focus here is not on `wasm`, either.
 This is not an introduction to low level/embedded development in general, its
 techniques, architectures, tools. It mentions only their touchpoints with Rust.
 
-### Ecosystem
+## Ecosystem
 The main focus here is not on the ecosystem. It's rather on Rust language
 challenges, patterns and tips.
 
