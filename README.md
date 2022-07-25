@@ -64,7 +64,7 @@ GitHub repository's Settings > Pages > Source > Branch: `main` (and `/(root)`).
 If you don't want to clone and track Reveal.js, and if you're happy with simpler
 and lightweight alternative, try [Remark.js](https://remarkjs.com) (see also its
 [wiki](https://github.com/gnab/remark/wiki)). It allows your presentations to
-get Remark.js' JS files online (without copying and distributing them).
+get Remark.js's JS files online (without copying and distributing them).
 
 For an example on how to render it online with Gitlab CLI, see an example of
 [slides](https://gitlab.com/indyrs/july2022) and their
@@ -81,6 +81,7 @@ has [slide notes](https://github.com/gnab/remark/wiki/Markdown#slide-notes=) and
 Both Reveal.js and Remark.js support code source highlighting. However, only
 Reveal.js can highlight specified parts of (lines), and display (parts of)
 external source files.
+
 ---
 # Purpose and depth
  * help general Rust developers start at low level
