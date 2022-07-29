@@ -4,21 +4,33 @@ https://github.com/hakimel/reveal.js/blob/master/index.html. -->
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,
+		maximum-scale=1.0, user-scalable=no">
 
 		<title>Embedded & low level-friendly, no_std Rust intro</title>
 
-		<link rel="stylesheet" href="https://peter-kehl.github.io/reveal.js/dist/reset.css">
-		<link rel="stylesheet" href="https://peter-kehl.github.io/reveal.js/dist/reveal.css">
-		<link rel="stylesheet" href="https://peter-kehl.github.io/reveal.js/dist/theme/black.css">
+		<link rel="stylesheet"
+		href="https://peter-kehl.github.io/reveal.js/dist/reset.css">
+		<link rel="stylesheet"
+		href="https://peter-kehl.github.io/reveal.js/dist/reveal.css">
+		<link rel="stylesheet"
+		href="https://peter-kehl.github.io/reveal.js/dist/theme/black.css">
 
 		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="https://peter-kehl.github.io/reveal.js/plugin/highlight/monokai.css">
+		<link rel="stylesheet"
+		href="https://peter-kehl.github.io/reveal.js/plugin/highlight/monokai.css">
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
     	        <section data-markdown="README.md"></section>
+				<section>
+					<code
+					data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs"
+					data-line-start-delimiter="#![allow(unused)]"
+					data-line-end-delimiter="pub mod index;">
+					</code>
+				</section>
 			</div>
 		</div>
 
@@ -26,18 +38,19 @@ https://github.com/hakimel/reveal.js/blob/master/index.html. -->
 		<script src="https://peter-kehl.github.io/reveal.js/plugin/notes/notes.js"></script>
 		<script src="https://peter-kehl.github.io/reveal.js/plugin/markdown/markdown.js"></script>
 		<script src="https://peter-kehl.github.io/reveal.js/plugin/highlight/highlight.js"></script>
+		<script src="https://peter-kehl.github.io/reveal.js/plugin/search/search.js"></script>
+		<script src="https://peter-kehl.github.io/revealjs-embed-code/embed-code.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
 			// - https://revealjs.com/config/
 			Reveal.initialize({
 				slideNumber: "c/t",
-				//width: "100%", // no difference
-  				//height: "20%", // not useful
+				//width: "100%", // no difference height: "20%", // not useful
 				hash: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [ EmbedCode, RevealMarkdown, RevealHighlight, RevealNotes, RevealSearch ]
 			});
 		</script>
 	</body>
