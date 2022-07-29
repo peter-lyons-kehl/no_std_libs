@@ -433,7 +433,7 @@ let tuple = ('a', five);
   result HTML, even without data-noescape, but it won't load/show a file here...
   
   <!-- Side comment: <i>intended to be italics</i> doesn't render as italics here, but it is
-  generated in the HTML. Not being rendered must be due to the default theme. -->
+  generated in the HTML. Not being rendered must be due to Reveal.js defaults or its "black" theme. -->
 
   An inner &lt;code...&gt; doesn't help either. <code data-noescape
   data-url="LICENSE"> </code>

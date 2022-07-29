@@ -1,6 +1,9 @@
 <!doctype html>
 <!-- This file is based on
-https://github.com/hakimel/reveal.js/blob/master/index.html. -->
+https://github.com/hakimel/reveal.js/blob/master/index.html. It contains tabs
+instead of spaces, because that's how the original file was. Keeping them as
+tabs makes it easier to compare/update.
+-->
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -25,18 +28,25 @@ https://github.com/hakimel/reveal.js/blob/master/index.html. -->
 			<div class="slides">
     	        <section data-markdown="README.md"></section>
 				<section>
+					This and the following two slides try three ways to load a file with https://github.com/befocken/revealjs-embed-code: all loading in, but: No highligting, line breaks are ignored.
+
+					Trying "raw" file content (served by GitHub, not by GitHub pages; and from a different domain that this presentation).
 					<code
 					data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs">
+						inner text is ignored - very well
 					</code>
 				</section>
 				<section>
+					Trying the file served by GitHub pages (from a different domain).
 					<code
 					data-url="https://ranging-rs.github.io/slicing-rs/src/lib.rs">
+					    inner text is ignored - very well
 					</code>
 				</section>
 				<section>
-					<code
-					data-url="LICENSE">
+					Trying a file that is a part of this project (relative URL). Same whether served by a local server or by GitHub pages.
+					<code data-url="LICENSE">
+						inner text is ignored - very well
 					</code>
 				</section>
 			</div>
