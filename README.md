@@ -426,16 +426,30 @@ let tuple = ('a', five);
 ```
 
 <code>
-  var a = "";
-  var b = "inline code does work in Markdown, too";
 
-  Any &lt;code...&gt; becomes a part of the result HTML, but it won't load/show the file here...
-  <code data-noescape data-url="LICENSE">
-  </code>
+  var a = ""; var b = "inline code does work in Markdown, too";
+
+  HTML inside &lt;code...&gt; in markdown <b>does become</b> a part of the
+  result HTML, even without data-noescape, but it won't load/show a file here...
+  
+  <!-- Side comment: <i>intended to be italics</i> doesn't render as italics here, but it is
+  generated in the HTML. Not being rendered must be due to the default theme. -->
+
+  An inner &lt;code...&gt; doesn't help either. <code data-noescape
+  data-url="LICENSE"> </code>
+
 </code>
 
-<code data-noescape data-url="LICENSE">
+<code data-noescape>
+
+  HTML <b>is applied</b> with data-noescape, too.
+
 </code>
+
+
+<code data-noescape data-url="LICENSE"> </code>
+
+<code data-url="LICENSE"> </code>
 
 <code
 data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs"
@@ -450,7 +464,9 @@ index;"> </code>
 ```
 ```
 
-`.` <!-- .element: data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs" -->
+`.` <!-- .element:
+data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs"
+-->
 
 <!-- .element: data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs" --> `.`
 
