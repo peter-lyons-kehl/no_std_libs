@@ -420,9 +420,14 @@ threads in `no_std` anyway.)
 ---
 
 # Actual programming
+```rs
+let five = 5usize;
+let tuple = ('a', five);
+```
 
 <code>
-  inline code does work in Markdown, too
+  var a = "";
+  var b = "inline code does work in Markdown, too";
 
   Any &lt;code...&gt; becomes a part of the result HTML, but it won't load/show the file here...
   <code data-noescape data-url="LICENSE">
