@@ -421,11 +421,34 @@ threads in `no_std` anyway.)
 
 # Actual programming
 
-<code data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs" data-line-start-delimiter="#![allow(unused)]" data-line-end-delimiter="pub mod index;">
+<code>
+  inline code does work in Markdown, too
+
+  Any &lt;code...&gt; becomes a part of the result HTML, but it won't load/show the file here...
+  <code data-noescape data-url="LICENSE">
+  </code>
 </code>
 
+<code data-noescape data-url="LICENSE">
+</code>
+
+<code
+data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs"
+data-line-start-delimiter="#![allow(unused)]" data-line-end-delimiter="pub mod
+index;"> </code>
+
 ```
-```<!-- .element: data-url="https://github.com/ranging-rs/slicing-rs/blob/main/src/lib.rs" -->
+```
+<!-- .element: data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs" -->
+
+<!-- .element: data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs" -->
+```
+```
+
+`.` <!-- .element: data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs" -->
+
+<!-- .element: data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs" --> `.`
+
 ---
 # More resources
  * [Cargo > Build
