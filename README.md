@@ -1,23 +1,27 @@
+<!-- The following comments hides this section from being shown by https://peter-kehl.github.io/embedded_low_level_rust. >
+<!-- .slide: data-visibility="hidden" -->
+This is only a part of a presentation. See [https://peter-kehl.github.io/embedded_low_level_rust](embedded_low_level_rust) for the whole presentation.
+---
+
 # Embedded & low level-friendly, no_std Rust intro
-
-You can also see this as one [continuous
-document](https://github.com/peter-kehl/embedded_low_level_rust/blob/main/README.md).
-
 When viewing this [published as
 slides](https://peter-kehl.github.io/embedded_low_level_rust):
- 1. These slides are _not_ designed for mobile devices or tiny screens. See
+ 1. These slides are **_not_** designed for mobile devices or tiny screens. See
 [continuous
 view](https://github.com/peter-kehl/embedded_low_level_rust/blob/main/README.md)
 instead.
- 1. Press letter **`o`**, or **ESC** key, to show (or hide) an overview of
-    several slides.
- 2. Press Ctrl Shift F (probably Command Shift F on Mac) to show (or hide) a
-    search input (at the top right, very small once you zoom). Type the text to
-    search for and Enter. The text will be highlighted (on the overview, too).
-    Click anywhere on the slide before using the keys to navigate again.
- 3. Zoom in or out (because the slides can't be scrolled down). Press Ctrl - and
-    Ctrl + (Command - and Command + on Mac), or with Ctrl (Command) and mouse
-    wheel, until you see the following numbers show down to 0:
+ 2. **Zoom in** or **out** (because the slides can't be scrolled down). Press
+    **`Ctrl -`** and **`Ctrl +`** (**`Command -`** and **`Command +`** on Mac),
+    or **`Ctrl`** (**`Command`**) and roll the **mouse wheel**, until you see
+    numbers shown down to 0 below.
+ 3. Press letter **`o`** (lowercase), or **`ESC`** key, to show (or hide) an
+    **overview** of the nearby slides.
+ 4. Press **`Ctrl Shift F`** (probably **Command Shift F** on Mac) to show (or
+    hide) a **search** input (at the top right, very small once you zoom out).
+    Type the text to search for and **Enter**. Click anywhere on the slide
+    before using the keys to navigate again. Any matching text will stay
+    highlighted, even as you navigate to other slides. (It highlights any
+    matches on the overview screen, too.)
 ```
     9
     8
@@ -33,9 +37,18 @@ instead.
 
 Note: The content from this line until the next horizontal line (`---` in
 [`README.md`](https://github.com/peter-kehl/embedded_low_level_rust/blob/main/README.md?plain=1))
-is a "presenter's note". When viewing this in a browser, you can show it by
-pressing "S". (You may need to allow browser to open a new window). See [speaker
-view](https://revealjs.com/speaker-view).
+is a "presenter's note". When viewing this in a browser as slides [on GitHub
+Pages](https://peter-kehl.github.io/embedded_low_level_rust) or
+[locally](index.html) - not opened from a filesystem but through a local web
+server - you can show this note by pressing "S". (You may need to allow browser
+to open a new window). See [speaker view](https://revealjs.com/speaker-view).
+
+This presentation loads external files (example code sources that it highlights
+and injects in its contents). In order to show them, you need to access this
+from a webserver (GitHub Pages, or a custom/local webserver) - but not from a
+local file opened directly in browser. See [Reveal.js > Markdown > External
+Markdown](https://revealjs.com/markdown/#external-markdown). You do _not_ need
+`npm` - for example, you can run `python3 -m http.server` instead.
 
 TODO LATER: Move to a separate (visible) slide: Written in
 [Markdown](https://revealjs.com/markdown), rendered by
@@ -50,20 +63,29 @@ part of) `index.html`. See [Reveal.js > Markdown > External
 Markdown](https://revealjs.com/markdown/#external-markdown). You can also [test
 snippets of markdown](https://marked.js.org/demo).
 
-This uses my (identical/clean) clone of
-[Reveal.js](https://github.com/hakimel/reveal.js), and I suggest you get your
-clone. That's because, unfortunately, Reveal.js doesn't publish/document how to
-load its CSS & JS files online (and they don't seem to be publicly available on
-CDN's, either). Instead, it wants us to [distribute its
-copies](https://revealjs.com/installation). However, that would make the actual
-presentation's repository much larger. It would also mean more work when
-updating (a copy of) Reveal.js for several presentations. Having your multiple
-presentations refer to your (one) clone of Remark.js makes it simpler.
+Unfortunately, Reveal.js doesn't publish/document how to load its CSS & JS files
+online (and they don't seem to be publicly available on CDN's, either). Instead,
+it wants us to [distribute its copies](https://revealjs.com/installation).
+However, that would make the actual presentation's repository much larger. It
+would also mean more work when updating (a copy of) Reveal.js for several
+presentations. Having your multiple presentations refer to your (one) clone of
+Remark.js makes it simpler.
 
-Unfortunately, https://hakimel.github.com/reveal.js/dist/reveal.js and related
-files are not available - most likely due to [GitHub Pages bandidth
+So this presentation uses my (identical/clean) clone of
+[Reveal.js](https://github.com/hakimel/reveal.js). It's served/loaded through
+GitHub Pages, which has [bandwidth
 limit](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#usage-limits)
 of 100GB per month.
+
+Even though I'm sure visitors of this presentation itself won't make it go over
+the bandwidth limit, it might reach the limit if authors of other presentations
+link to (my) clones of `Reveal.js` and `RevealJS-Embed-Code`. Hence, please
+don't link to my clones. Instead, get your own clones of
+[Reveal.js](https://github.com/hakimel/reveal.js) and
+[RevealJS-Embed-Code](https://github.com/befocken/revealjs-embed-code). (That
+will also boost their GitHub projects. And while you're at it, please star their
+GitHub repositories, too).
+
 
 To make this GitHub repository show up [on GitHub
 Pages](https://peter-kehl.github.io/embedded_low_level_rust), I configured my
@@ -104,56 +126,54 @@ Reveal.js can highlight specified parts of (lines), and display (parts of)
 external source files.
 <!-- Requiring an empty line, or a comment, here: before (but not necessarily after) the following --- (slide separator). Otherwise https://github.com/peter-kehl/embedded_low_level_rust/edit/main/README.md rendered the previous paragraph as bold/large. -->
 ---
-# Purpose and depth
- * help general Rust developers start at low level
- * help non-Rust low level developers consider/move to low level development in
-   Rust
- * an overview/introduction
+# Audience and purpose
+ * help general Rust developers move to low level
+ * help non-Rust low level developers with Rust
 
 # In scope
- * Rust only, and focusing on the language and development tools
- * "low level" here includes (but doesn't fully cover) the following:
- * [`no_std`](https://docs.rust-embedded.org/book/intro/no-std.html) `crates`
-   only: no standard library (`std`) - with or _without heap_
- * potentially embedded, or a part of kernel
+ * Rust only; focusing on the language (less so on development tools)
+ * [`no_std`](https://docs.rust-embedded.org/book/intro/no-std.html) library
+   `crates` (without `std` library), _with_ or _without heap_
 ---
-# Out of scope or very limited
- * most about hardware, deployment or debugging of embedded
+# Related, but mostly out of scope
+ * hardware, deployment, embedded debugging
  * low level development in general (techniques, architectures, tools)
  * specifics of [real
    time](https://doc.rust-lang.org/nightly/embedded-book/interoperability/index.html#interoperability-with-rtoss)
    applications and use with RTOS (real time OS)
    * Rust *is* suitable for real time (because of no garbage collection)
-   * but that is true for general purpose or `std` applications (in Rust), too
+   * for `std` applications (in Rust), too
  * `wasm` (Web Assembly), although [`no_std` crates are usually
    wasm-friendly](https://rahul-thakoor.github.io/using-no-standard-library-crates-with-webassembly)
  * [ABI](https://doc.rust-lang.org/nightly/reference/abi.html) (Application
    Binary Interface), especially
    * [`#[no_mangle]`](https://doc.rust-lang.org/nightly/reference/abi.html#the-no_mangle-attribute)
    * [type layout](https://doc.rust-lang.org/nightly/reference/type-layout.html)
-     and the [Rustonomicon > Alternative
-     Representations](https://doc.rust-lang.org/nightly/nomicon/other-reprs.html)
+     and the [Rustonomicon (Unsafe
+     Rust)](https://doc.rust-lang.org/nightly/nomicon) > [Alternative
+     Representations](https://doc.rust-lang.org/nightly/nomicon/other-reprs.html).
+     * Rustonomicon has parts applicable to safe and/or `std` Rust, too. One of
+       its gems: [Higher-Rank Trait
+       Bounds](https://doc.rust-lang.org/nightly/nomicon/hrtb.html).
  * [`async/await` in
    no_std](https://ferrous-systems.com/blog/stable-async-on-embedded)
  * [`unsafe`
    code](https://doc.rust-lang.org/nightly/book/ch19-01-unsafe-rust.html)
-   * is... unsafe, especially so in `std`, because some mistakes are very
-     difficult to notice and/or reproduce. Even on the same machine, model or
-     architecture, incorrect memory access (race conditions...) may show up only
-     under specific conditions (threads and the related state, CPU caches
+   * is... unsafe, indeed. Especially so in `std`, because some mistakes are
+     very difficult to notice and/or reproduce. Even on the same machine, model
+     or architecture, incorrect memory access (race conditions...) may show up
+     only under specific conditions (threads and the related state, CPU caches
      per-core or shared between cores...).
-   * even more complicated across CPU's/architectures and on NUMA (non uniform
-     memory architecture) - on x86 it used to be mostly AMD, but Intel has had
-     it on server CPU's, plus on desktops since [12th generation
+   * more complicated across CPU's/architectures and on NUMA (non uniform memory
+     architecture) - on x86 it used to be mostly AMD, but Intel has had it on
+     server CPU's, plus on desktops since [12th generation
      CPU's](https://en.wikipedia.org/wiki/Alder_Lake#Scheduler_support)).
      
      Even if a multi-level cache CPU or NUMA can detect cross-core access and it
      flushes/reloads the relevant data in the cache(s), that may counteract any
      gains expected from `unsafe`.
-   * probably easier  on `no_std` embedded
-     * no threads
-     * no interaction with other applications or processes...
-     * hence more predictability
+   * probably easier on `no_std` embedded, because of no threads & no other
+     applications or processes
    * FFI (Foreign Function
      Interface)/[Interoperability](https://doc.rust-lang.org/nightly/embedded-book/interoperability/index.html)
      * [calling external code from Rust:
@@ -174,11 +194,10 @@ external source files.
    in general
 
  # Limited scope
- * cross-platform  (often used with `no_std`/embedded)
-   * (also available in `std`, where `std` library exists)
-   * cross-platform builds (Rust/Cargo documentation keeps it hidden/secret)
-     Cross-compilation with Cargo is [almost
-     undocumented](https://doc.rust-lang.org/nightly/cargo/faq.html#does-cargo-handle-multi-platform-packages-or-cross-compilation).
+ * cross-platform
+   * (also applicable to `std`, where `std` library exists)
+   * Cargo documentation keeps it [almost
+     undocumented](https://doc.rust-lang.org/nightly/cargo/faq.html#does-cargo-handle-multi-platform-packages-or-cross-compilation)
      * [`.cargo/config.toml` -->
        `build.target`](https://doc.rust-lang.org/nightly/cargo/reference/config.html#buildtarget)
        (for an example, see TODO slicing-rs), or
@@ -188,8 +207,8 @@ external source files.
      tiers](https://doc.rust-lang.org/nightly/rustc/target-tier-policy.html).
      See also [the rustc book](https://doc.rust-lang.org/nightly/rustc) >
      [Platform
-     Support](https://doc.rust-lang.org/nightly/rustc/platform-support.html) -
-     beware many Tier 2 wouldn't build a simple application (not even as
+     Support](https://doc.rust-lang.org/nightly/rustc/platform-support.html).
+     Beware many Tier 2 wouldn't build a simple application (not even as
      heapless `no_std`).
    * [Cargo book > Platform specific
      dependencies](https://doc.rust-lang.org/nightly/cargo/reference/specifying-dependencies.html#platform-specific-dependencies)
@@ -198,35 +217,59 @@ external source files.
    * [`features`](https://doc.rust-lang.org/nightly/cargo/reference/features.html)
      - compile time-selectable subsets of library
      [`crates`](https://doc.rust-lang.org/nightly/cargo/appendix/glossary.html#crate)
-   * per-architecture or per-`feature` [conditional
-     compilation](https://doc.rust-lang.org/nightly/reference/conditional-compilation.html)
 ---
 ## Ecosystem
  * the focus here is on Rust
    [`#![no_std]`]((https://docs.rust-embedded.org/book/intro/no-std.html)
    language challenges, patterns and tips
- * we mention few architectures, `no_std` crates and tools, only
+ * we mention very little about architectures, `no_std` crates or tools
+<!--  and only
    * main stream, or
    * ones with the least development pain (easy debugging), or
    * ones with high or emerging Rust support
-   * ones with an emulator 
+   * ones with an emulator
+ -->
 ---
 # Prerequisites
  * no need for low level experience
- * knowledge of general (not necessarily low level) Rust and its tools helps,
-   especially
-   * [ownership](https://doc.rust-lang.org/nightly/book/ch04-00-understanding-ownership.html)
+ * common (and a few uncommon) aspects of general (not necessarily low level) Rust, especially
+   * setting up a project and basics of
+     [cargo](https://doc.rust-lang.org/nightly/book/ch01-03-hello-cargo.html)
    * [package
      layout](https://doc.rust-lang.org/nightly/cargo/guide/project-layout.html)
    * [dependencies](https://doc.rust-lang.org/nightly/cargo/guide/dependencies.html)
-   * anything here prefixed with "_New to Rust?_"
- * some experience with a statically typed and compiled language
- * basic understanding of CPU's, linking, heap and stack
+   * [`features`](https://doc.rust-lang.org/nightly/cargo/reference/features.html)
+   * architecture or `feature`-based [conditional
+     compilation](https://doc.rust-lang.org/nightly/reference/conditional-compilation.html) with `#[cfg(...)]`(https://doc.rust-lang.org/rust-by-example/attribute/cfg.html) attribute.
+   * [slices](https://doc.rust-lang.org/nightly/book/ch04-03-slices.html)
+   * [enums](https://doc.rust-lang.org/nightly/book/ch06-01-defining-an-enum.html) - not as simple as Java/C++ enums, but potentially carrying variant-specific data field(s) (like Scala's and Haskell's algebraic types)
+   * [iterators](https://doc.rust-lang.org/nightly/book/ch13-02-iterators.html)
+     (or [C#
+     iterators](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/iterators)
+     or
+     [java.util.stream.Stream](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/stream/Stream.html)
+   * [generics](https://doc.rust-lang.org/nightly/book/ch10-00-generics.html)
+     and especially [generic data
+     types](https://doc.rust-lang.org/nightly/book/ch10-01-syntax.html). (Like
+     templates in C++, or [generics in other
+     languages](https://www.wikiwand.com/en/Generic_programming). But unlike
+     Java generics, Rust doesn't have [type
+     erasure](https://docs.oracle.com/javase/tutorial/java/generics/erasure.html).)
+   * [const
+     generics](https://rust-lang.github.io/rfcs/2000-const-generics.html). As of
+     mid 2022, const generics are not in the Rust book (not even in `nightly`).
+     See the above or the [Rust
+     Reference](https://doc.rust-lang.org/nightly/reference/items/generics.html#const-generics).
+     (See also [Vancouver Rust's
+     presentation](https://github.com/vancouver-rs/talks/tree/master/const-generics).)
+   * anything in this document starting with "_New to Rust?_"
+ * experience with a statically typed and compiled language
+ * basics of linking, heap and stack
  * Rust
    [installation](https://doc.rust-lang.org/nightly/book/ch01-01-installation.html)
    including [`rustup`](https://rust-lang.github.io/rustup) and
    [`cargo`](https://doc.rust-lang.org/nightly/cargo) (the recommended way)
- * Linux, Mac OS or Unix basics
+ * Linux/Mac OS/Unix file path notation (in case you are on Windows)
 ---
 # no_std
  * for low level (without an operating system, or a part of an OS kernel)
@@ -308,8 +351,9 @@ external source files.
    software running, so `nightly` may be secure enough. Plus, any upgrades
    replace the whole application, so even if `nightly` API changes, nothing
    outside of your embedded application changes on because of it (the updated
-   Rust's API). You you can go ahead and apply such changes bravely. You can
-   choose a channel per-project in
+   Rust's API). You you can go ahead and apply such changes bravely.
+   
+   If you need `beta` or `nightly`, specify it per-project in
    [`rust-toolchain.toml`](https://rust-lang.github.io/rustup/overrides.html#the-toolchain-file).
    See also [nightly
    Rust](https://doc.rust-lang.org/nightly/book/appendix-07-nightly-rust.html),
@@ -358,42 +402,51 @@ external source files.
    `core::option::Option`](https://doc.rust-lang.org/core/iter/trait.FromIterator.html#impl-FromIterator%3COption%3CA%3E%3E)
    or [to
    `core::result::Result`](https://doc.rust-lang.org/core/iter/trait.FromIterator.html#impl-FromIterator%3CResult%3CA%2C%20E%3E%3E)).
-   * `collect()` doesn't exist for (mutable) arrays nor slices. Hence iterate
-   and store in a (mutable) array or slice. Worried about side effects?
+   * `collect()` doesn't exist for arrays nor slices. Hence we need to iterate
+   and store in a (mutable) array or slice. Worried about side effects? _safe_
+   Rust prevents them, because we "[cannot have a mutable reference while we
+   have an immutable
+   one](https://doc.rust-lang.org/nightly/book/ch04-02-references-and-borrowing.html#mutable-references)
+   to the same value."
  * there is no dynamic/resizable data storage
    * a `no_std` design needs to batch/buffer/limit the total data
    * use slices (instead of arrays) as parameter types wherever possible
-     * it helps to design function as accepting (shared or mutable) slices
+     * design function as accepting (shared or mutable) slices
      * functions may need to write to mutable slice parameters  (instead of
-       returning). (Indeed, that is not idempotent. _New to Rust?_ It may sound
-       less "functional". However, there are no hidden side effects in _safe_
-       Rust. Any parameter that may be modified must be either
+       returning). That may sound less "functional". _New to Rust?_ . But in
+       Rust any mutated parameters must be declared so. Any parameter that may
+       be modified must be either
        * [`borrowed`](https://doc.rust-lang.org/nightly/book/ch04-02-references-and-borrowing.html)
-         (passed) as a mutable reference or slice, or
+         (passed) as a mutable reference or slice (which has exclusive access), or
        * passing ownership of the object:
-         * [_moved_](https://doc.rust-lang.org/nightly/book/ch04-01-what-is-ownership.html#ownership-and-functions)
+         * [_"move"-d_](https://doc.rust-lang.org/nightly/book/ch04-01-what-is-ownership.html#ownership-and-functions)
            (or
            [`clone()`-d](https://doc.rust-lang.org/core/clone/trait.Clone.html)
-           first and then the clone is moved)
-         * [_copied_](https://doc.rust-lang.org/core/marker/trait.Copy.html)
-   * alternatively, use [const
+           first and then the clone is moved), or
+         * [_copied_: Ownership > Stack-Only Data: Copy]
+           ](https://doc.rust-lang.org/nightly/book/ch04-01-what-is-ownership.html#stack-only-data-copy)
+           if it implements [`Copy`
+           ](https://doc.rust-lang.org/core/marker/trait.Copy.html) trait. _New
+           to Rust?_ A `trait` is similar to an `interface` in Java, or a
+           virtual abstract field-less class with virtual methods in C++.
+       * See also
+         [ownership](https://doc.rust-lang.org/nightly/book/ch04-00-understanding-ownership.html),
+         [borrowing](https://doc.rust-lang.org/nightly/book/ch04-02-references-and-borrowing.html)
+         and
+         [lifetimes](https://doc.rust-lang.org/nightly/book/ch10-03-lifetime-syntax.html).
+   * alternatively, use [`const`
      generics](https://rust-lang.github.io/rfcs/2000-const-generics.html), a
      subset of Rust
-     [generics](https://doc.rust-lang.org/nightly/book/ch10-00-generics.html)
-     (like C++ templates, see also [Vancouver Rust's
-     presentation](https://github.com/vancouver-rs/talks/tree/master/const-generics)),
+     [generics](https://doc.rust-lang.org/nightly/book/ch10-00-generics.html),
      for both function parameters and return values
-     * make the array size (which has to be known in compile time) a const
+     * make the array size (which has to be known in compile time) a `const`
        generic parameter
      * beware that generics make the executable larger, and the build process
-       takes longer; you use combine (const) generics for some functions, and
-       slices for other
-     * as of mid 2022, const generics are not in the Rust book (not even in
-       `nightly`). See the above or the [Rust
-       Reference](https://doc.rust-lang.org/nightly/reference/items/generics.html#const-generics).
-   * application top level function(s) define the array(s), or array-containing
-     structs, on stack. Then they call the processing functions with slices, or
-     with const generic-sized arrays (or their references)
+       takes longer; it helps to combine (`const`) generics for some functions,
+       and slices for other
+   * application's top level function(s) define the array(s), or
+     array-containing structs, on stack. Then they call the processing functions
+     with slices, or with const generic-sized arrays (or their references)
    * this way you can re-use the same processing functions
    * if you can process the incoming data last in, first out (in LIFO/stack
      order), you could recurse (possibly batching the data in an array at every
@@ -404,145 +457,42 @@ external source files.
      [core::iter::Iterator](https://doc.rust-lang.org/core/iter/trait.Iterator.html)
      to represents results of your transformation. Such iterators refer to the
      underlying iterator (data source/origin) and they may keep some state on
-     top of it (a state machine). * You may want to combine/chain functions
-     accepting and returning iterators. Use keyword
+     top of it (a state machine).
+   * You may want to combine/chain functions accepting and returning iterators.
+     Use keyword
      [`impl`](https://doc.rust-lang.org/nightly/book/ch10-02-traits.html#returning-types-that-implement-traits)
      to define types like `impl Iterator<Item = YourItemType>`.
 ---
-# Conditional compilation
 
-# no_std-friendly development and testing
-(The Embedded Rust book >
-QEMU)[https://doc.rust-lang.org/nightly/embedded-book/start/qemu.html]. (It is
-inconsistent or even crashes for multithreaded applications, but we can't use
-threads in `no_std` anyway.)
+# Compound iterators
 
----
+<!--
+ no <pre>, just <code> = wide; centered!; takes up to the whole screen; no highlighting; vertical scrollbar
 
-# Actual programming
-```rs
-let five = 5usize;
-let tuple = ('a', five);
-```
+ <pre> and <code> = narrower, takes only a part of the screen;  highlighting; vertical scrollbar; highlighting
 
-<code>
+ class="hljs" fo <code> is optional - it gets highlighted without it, too
 
-  var a = ""; var b = "inline code does work in Markdown, too";
-
-  HTML inside &lt;code...&gt; in markdown <b>does become</b> a part of the
-  result HTML, even without data-noescape, but it won't load/show a file here...
-  
-  <!-- Side comment: <i>intended to be italics</i> doesn't render as italics here, but it is
-  generated in the HTML. Not being rendered must be due to Reveal.js defaults or its "black" theme. -->
-
-  An inner &lt;code...&gt; doesn't help either. <code data-noescape
-  data-url="LICENSE"> </code>
-
-</code>
-
-<code data-noescape>
-
-  HTML <b>is applied</b> with data-noescape, too.
-
-</code>
-
-
-<code data-noescape data-url="LICENSE"> </code>
-
-<code data-url="LICENSE"> </code>
-
+ No way to include an external source code with three back ticks ```
+-->
 <code
 data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs"
 data-line-start-delimiter="#![allow(unused)]" data-line-end-delimiter="pub mod
 index;"> </code>
+---
 
-```
-```
-<!-- .element: data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs" -->
-
-<!-- .element: data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs" -->
-```
-```
-
-`.` <!-- .element:
+<pre class="language-rust code-wrapper">
+<code
 data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs"
--->
+data-line-start-delimiter="#![allow(unused)]" data-line-end-delimiter="pub mod
+index;">
+</code>
+</pre>
+---
 
-<!-- .element: data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs" --> `.`
-
+# TODO inject: no_std-friendly builds and testing (on desktop)
 ---
-# More resources
- * [Cargo > Build
-   scripts](https://doc.rust-lang.org/nightly/cargo/reference/build-scripts.html)
- * [Unsafe code
-   guidelines](https://rust-lang.github.io/unsafe-code-guidelines/layout.html)
- * Rust Foundation's [Embedded
-   resources](https://doc.rust-lang.org/nightly/#embedded-systems)
-   * (including the `Rustonomicon` and the `Unstable book`)
-   * the [Embedded Rust book](https://doc.rust-lang.org/nightly/embedded-book) >
-     [Tips for embedded C
-     developers](https://doc.rust-lang.org/nightly/embedded-book/c-tips/index.html)
- * [the Embedenomicon](https://docs.rust-embedded.org/embedonomicon) > [A note
-   on compiler
-   support](https://docs.rust-embedded.org/embedonomicon/compiler-support.html)
+# TODO inject: MORE RESOURCES
 ---
- * [sindresorhus/awesome](https://github.com/sindresorhus/awesome) =
-   [project-awesome.org](https://project-awesome.org) >
-   * [Awesome Rust](https://project-awesome.org/rust-unofficial/awesome-rust) =
-     [rust-unofficial/awesome-rust](https://github.com/rust-unofficial/awesome-rust)
-     >
-     * [Embedded (Rust) and
-       cross-compiling](https://project-awesome.org/rust-unofficial/awesome-rust#embedded)
-       =
-       [rust-unofficial/awesome-rust#embedded](https://github.com/rust-unofficial/awesome-rust#embedded),
-       its [news &
-       history](https://www.trackawesomelist.com/rust-embedded/awesome-embedded-rust)
-       and its [RSS
-       feed](https://www.trackawesomelist.com/rust-embedded/awesome-embedded-rust/rss.xml)
-     * [FFI (for many
-       languages)](https://project-awesome.org/rust-unofficial/awesome-rust#embedded)
-       =
-       [rust-unofficial/awesome-rust#ffi](https://github.com/rust-unofficial/awesome-rust#ffi)
-       (no specific RSS feed; but you can subscribe to whole
-       [rust-unofficial/awesome-rust](https://github.com/rust-unofficial/awesome-rust)
-       through GitHub or its [RSS
-       feed](https://github.com/rust-unofficial/awesome-rust/commits/main/README.md.atom))
-   * [rust-embedded](https://github.com/rust-embedded) - official working group
-   * [rust-embedded/awesome-embedded-rust](https://github.com/rust-embedded/awesome-embedded-rust)
-     (including realtime OS and crates for various chipboards)
----
-* [crates.io](https://crates.io) >
-  * [Categories](https://crates.io/categories) (out of total of 54) >
-    * [No standard library (no-std)](https://crates.io/categories/no-std)
-    * [Embedded development](https://crates.io/categories/embedded), [crates.io
-      > API bindings (FFI)](https://crates.io/categories/api-bindings)
-    * [External FFI
-      bindings](https://crates.io/categories/external-ffi-bindings)
-    * [Hardware support](https://crates.io/categories/hardware-support)
-  * [Keywords](https://crates.io/keywords) (out of many, so not easy to find) >
-    * [no_std](https://crates.io/keywords/no_std)
-    * [no-heap](https://crates.io/keywords/no-heap)
-    * [embedded](https://crates.io/keywords/embedded)
-    * [embedded-database](https://crates.io/keywords/embedded-database)
-    * [rtos](https://crates.io/keywords/rtos)
-    * [bare metal](https://crates.io/keywords/bare-metal)
-    * [embedded-hal](https://crates.io/keywords/embedded-hal) (Hardware
-      Abstraction Layer)
-    * [embedded-hal-driver](https://crates.io/keywords/embedded-hal-driver)
-    * [embedded-hal-impl](https://crates.io/keywords/embedded-hal-impl)
-    * check the above for how many crates or if popular
-    * [sensor](https://crates.io/keywords/sensor)
-    * [sdcard](https://crates.io/keywords/sdcard)
-    * [smartcard](https://crates.io/keywords/smartcard)
-  * examples of crates (not necessarily recommended & only a few)
-    * 
- * Python >
-     [CircuitPython](https://github.com/adafruit/awesome-circuitpython#readme)
-     and [MicroPython](https://github.com/mcauser/awesome-micropython#readme),
-     both for microcontrollers
- * most likely not [(Embedded)
-   CPython](https://wiki.python.org/moin/EmbeddedPython) since it is "typical
-   Linux-based", hence `std`
----
-Markdown
+TODO
  * headers not in CAPS

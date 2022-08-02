@@ -27,35 +27,22 @@ tabs makes it easier to compare/update.
 		<div class="reveal">
 			<div class="slides">
     	        <section data-markdown="README.md"></section>
-				<section>
-					This and the following two slides try three ways to load a file with https://github.com/befocken/revealjs-embed-code: all loading in, but: No highligting, line breaks are ignored.
-
-					Trying "raw" file content (served by GitHub, not by GitHub pages; and from a different domain that this presentation).
-					<code
-					data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs">
-						inner text is ignored - very well
-					</code>
-				</section>
-				<section>
-					Trying the file served by GitHub pages (from a different domain).
-					<code
-					data-url="https://ranging-rs.github.io/slicing-rs/src/lib.rs">
-					    inner text is ignored - very well
-					</code>
-				</section>
-				<section>
-					Trying a file that is a part of this project (relative URL). Same whether served by a local server or by GitHub pages.
-					<code data-url="LICENSE">
-						inner text is ignored - very well
-					</code>
-				</section>
+			</div>
+			<div class="slides">
+    	        <section data-markdown="../with_heap/README.md"></section>
 			</div>
 		</div>
 
 		<script src="https://peter-kehl.github.io/reveal.js/dist/reveal.js"></script>
 		<script src="https://peter-kehl.github.io/reveal.js/plugin/notes/notes.js"></script>
 		<script src="https://peter-kehl.github.io/reveal.js/plugin/markdown/markdown.js"></script>
+
 		<script src="https://peter-kehl.github.io/revealjs-embed-code/embed-code.js"></script>
+
+		<!-- TODO - if I, or someone, migrates this plugin to new Reveal.j API:
+		<script src="../reveal.js-tableofcontents/tableofcontents.js"></script>
+		-->
+
 		<script src="https://peter-kehl.github.io/reveal.js/plugin/highlight/highlight.js"></script>
 		<script src="https://peter-kehl.github.io/reveal.js/plugin/search/search.js"></script>
 		<script>
@@ -68,7 +55,13 @@ tabs makes it easier to compare/update.
 				hash: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ EmbedCode, RevealMarkdown, RevealHighlight, RevealNotes, RevealSearch ]
+				plugins: [
+					// The following three plugins have to be initialized in this order, and before any other plugins.
+					RevealMarkdown,
+					// TODO - see above: RevealTableOfContents,
+
+					EmbedCode,
+					RevealHighlight, RevealNotes, RevealSearch ]
 			});
 		</script>
 	</body>
