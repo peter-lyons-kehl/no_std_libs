@@ -174,13 +174,13 @@ https://github.com/hakimel/reveal.js/issues/118.
 -->
 ---
 # Audience and purpose
- * help general Rust developers move to low level
- * help non-Rust low level developers move to Rust
+ * general Rust developers moving to low level
+ * non-Rust low level developers moving to Rust
 
 # In scope
  * Rust only; focusing on the language (less so on development tools)
  * [`no_std`](https://docs.rust-embedded.org/book/intro/no-std.html) library
-   `crates` (without `std` library), _with_ or _without heap_
+   `crates` (without `std` library), _with_ or _without_ heap
 ---
 # Related, but mostly out of scope
  * hardware, deployment, embedded debugging
@@ -204,6 +204,9 @@ https://github.com/hakimel/reveal.js/issues/118.
        Bounds](https://doc.rust-lang.org/nightly/nomicon/hrtb.html).
  * [`async/await` in
    no_std](https://ferrous-systems.com/blog/stable-async-on-embedded)
+
+---
+
  * [`unsafe`
    code](https://doc.rust-lang.org/nightly/book/ch19-01-unsafe-rust.html)
    * is... unsafe, indeed. Especially so in `std`, because some mistakes are
@@ -239,16 +242,20 @@ https://github.com/hakimel/reveal.js/issues/118.
  * [Rust](https://doc.rust-lang.org) and [Cargo &
    dependencies](https://doc.rust-lang.org/nightly/cargo/reference/specifying-dependencies.html)
    in general
-
+---
  # Limited scope
  * cross-platform
    * also for `std` (where `std` library exists)
    * Cargo documentation keeps this [quite
      hidden](https://doc.rust-lang.org/nightly/cargo/faq.html#does-cargo-handle-multi-platform-packages-or-cross-compilation)
      * [`.cargo/config.toml` -->
-       `build.target`](https://doc.rust-lang.org/nightly/cargo/reference/config.html#buildtarget)
-       (for an example, see TODO slicing-rs), or
-     * [`cargo build
+       `build.target`](https://doc.rust-lang.org/nightly/cargo/reference/config.html#buildtarget),
+       for example:
+       ```
+       [build]
+       target = "aarch64-unknown-none-softfloat"
+       ```
+     * or: [`cargo build
        --target`](https://doc.rust-lang.org/nightly/cargo/commands/cargo-build.html#compilation-options)
    * Architectures supported by Rust - in [three
      tiers](https://doc.rust-lang.org/nightly/rustc/target-tier-policy.html).
@@ -279,8 +286,8 @@ https://github.com/hakimel/reveal.js/issues/118.
 ---
 # Prerequisites
  * no need for low level experience
- * common (and a few uncommon) aspects of general (not necessarily low level)
-   Rust, especially
+ * common (and a few uncommon) aspects of general (but not necessarily low
+   level) Rust, especially
    * setting up a project and basics of
      [cargo](https://doc.rust-lang.org/nightly/book/ch01-03-hello-cargo.html)
    * [package
@@ -297,10 +304,15 @@ https://github.com/hakimel/reveal.js/issues/118.
      - not as simple as Java/C++ enums, but potentially carrying
      variant-specific data field(s) (like Scala's and Haskell's algebraic types)
    * [iterators](https://doc.rust-lang.org/nightly/book/ch13-02-iterators.html)
-     (or [C#
-     iterators](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/iterators)
+     (like [C#
+     iterators](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/iterators),
      or
-     [java.util.stream.Stream](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/stream/Stream.html)
+     [java.util.stream.Stream](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/stream/Stream.html);
+     but not like
+     [java.util.Iterator](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Iterator.html)!)
+
+---
+
    * [generics](https://doc.rust-lang.org/nightly/book/ch10-00-generics.html)
      and especially [generic data
      types](https://doc.rust-lang.org/nightly/book/ch10-01-syntax.html). (Like
@@ -317,6 +329,10 @@ https://github.com/hakimel/reveal.js/issues/118.
      (See also [Vancouver Rust's
      presentation](https://github.com/vancouver-rs/talks/tree/master/const-generics).)
    * anything in this document starting with "_New to Rust?_"
+   * optional (for deeper understanding of some code examples):
+     [core::option](https://doc.rust-lang.org/nightly/core/option/index.html)
+     and
+     [core::result](https://doc.rust-lang.org/nightly/core/result/index.html)
  * experience with a statically typed and compiled language
  * basics of linking, heap and stack
  * Rust
@@ -424,6 +440,8 @@ https://github.com/hakimel/reveal.js/issues/118.
 
    See also the [Rust RFC book](https://rust-lang.github.io/rfcs).
 
+---
+
 # no_std with heap
  * Import `core::` and `alloc::` (instead of `std::`) wherever you can - even in
    `std` development. That brings awareness about what parts of your library are
@@ -467,28 +485,31 @@ https://github.com/hakimel/reveal.js/issues/118.
    * use slices (instead of arrays) as parameter types wherever possible
      * design function as accepting (shared or mutable) slices
      * functions may need to write to mutable slice parameters  (instead of
-       returning). That may sound less "functional". _New to Rust?_ . But in
-       Rust any mutated parameters must be declared so. Any parameter that may
-       be modified must be either
-       * [`borrowed`](https://doc.rust-lang.org/nightly/book/ch04-02-references-and-borrowing.html)
-         (passed) as a mutable reference or slice (which has exclusive access),
-         or
-       * passing ownership of the object:
-         * [_"move"-d_](https://doc.rust-lang.org/nightly/book/ch04-01-what-is-ownership.html#ownership-and-functions)
-           (or
-           [`clone()`-d](https://doc.rust-lang.org/core/clone/trait.Clone.html)
-           first and then the clone is moved), or
-         * [_copied_: Ownership > Stack-Only Data: Copy]
-           ](https://doc.rust-lang.org/nightly/book/ch04-01-what-is-ownership.html#stack-only-data-copy)
-           if it implements [`Copy`
-           ](https://doc.rust-lang.org/core/marker/trait.Copy.html) trait. _New
-           to Rust?_ A `trait` is similar to an `interface` in Java, or a
-           virtual abstract field-less class with virtual methods in C++.
-       * See also
-         [ownership](https://doc.rust-lang.org/nightly/book/ch04-00-understanding-ownership.html),
-         [borrowing](https://doc.rust-lang.org/nightly/book/ch04-02-references-and-borrowing.html)
-         and
-         [lifetimes](https://doc.rust-lang.org/nightly/book/ch10-03-lifetime-syntax.html).
+       returning).
+
+---
+
+   * _New to Rust?_ Mutating slices or references/arrays may sound less
+     "functional". But, in Rust any mutated parameters must be declared so. Any
+     parameter that may be modified must be either
+     * [`borrowed`](https://doc.rust-lang.org/nightly/book/ch04-02-references-and-borrowing.html)
+       (passed) as a mutable reference or slice (which has exclusive access), or
+     * passing ownership of the object:
+       * [_"move"-d_](https://doc.rust-lang.org/nightly/book/ch04-01-what-is-ownership.html#ownership-and-functions)
+         (or
+         [`clone()`-d](https://doc.rust-lang.org/core/clone/trait.Clone.html)
+         first and then the clone is moved), or
+       * [_copied_: Ownership > Stack-Only Data: Copy]
+         ](https://doc.rust-lang.org/nightly/book/ch04-01-what-is-ownership.html#stack-only-data-copy)
+         if it implements [`Copy`
+         ](https://doc.rust-lang.org/core/marker/trait.Copy.html) trait. _New to
+         Rust?_ A `trait` is similar to an `interface` in Java, or a virtual
+         abstract field-less class with virtual methods in C++.
+     * See also
+       [ownership](https://doc.rust-lang.org/nightly/book/ch04-00-understanding-ownership.html),
+       [borrowing](https://doc.rust-lang.org/nightly/book/ch04-02-references-and-borrowing.html)
+       and
+       [lifetimes](https://doc.rust-lang.org/nightly/book/ch10-03-lifetime-syntax.html).
    * alternatively, use [`const`
      generics](https://rust-lang.github.io/rfcs/2000-const-generics.html), a
      subset of Rust
@@ -503,6 +524,9 @@ https://github.com/hakimel/reveal.js/issues/118.
      array-containing structs/enums, on stack. Then they call the processing
      functions with slices, or with const generic-sized arrays (or their
      references)
+
+---
+
    * this way you can re-use the same processing functions
    * if you can process the incoming data last in, first out (in LIFO/stack
      order), you could recurse (possibly batching the data in an array at every
@@ -519,4 +543,30 @@ https://github.com/hakimel/reveal.js/issues/118.
      [`impl`](https://doc.rust-lang.org/nightly/book/ch10-02-traits.html#returning-types-that-implement-traits)
      to define types like `impl Iterator<Item = YourItemType>`.
 ---
+# no_std without heap > collect() alternatives
+When developing for `no_heap`, we can't `collect()` from iterators. That makes
+some tasks that need access to all items at the same time (like sorting) very
+difficult.
+
+This would need limit on number of items to be known at build time. Then the
+caller would pass a (mutable) reference to an array, or a slice, where we would
+manually collect the items (in a `for` loop, or `.foreach()` closure).
+
+---
+
 # no_std without heap > Compound iterators
+For some purposes we may not need access to all items if we
+don't need to access the whole collection. Then all we do needs sequential access
+only, for example a one-to-one transformation, and/or filtering.
+
+For that we may need to implement a compound iterator. It would contain an
+underlying iterator (or several iterators) over the source data. It iterates and
+transforms and/or filters the source data.
+
+[Exercism Rust track](https://exercism.org/tracks/rust/exercises) > 
+[RNA
+Transcription](https://exercism.org/tracks/rust/exercises/rna-transcription)
+
+https://github.com/peter-kehl/x-rust/blob/main/rust/rna-transcription-std/src/lib.rs
+
+https://github.com/peter-kehl/x-rust/blob/main/rust/rna-transcription/src/lib.rs

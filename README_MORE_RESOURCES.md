@@ -92,9 +92,6 @@ for the whole presentation.
    Linux-based", hence `std`
 * [rustc book](https://forge.rust-lang.org) > [Platform support (and
   tiers)](https://forge.rust-lang.org/release/platform-support.html)
-
-bufgo
-
 ---
 
 <!--

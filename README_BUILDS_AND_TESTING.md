@@ -8,16 +8,16 @@ for the whole presentation.
 # no_std-friendly builds and testing (on desktop)
  * no simple way to run/debug `no_std` on desktop
  * workaround: separate build verification and testing
-   * build for a `no_std` target (but don't test)
-   * build `no_std` and `no_std` + `no_std_heap` features (on your desktop) and
-     run their tests
+   * build for a `no_std` target (but can't test, not even build the tests)
+   * build `no_std` and `no_std` (and optionally `no_std_heap`) features (for
+     your desktop's target), and run their tests
    * build `std` and run all tests
    * can't use a
      [workspace](https://doc.rust-lang.org/nightly/cargo/reference/workspaces.html)
      for these alternatives (because all crates in workspace share dependency
      resolution)
    * have the above builds in separate crates, under a directory like
-     `test_crates/`
+     [`test_crates/`](https://github.com/ranging-rs/slicing-rs/tree/main/test_crates)
    * test crates can re-use the tests
    * suggest their folder names to start with a prefix based on/equal to the
      main crate. That makes navigation easier (especially in VS Code) when you
