@@ -1,6 +1,8 @@
 <!-- The following comments hides this section from being shown by https://peter-kehl.github.io/embedded_low_level_rust. >
 <!-- .slide: data-visibility="hidden" -->
-This is only a part of a presentation. See [https://peter-kehl.github.io/embedded_low_level_rust](embedded_low_level_rust) for the whole presentation.
+This is only a part of a presentation. See
+[https://peter-kehl.github.io/embedded_low_level_rust](embedded_low_level_rust)
+for the whole presentation.
 ---
 
 # More resources
@@ -55,6 +57,7 @@ This is only a part of a presentation. See [https://peter-kehl.github.io/embedde
    * [rust-embedded/awesome-embedded-rust](https://github.com/rust-embedded/awesome-embedded-rust)
      (including realtime OS and crates for various chipboards)
 ---
+
 * [crates.io](https://crates.io) >
   * [Categories](https://crates.io/categories) (out of total of 54) >
     * [No standard library (no-std)](https://crates.io/categories/no-std)
@@ -87,4 +90,47 @@ This is only a part of a presentation. See [https://peter-kehl.github.io/embedde
  * most likely not [(Embedded)
    CPython](https://wiki.python.org/moin/EmbeddedPython) since it is "typical
    Linux-based", hence `std`
-* [rustc book](https://forge.rust-lang.org) > [Platform support (and tiers)](https://forge.rust-lang.org/release/platform-support.html)
+* [rustc book](https://forge.rust-lang.org) > [Platform support (and
+  tiers)](https://forge.rust-lang.org/release/platform-support.html)
+
+bufgo
+
+---
+
+<!--
+Ways of embedding & highlighting source code:
+ no <pre>, just <code data-...>
+ - good: Screen utilization: Takes up to the whole screen.
+ - bad: No highlighting!
+ - bad: Centered!
+ - bad: No vertical scrollbars.
+
+ <pre class="..."> and <code data-...>
+ - good: Highlighting
+ - good: Vertical scrollbars
+ - bad: Little screen utilization: takes only a part of the screen!
+
+ Use: <pre class="language-rust r-stretch"><code data-...>
+
+ class="hljs" for <code> is optional - it gets highlighted without it, too
+
+No way to include an external source code form Markdown with three back ticks ```.
+-->
+<!-- class="language-rust" seems to be enough, no need for both "language-rust code-wrapper" -->
+<!-- <span class="r-fit-text"> here din't make it use the whole screen. Neither helped <pre class="language-rust r-fit-text">
+
+As per https://revealjs.com/layout, there can be only one item with "r-stretch" per slide!
+-->
+BEFORE
+<pre class="language-rust r-stretch">
+<code
+data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs"
+data-line-start-delimiter="#![allow(unused)]" data-line-end-delimiter="pub mod
+index;">
+</code>
+</pre>
+AFTER
+Note:
+TODO highlight selected lines with <code data-line-numbers="3,8-10">
+TODO put GitHub code line range link at a commit here - to make this
+accessible.

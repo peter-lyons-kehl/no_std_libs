@@ -1,32 +1,32 @@
 <!-- The following comments hides this section from being shown by https://peter-kehl.github.io/embedded_low_level_rust. >
 <!-- .slide: data-visibility="hidden" -->
-This is only a part of a presentation. See [https://peter-kehl.github.io/embedded_low_level_rust](embedded_low_level_rust) for the whole presentation.
+This is only a part of a presentation. See
+[https://peter-kehl.github.io/embedded_low_level_rust](embedded_low_level_rust)
+for the whole.
 ---
 
-# Embedded & low level-friendly, no_std Rust intro
+# Embedded & low level-friendly, _no_std_ Rust intro
 When viewing this [published as
 slides](https://peter-kehl.github.io/embedded_low_level_rust):
- 1. These slides are **_not_** designed for mobile devices or tiny screens. See
+ 1. These slides are _not_ for mobile devices/tiny screens. See an alternative
 [continuous
 view](https://github.com/peter-kehl/embedded_low_level_rust/blob/main/README.md)
 instead.
- 2. **Zoom in** or **out** (because the slides can't be scrolled down). Press
-    **`Ctrl -`** and **`Ctrl +`** (**`Command -`** and **`Command +`** on Mac),
-    or **`Ctrl`** (**`Command`**) and roll the **mouse wheel**, until you see
+ 2. **Zoom in**/**out** (because the slides can't be scrolled down). Press
+    **`Ctrl -`** or **`Ctrl +`** (**`Command -`** or **`Command +`** on Mac), or
+    **`Ctrl`** (**`Command`**) and roll the **mouse wheel**, until you see
     numbers shown down to 0 below.
- 3. Press letter **`o`** (lowercase), or **`ESC`** key, to show (or hide) an
+ 3. Prefer Firefox (it utilizes screen for code blocks better than Chrome).
+ 4. Press `?` question mark to get a help screen.
+ 5. Press the bottom left button for a menu (with list of slides & themes).
+ 6. Press letter **`o`** (lowercase), or **`ESC`** key, to show (or hide) an
     **overview** of the nearby slides.
- 4. Press **`Ctrl Shift F`** (probably **Command Shift F** on Mac) to show (or
-    hide) a **search** input (at the top right, very small once you zoom out).
-    Type the text to search for and **Enter**. Click anywhere on the slide
-    before using the keys to navigate again. Any matching text will stay
-    highlighted, even as you navigate to other slides. (It highlights any
-    matches on the overview screen, too.)
+ 7. Press **`Ctrl Shift F`** (probably **Command Shift F** on Mac) to show (or
+    hide) a **search** input (at the top right). Type the text to search for and
+    **Enter**. Click anywhere on the slide before using the keys to navigate
+    again. Any matching text will stay highlighted, even as you navigate to
+    other slides. (It highlights any matches on the overview screen, too.)
 ```
-    9
-    8
-    7
-    6
     5
     4
     3
@@ -35,20 +35,62 @@ instead.
     0
 ```
 
-Note: The content from this line until the next horizontal line (`---` in
+Note: The content from this line on until the next slide (after the next
+horizontal line `---` in source of this file
 [`README.md`](https://github.com/peter-kehl/embedded_low_level_rust/blob/main/README.md?plain=1))
 is a "presenter's note". When viewing this in a browser as slides [on GitHub
 Pages](https://peter-kehl.github.io/embedded_low_level_rust) or
-[locally](index.html) - not opened from a filesystem but through a local web
-server - you can show this note by pressing "S". (You may need to allow browser
-to open a new window). See [speaker view](https://revealjs.com/speaker-view).
+[locally](index.html) (not opened from a filesystem, but through a local web
+server), you can show these notes by pressing "S". (You may need to allow
+browser to open a new window). See [Reveal.js > speaker
+view](https://revealjs.com/speaker-view).
+
+If you're seeing this as a [continuous
+document](https://github.com/peter-kehl/embedded_low_level_rust/blob/main/README.md)
+(instead of [slides](https://peter-kehl.github.io/embedded_low_level_rust)]):
+ - You will not be able to see source code examples as a part of this document.
+   Instead, follow links to the respective source code. Those links highlight
+   respective line ranges (which is valid unless this presentation gets out of
+   data with examples).
+ - You will need to open other `README_....md` documents that follow this file
+   (see the end of this file, and end of the successive `README_....md`
+   documents).
 
 This presentation loads external files (example code sources that it highlights
-and injects in its contents). In order to show them, you need to access this
-from a webserver (GitHub Pages, or a custom/local webserver) - but not from a
-local file opened directly in browser. See [Reveal.js > Markdown > External
-Markdown](https://revealjs.com/markdown/#external-markdown). You do _not_ need
-`npm` - for example, you can run `python3 -m http.server` instead.
+and injects in its contents). In order to show them:
+ 1. Access this from a webserver (GitHub Pages, or a custom/local webserver) -
+    but not from a local file opened directly in browser. See [Reveal.js >
+    Markdown > External
+    Markdown](https://revealjs.com/markdown/#external-markdown). You do _not_
+    need `npm` - for example, you can run `python3 -m http.server` instead. But
+    you need to run the webserver for a directory at least one level above the
+    clone of this project - so that the webserver serves the neighbor projects,
+    too.
+
+    Beware that, as of August 2022, `python3 -m http.server` and/or Firefox
+    caused `README*.md` files to be cached for up to 24 hours. Even refreshing
+    the page in Firefox didn't help. It required purging Firefox cache
+    (about:preferences#privacy > "Cookies and Site Data" > "Clear Data" button >
+    "Cached Web Content").
+ 2. Have the neighbor directories. On GitHub pages, fork all related projects
+    for the same organization or user as this project. See
+    [`index.html`](index.html) for list of those projects. Then configure all
+    those related forked GitHub repositories to publish their `main` (or
+    `master`) branch to GitHub Pages. Alternatively, change the relative CSS and
+    JS URL's in [`index.html`](index.html). When testing locally, update your
+    forks and their local clones from the upstream repositories.
+
+    Using relative URLs for plugins gives a benefit: People who fork/copy this
+    project can use the same source code. Such relative URLs refer to their own
+    GitHub forks of the plugins, hence not consuming GitHub pages bandwidth of
+    the original project.
+
+When this includes (& highlights) source code (of other projects, used as
+examples), it assumes that those projects are on GitHub.
+[`index.html`](index.html) also assumes that the neighbor projects are on
+GitHub. However, all these principles are independent of GitHub. You may be able
+to apply this to any decent source code hub that can publish the files' raw
+content and with `text/javascript` MIME for JS files, such as GitLab.
 
 TODO LATER: Move to a separate (visible) slide: Written in
 [Markdown](https://revealjs.com/markdown), rendered by
@@ -56,7 +98,7 @@ TODO LATER: Move to a separate (visible) slide: Written in
 [https://revealjs.com](revealjs.com)). See also this [presentation's
 source](https://github.com/peter-kehl/embedded_low_level_rust/blob/main/README.md?plain=1).
 
-# Rendered with: Reveal.js
+## Rendered with: Reveal.js
 If you'd like to render this locally (for example, when editing `README.md`),
 you need to run a web server. Then you can access this in a web browser as (a
 part of) `index.html`. See [Reveal.js > Markdown > External
@@ -99,7 +141,7 @@ languages](https://highlightjs.readthedocs.io/en/latest/supported-languages.html
 See [highlight.js docs](https://highlightjs.readthedocs.io/en/latest) and its
 [wiki](https://github.com/highlightjs/highlight.js/wiki).
 
-# Alternative: Remark.js
+## Alternative: Remark.js
 If you don't want to clone and track Reveal.js, and if you're happy with simpler
 and lightweight alternative, try [Remark.js](https://remarkjs.com) (see also its
 [wiki](https://github.com/gnab/remark/wiki)). It allows your presentations to
@@ -122,13 +164,18 @@ source files (so you need to copy and paste the code examples). It doesn't seem
 to allow highlighting of selected lines of example code lines, either.
 
 Both Reveal.js and Remark.js support code source highlighting. However, only
-Reveal.js can highlight specified parts of (lines), and display (parts of)
-external source files.
-<!-- Requiring an empty line, or a comment, here: before (but not necessarily after) the following --- (slide separator). Otherwise https://github.com/peter-kehl/embedded_low_level_rust/edit/main/README.md rendered the previous paragraph as bold/large. -->
+Reveal.js can
+ - highlight specified parts of (lines), and
+ - display (parts of) external source files.
+
+Unfortunately, Reveal.js doesn't support vertical scrolling through the slides:
+https://github.com/hakimel/reveal.js/issues/118. 
+<!-- Requiring an empty line, or a comment, here: before (but not necessarily after) the following --- (slide separator). Otherwise https://github.com/peter-kehl/embedded_low_level_rust/edit/main/README.md rendered the previous paragraph as bold/large.
+-->
 ---
 # Audience and purpose
  * help general Rust developers move to low level
- * help non-Rust low level developers with Rust
+ * help non-Rust low level developers move to Rust
 
 # In scope
  * Rust only; focusing on the language (less so on development tools)
@@ -140,7 +187,7 @@ external source files.
  * low level development in general (techniques, architectures, tools)
  * specifics of [real
    time](https://doc.rust-lang.org/nightly/embedded-book/interoperability/index.html#interoperability-with-rtoss)
-   applications and use with RTOS (real time OS)
+   applications and use with RTOS (Real Time OS)
    * Rust *is* suitable for real time (because of no garbage collection)
    * for `std` applications (in Rust), too
  * `wasm` (Web Assembly), although [`no_std` crates are usually
@@ -195,9 +242,9 @@ external source files.
 
  # Limited scope
  * cross-platform
-   * (also applicable to `std`, where `std` library exists)
-   * Cargo documentation keeps it [almost
-     undocumented](https://doc.rust-lang.org/nightly/cargo/faq.html#does-cargo-handle-multi-platform-packages-or-cross-compilation)
+   * also for `std` (where `std` library exists)
+   * Cargo documentation keeps this [quite
+     hidden](https://doc.rust-lang.org/nightly/cargo/faq.html#does-cargo-handle-multi-platform-packages-or-cross-compilation)
      * [`.cargo/config.toml` -->
        `build.target`](https://doc.rust-lang.org/nightly/cargo/reference/config.html#buildtarget)
        (for an example, see TODO slicing-rs), or
@@ -232,7 +279,8 @@ external source files.
 ---
 # Prerequisites
  * no need for low level experience
- * common (and a few uncommon) aspects of general (not necessarily low level) Rust, especially
+ * common (and a few uncommon) aspects of general (not necessarily low level)
+   Rust, especially
    * setting up a project and basics of
      [cargo](https://doc.rust-lang.org/nightly/book/ch01-03-hello-cargo.html)
    * [package
@@ -240,9 +288,14 @@ external source files.
    * [dependencies](https://doc.rust-lang.org/nightly/cargo/guide/dependencies.html)
    * [`features`](https://doc.rust-lang.org/nightly/cargo/reference/features.html)
    * architecture or `feature`-based [conditional
-     compilation](https://doc.rust-lang.org/nightly/reference/conditional-compilation.html) with `#[cfg(...)]`(https://doc.rust-lang.org/rust-by-example/attribute/cfg.html) attribute.
+     compilation](https://doc.rust-lang.org/nightly/reference/conditional-compilation.html)
+     with
+     `#[cfg(...)]`(https://doc.rust-lang.org/rust-by-example/attribute/cfg.html)
+     attribute.
    * [slices](https://doc.rust-lang.org/nightly/book/ch04-03-slices.html)
-   * [enums](https://doc.rust-lang.org/nightly/book/ch06-01-defining-an-enum.html) - not as simple as Java/C++ enums, but potentially carrying variant-specific data field(s) (like Scala's and Haskell's algebraic types)
+   * [enums](https://doc.rust-lang.org/nightly/book/ch06-01-defining-an-enum.html)
+     - not as simple as Java/C++ enums, but potentially carrying
+     variant-specific data field(s) (like Scala's and Haskell's algebraic types)
    * [iterators](https://doc.rust-lang.org/nightly/book/ch13-02-iterators.html)
      (or [C#
      iterators](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/iterators)
@@ -252,9 +305,10 @@ external source files.
      and especially [generic data
      types](https://doc.rust-lang.org/nightly/book/ch10-01-syntax.html). (Like
      templates in C++, or [generics in other
-     languages](https://www.wikiwand.com/en/Generic_programming). But unlike
-     Java generics, Rust doesn't have [type
-     erasure](https://docs.oracle.com/javase/tutorial/java/generics/erasure.html).)
+     languages](https://www.wikiwand.com/en/Generic_programming). But no type
+     erasure like in [Java
+     generics](https://docs.oracle.com/javase/tutorial/java/generics/erasure.html)
+     or some [Haskell generics](https://wiki.haskell.org/Generics).)
    * [const
      generics](https://rust-lang.github.io/rfcs/2000-const-generics.html). As of
      mid 2022, const generics are not in the Rust book (not even in `nightly`).
@@ -417,7 +471,8 @@ external source files.
        Rust any mutated parameters must be declared so. Any parameter that may
        be modified must be either
        * [`borrowed`](https://doc.rust-lang.org/nightly/book/ch04-02-references-and-borrowing.html)
-         (passed) as a mutable reference or slice (which has exclusive access), or
+         (passed) as a mutable reference or slice (which has exclusive access),
+         or
        * passing ownership of the object:
          * [_"move"-d_](https://doc.rust-lang.org/nightly/book/ch04-01-what-is-ownership.html#ownership-and-functions)
            (or
@@ -445,8 +500,9 @@ external source files.
        takes longer; it helps to combine (`const`) generics for some functions,
        and slices for other
    * application's top level function(s) define the array(s), or
-     array-containing structs, on stack. Then they call the processing functions
-     with slices, or with const generic-sized arrays (or their references)
+     array-containing structs/enums, on stack. Then they call the processing
+     functions with slices, or with const generic-sized arrays (or their
+     references)
    * this way you can re-use the same processing functions
    * if you can process the incoming data last in, first out (in LIFO/stack
      order), you could recurse (possibly batching the data in an array at every
@@ -463,36 +519,4 @@ external source files.
      [`impl`](https://doc.rust-lang.org/nightly/book/ch10-02-traits.html#returning-types-that-implement-traits)
      to define types like `impl Iterator<Item = YourItemType>`.
 ---
-
-# Compound iterators
-
-<!--
- no <pre>, just <code> = wide; centered!; takes up to the whole screen; no highlighting; vertical scrollbar
-
- <pre> and <code> = narrower, takes only a part of the screen;  highlighting; vertical scrollbar; highlighting
-
- class="hljs" fo <code> is optional - it gets highlighted without it, too
-
- No way to include an external source code with three back ticks ```
--->
-<code
-data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs"
-data-line-start-delimiter="#![allow(unused)]" data-line-end-delimiter="pub mod
-index;"> </code>
----
-
-<pre class="language-rust code-wrapper">
-<code
-data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs"
-data-line-start-delimiter="#![allow(unused)]" data-line-end-delimiter="pub mod
-index;">
-</code>
-</pre>
----
-
-# TODO inject: no_std-friendly builds and testing (on desktop)
----
-# TODO inject: MORE RESOURCES
----
-TODO
- * headers not in CAPS
+# no_std without heap > Compound iterators
