@@ -1,18 +1,20 @@
-<!-- The following comments hides this section from being shown by https://peter-kehl.github.io/embedded_low_level_rust. >
+<!-- The following comments hides this section from being shown by
+     https://peter-kehl.github.io/no_std_rust_lib_presentation.
+-->
 <!-- .slide: data-visibility="hidden" -->
-This is only a part of a presentation. See
-[https://peter-kehl.github.io/embedded_low_level_rust](embedded_low_level_rust)
-for the whole.
+This is only a part of [a presentation](./).That also shows any source code referred to below.
+<!-- Any comments in source starting with "presentation-" are anchors/delimiters for the above presentation.
+-->
 ---
 
-# Embedded & low level-friendly, _no_std_ Rust intro
-When viewing this [published as
-slides](https://peter-kehl.github.io/embedded_low_level_rust):
- 1. These slides are _not_ for mobile devices/tiny screens. See an alternative
-[continuous
-view](https://github.com/peter-kehl/embedded_low_level_rust/blob/main/README.md)
-instead.
- 2. **Zoom in**/**out** (because the slides can't be scrolled down). Press
+# Embedded & low level-friendly, _no_std_ Rust crates
+Viewing this [published as
+slides](https://peter-kehl.github.io/no_std_rust_lib_presentation)?
+ 1. These slides are _not_ for mobile devices/tiny screens. See a limited
+    [alternative
+    view](https://github.com/peter-kehl/no_std_rust_lib_presentation/blob/main/README.md)
+    instead.
+ 2. **Zoom in**/**out** because the slides can't be scrolled down! Press
     **`Ctrl -`** or **`Ctrl +`** (**`Command -`** or **`Command +`** on Mac), or
     **`Ctrl`** (**`Command`**) and roll the **mouse wheel**, until you see
     numbers shown down to 0 below.
@@ -21,11 +23,11 @@ instead.
  5. Press the bottom left button for a menu (with list of slides & themes).
  6. Press letter **`o`** (lowercase), or **`ESC`** key, to show (or hide) an
     **overview** of the nearby slides.
- 7. Press **`Ctrl Shift F`** (probably **Command Shift F** on Mac) to show (or
-    hide) a **search** input (at the top right). Type the text to search for and
-    **Enter**. Click anywhere on the slide before using the keys to navigate
-    again. Any matching text will stay highlighted, even as you navigate to
-    other slides. (It highlights any matches on the overview screen, too.)
+ 7. Press **`Ctrl Shift F`** to show (or hide) a **search** input (at the top
+    right). Type the text to search for and **Enter**. Click anywhere on the
+    slide before using the keys to navigate again. This search is **sticky**:
+    Any matching text will stay highlighted, even as you navigate to other
+    slides. (It highlights any matches on the overview screen, too.)
 ```
     5
     4
@@ -37,17 +39,17 @@ instead.
 
 Note: The content from this line on until the next slide (after the next
 horizontal line `---` in source of this file
-[`README.md`](https://github.com/peter-kehl/embedded_low_level_rust/blob/main/README.md?plain=1))
+[`README.md`](https://github.com/peter-kehl/no_std_rust_lib_presentation/blob/main/README.md?plain=1))
 is a "presenter's note". When viewing this in a browser as slides [on GitHub
-Pages](https://peter-kehl.github.io/embedded_low_level_rust) or
+Pages](https://peter-kehl.github.io/no_std_rust_lib_presentation) or
 [locally](index.html) (not opened from a filesystem, but through a local web
 server), you can show these notes by pressing "S". (You may need to allow
 browser to open a new window). See [Reveal.js > speaker
 view](https://revealjs.com/speaker-view).
 
 If you're seeing this as a [continuous
-document](https://github.com/peter-kehl/embedded_low_level_rust/blob/main/README.md)
-(instead of [slides](https://peter-kehl.github.io/embedded_low_level_rust)]):
+document](https://github.com/peter-kehl/no_std_rust_lib_presentation/blob/main/README.md)
+(instead of [slides](https://peter-kehl.github.io/no_std_rust_lib_presentation)]):
  - You will not be able to see source code examples as a part of this document.
    Instead, follow links to the respective source code. Those links highlight
    respective line ranges (which is valid unless this presentation gets out of
@@ -58,16 +60,18 @@ document](https://github.com/peter-kehl/embedded_low_level_rust/blob/main/README
 
 This presentation loads external files (example code sources that it highlights
 and injects in its contents). In order to show them:
- 1. Access this from a webserver (GitHub Pages, or a custom/local webserver) -
-    but not from a local file opened directly in browser. See [Reveal.js >
+ 1. Access this from a webserver (GitHub Pages, or a custom/local webserver).
+ 2. But don't open it from a local file opened directly in browser. See [Reveal.js >
     Markdown > External
-    Markdown](https://revealjs.com/markdown/#external-markdown). You do _not_
-    need `npm` - for example, you can run `python3 -m http.server` instead. But
+    Markdown](https://revealjs.com/markdown/#external-markdown).
+ 3. You do _not_
+    need `npm` - for example, you can run `python3 -m http.server` instead.
+ 4. But
     you need to run the webserver for a directory at least one level above the
     clone of this project - so that the webserver serves the neighbor projects,
     too.
 
-    Beware that, as of August 2022, `python3 -m http.server` and/or Firefox
+ 5. Beware that, as of August 2022, `python3 -m http.server` and/or Firefox
     caused `README*.md` files to be cached for up to 24 hours. Even refreshing
     the page in Firefox didn't help. It required purging Firefox cache
     (about:preferences#privacy > "Cookies and Site Data" > "Clear Data" button >
@@ -96,7 +100,7 @@ TODO LATER: Move to a separate (visible) slide: Written in
 [Markdown](https://revealjs.com/markdown), rendered by
 [Reveal.js](https://github.com/hakimel/reveal.js) (also
 [https://revealjs.com](revealjs.com)). See also this [presentation's
-source](https://github.com/peter-kehl/embedded_low_level_rust/blob/main/README.md?plain=1).
+source](https://github.com/peter-kehl/no_std_rust_lib_presentation/blob/main/README.md?plain=1).
 
 ## Rendered with: Reveal.js
 If you'd like to render this locally (for example, when editing `README.md`),
@@ -120,7 +124,7 @@ limit](https://docs.github.com/en/pages/getting-started-with-github-pages/about-
 of 100GB per month.
 
 Even though I'm sure visitors of this presentation itself won't make it go over
-the bandwidth limit, it might reach the limit if authors of other presentations
+that bandwidth limit, it might reach the limit if authors of other presentations
 link to (my) clones of `Reveal.js` and `RevealJS-Embed-Code`. Hence, please
 don't link to my clones. Instead, get your own clones of
 [Reveal.js](https://github.com/hakimel/reveal.js) and
@@ -128,9 +132,8 @@ don't link to my clones. Instead, get your own clones of
 will also boost their GitHub projects. And while you're at it, please star their
 GitHub repositories, too).
 
-
 To make this GitHub repository show up [on GitHub
-Pages](https://peter-kehl.github.io/embedded_low_level_rust), I configured my
+Pages](https://peter-kehl.github.io/no_std_rust_lib_presentation), I configured my
 clone repository's Settings > Pages > Source > Branch: `main` (and `/(root)`).
 
 Reveal.js uses [highlight.js](https://highlightjs.org/usage). In addition to
@@ -170,7 +173,7 @@ Reveal.js can
 
 Unfortunately, Reveal.js doesn't support vertical scrolling through the slides:
 https://github.com/hakimel/reveal.js/issues/118. 
-<!-- Requiring an empty line, or a comment, here: before (but not necessarily after) the following --- (slide separator). Otherwise https://github.com/peter-kehl/embedded_low_level_rust/edit/main/README.md rendered the previous paragraph as bold/large.
+<!-- Requiring an empty line, or a comment, here: before (but not necessarily after) the following --- (slide separator). Otherwise https://github.com/peter-kehl/no_std_rust_lib_presentation/edit/main/README.md rendered the previous paragraph as bold/large.
 -->
 ---
 # Audience and purpose
@@ -395,14 +398,29 @@ https://github.com/hakimel/reveal.js/issues/118.
    * [`alloc::collections::BTreeSet`](https://doc.rust-lang.org/nightly/alloc/collections/index.html#reexport.BTreeSet),
      [`alloc::collections::BTreeMap`](https://doc.rust-lang.org/nightly/alloc/collections/index.html#reexport.BTreeMap)
      if your items/keys implement
-     [`core::comp::Ord`](https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html)
- * either way, no
-   [`std::collections::HashSet`](https://doc.rust-lang.org/nightly/std/collections/struct.HashSet.html),
-   nor
-   [`std::collections::HashMap`](https://doc.rust-lang.org/nightly/std/collections/struct.HashMap.html)
-   (since those need a source of entropy), nor
-   [`std::thread::Thread`](https://doc.rust-lang.org/nightly/std/thread/struct.Thread.html)
-   (and no multi-threading)
+     [`core::comp::Ord`](https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html).
+
+     Even if our `struct` (or `enum`) instances can't be ordered in human
+     terms, or if the actual order doesn't matter for us, we could define some
+     (predictable) order and use `BTreeSet/BTreeMap` for most types.
+ * either way (heapless or with heap)
+   * no [`std::collections::HashSet`](https://doc.rust-lang.org/nightly/std/collections/struct.HashSet.html),
+     nor
+     [`std::collections::HashMap`](https://doc.rust-lang.org/nightly/std/collections/struct.HashMap.html)
+     (since computing hashes needs a source of entropy).
+     
+     Are you creating a library for both `std` and `no_std`, and you'd like to
+     use `HashSet/HashMap` on `std`? You could define a trait, and implement it
+     for `HashSet` (or `HashMap`) and for your `no_std`-compatible type. Then
+     makde your API use
+     * const generics (heapless `no_std`-compatible, and can be instantiated and
+       then returned from a function), or
+     * or `&dyn` _`trait`_ (heapless `no_std`-compatible, but can't be
+       instantiated and then returned from a function), or
+     * `Box<&dyn` _`trait>`_ (`no_std` with heap)
+   * no
+     [`std::thread::Thread`](https://doc.rust-lang.org/nightly/std/thread/struct.Thread.html)
+     (and no multi-threading)
  * Rust has `#![no_std]`, but it doesn't have `#![std]`. (Instead, availability
    of `std` library is implied if you don't have `#![no_std]`). Here we use
    `std` to refer to [`std`](https://doc.rust-lang.org/nightly/std/index.html)
@@ -567,6 +585,10 @@ transforms and/or filters the source data.
 [RNA
 Transcription](https://exercism.org/tracks/rust/exercises/rna-transcription)
 
+In addition to the text of the assignment, it helps to see the
+[tests](https://github.com/peter-kehl/x-rust/blob/main/rust/rna-transcription-std/tests/rna-transcription.rs)
+(or the same tests used for [`no_std` version](https://github.com/peter-kehl/x-rust/blob/main/rust/rna-transcription-no_std-no_heap/tests/rna-transcription.rs))
+
 https://github.com/peter-kehl/x-rust/blob/main/rust/rna-transcription-std/src/lib.rs
 
-https://github.com/peter-kehl/x-rust/blob/main/rust/rna-transcription/src/lib.rs
+https://github.com/peter-kehl/x-rust/blob/main/rust/rna-transcription-no_std-no_heap/src/lib.rs

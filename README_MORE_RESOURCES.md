@@ -1,4 +1,6 @@
-<!-- The following comments hides this section from being shown by https://peter-kehl.github.io/embedded_low_level_rust. >
+<!-- The following comments hides this section from being shown by
+     https://peter-kehl.github.io/embedded_low_level_rust.
+-->
 <!-- .slide: data-visibility="hidden" -->
 This is only a part of a presentation. See
 [https://peter-kehl.github.io/embedded_low_level_rust](embedded_low_level_rust)
@@ -6,14 +8,14 @@ for the whole presentation.
 ---
 
 # More resources
- * We can also have per-platform `rustflags` in `.cargo/config.toml`. See
+ * Per-platform `rustflags` in `.cargo/config.toml`. See
    [Zero2Prod > Faster Linking]
    (https://www.lpalmieri.com/posts/2020-06-06-zero-to-production-1-setup-toolchain-ides-ci/#5-1-faster-linking).
- * You may want to try [The Embedded Rust book >
+ * [Embedded Rust book >
    QEMU](https://doc.rust-lang.org/nightly/embedded-book/start/qemu.html). (It's
    not suitable for multithreaded applications, but we can't use threads in
    `no_std` anyway.)
- * [Cargo > Build
+ * [Cargo Reference > Build
    scripts](https://doc.rust-lang.org/nightly/cargo/reference/build-scripts.html)
  * [Unsafe code
    guidelines](https://rust-lang.github.io/unsafe-code-guidelines/layout.html)
@@ -127,7 +129,11 @@ index;">
 </code>
 </pre>
 AFTER
+
 Note:
 TODO highlight selected lines with <code data-line-numbers="3,8-10">
 TODO put GitHub code line range link at a commit here - to make this
 accessible.
+
+[arrform](https://docs.rs/arrform/latest/arrform) is an heapless no_std alternative to format!(...).
+New to Rust? Exclamation mark indicates a macro invocation. 
