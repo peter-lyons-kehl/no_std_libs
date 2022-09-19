@@ -1,34 +1,46 @@
-<!-- The following comments hides this section from being shown by
+<!-- The following comment hides this section from being shown by
      https://peter-kehl.github.io/no_std_rust_lib_presentation.
 -->
 <!-- .slide: data-visibility="hidden" -->
-This is only a part of [a presentation](./).That also shows any source code referred to below.
-<!-- Any comments in source starting with "presentation-" are anchors/delimiters for the above presentation.
--->
+# SEE SLIDES INSTEAD
+
+Unless you are on a mobile/tiny screen, see either
+
+- [slides online](https://peter-kehl.github.io/no_std_rust_lib_presentation), or
+- [slides locally](./index.html), **but** through a local web server (rather than directly from a
+  filesystem). See `python3` below.
+
+Those two ways of seeing slides include any source code referred to below. (If you continue to read
+this content as is, you'd need to open the below source code links separately.)
+
+Any comments in the referred sources starting with "presentation-" are anchors/delimiters for the
+above slides.
+
 ---
 
-# Embedded & low level-friendly, _no_std_ Rust crates
+# Embedded & low level-friendly, `no_std` Rust crates
+
+<!-- The following applies also when viewing this via ./index.html and with a local web server.
+-->
 Viewing this [published as
 slides](https://peter-kehl.github.io/no_std_rust_lib_presentation)?
- 1. These slides are _not_ for mobile devices/tiny screens. See a limited
+
+ 1. **Not** for mobiles/tiny screens. See a limited
     [alternative
     view](https://github.com/peter-kehl/no_std_rust_lib_presentation/blob/main/README.md)
     instead.
- 2. **Zoom in**/**out** because the slides can't be scrolled down! Press
-    **`Ctrl -`** or **`Ctrl +`** (**`Command -`** or **`Command +`** on Mac), or
-    **`Ctrl`** (**`Command`**) and roll the **mouse wheel**, until you see
-    numbers shown down to 0 below.
- 3. Prefer Firefox (it utilizes screen for code blocks better than Chrome).
- 4. Press `?` question mark to get a help screen.
- 5. Press the bottom left button for a menu (with list of slides & themes).
- 6. Press letter **`o`** (lowercase), or **`ESC`** key, to show (or hide) an
-    **overview** of the nearby slides.
- 7. Press **`Ctrl Shift F`** to show (or hide) a **search** input (at the top
-    right). Type the text to search for and **Enter**. Click anywhere on the
-    slide before using the keys to navigate again. This search is **sticky**:
-    Any matching text will stay highlighted, even as you navigate to other
-    slides. (It highlights any matches on the overview screen, too.)
-```
+ 2. **Zoom out** until you see
+    numbers shown down to `0` below. (Why? Because the slides can't be scrolled down!)
+ 3. Prefer Firefox (showing code blocks better than Chrome).
+ 4. Press **?** (question mark) to get a help screen.
+ 5. Press the bottom left button for a menu (with a list of slides & themes).
+ 6. Press **`o`** (lowercase), or **`ESC`** key, to toggle an **overview** of the nearby slides.
+ 7. Press **`Ctrl Shift F`** to show (or hide) a **search** input (at the top right). Type the text
+    and **Enter**. Click anywhere on the slide to use the keys for navigation again. This search is
+    **sticky**: Any matching text will stay highlighted, even as you navigate to other slides. (It
+    highlights any matches on the overview screen (**o**), too.)
+
+```html
     5
     4
     3
@@ -37,29 +49,33 @@ slides](https://peter-kehl.github.io/no_std_rust_lib_presentation)?
     0
 ```
 
-Note: The content from this line on until the next slide (after the next
-horizontal line `---` in source of this file
+---
+
+<!-- .slide: data-visibility="hidden" -->
+Note: The content from this line until the next slide (until the next horizontal line `---` in
+source of this content in
 [`README.md`](https://github.com/peter-kehl/no_std_rust_lib_presentation/blob/main/README.md?plain=1))
 is a "presenter's note". When viewing this in a browser as slides [on GitHub
-Pages](https://peter-kehl.github.io/no_std_rust_lib_presentation) or
-[locally](index.html) (not opened from a filesystem, but through a local web
-server), you can show these notes by pressing "S". (You may need to allow
-browser to open a new window). See [Reveal.js > speaker
+Pages](https://peter-kehl.github.io/no_std_rust_lib_presentation) or [locally](index.html) (not
+opened from a filesystem, but through a local web server), you can show these notes by pressing
+**S** (lowercase). (You may need to allow browser to open a new window). See [Reveal.js > speaker
 view](https://revealjs.com/speaker-view).
 
 If you're seeing this as a [continuous
 document](https://github.com/peter-kehl/no_std_rust_lib_presentation/blob/main/README.md)
 (instead of [slides](https://peter-kehl.github.io/no_std_rust_lib_presentation)]):
- - You will not be able to see source code examples as a part of this document.
-   Instead, follow links to the respective source code. Those links highlight
-   respective line ranges (which is valid unless this presentation gets out of
-   data with examples).
- - You will need to open other `README_....md` documents that follow this file
-   (see the end of this file, and end of the successive `README_....md`
-   documents).
+
+- You will not be able to see source code examples as a part of this document.
+  Instead, follow links to the respective source code. Those links highlight
+  respective line ranges (which is valid unless this presentation gets out of
+  data with examples).
+- You will need to open other `README_....md` documents that follow this file
+  (see the end of this file, and end of the successive `README_....md`
+  documents).
 
 This presentation loads external files (example code sources that it highlights
 and injects in its contents). In order to show them:
+
  1. Access this from a webserver (GitHub Pages, or a custom/local webserver).
  2. But don't open it from a local file opened directly in browser. See [Reveal.js >
     Markdown > External
@@ -69,14 +85,14 @@ and injects in its contents). In order to show them:
  4. But
     you need to run the webserver for a directory at least one level above the
     clone of this project - so that the webserver serves the neighbor projects,
-    too.
+    too. See `..` in [index.html](index.html) for neighbor projects required.
 
  5. Beware that, as of August 2022, `python3 -m http.server` and/or Firefox
     caused `README*.md` files to be cached for up to 24 hours. Even refreshing
     the page in Firefox didn't help. It required purging Firefox cache
     (about:preferences#privacy > "Cookies and Site Data" > "Clear Data" button >
     "Cached Web Content").
- 2. Have the neighbor directories. On GitHub pages, fork all related projects
+ 6. Have the neighbor directories. On GitHub pages, fork all related projects
     for the same organization or user as this project. See
     [`index.html`](index.html) for list of those projects. Then configure all
     those related forked GitHub repositories to publish their `main` (or
@@ -274,6 +290,7 @@ https://github.com/hakimel/reveal.js/issues/118.
    * [`features`](https://doc.rust-lang.org/nightly/cargo/reference/features.html)
      - compile time-selectable subsets of library
      [`crates`](https://doc.rust-lang.org/nightly/cargo/appendix/glossary.html#crate)
+
 ---
 ## Ecosystem
  * the focus here is on Rust

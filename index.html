@@ -38,11 +38,22 @@
 		<link rel="stylesheet"
 		href="https://highlightjs.org/static/demo/styles/base16/windows-high-contrast.css"
 		id="highlight-theme">
+
+		<style type="text/css">
+			.reveal p {
+			  text-align: left;
+			}
+			.reveal ul {
+			  display: block;
+			}
+			.reveal ol {
+			  display: block;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<!-- TODO put all <section> inside one "slides" -->
     	        <section data-markdown="README.md"></section>
 				<!-- Clone https://github.com/ranging-rs/with_heap next to this
 				repo -->
@@ -50,17 +61,6 @@
     	        <section data-markdown="README_BUILDS_AND_TESTING.md"></section>
     	        <section data-markdown="README_MORE_RESOURCES.md"></section>
 			</div>
-			<!--
-			<div class="slides">
-			    <section>
-			    <span msg="Exact same formatting as in Markdown."></span>
-			    <span msg="Need <pre> for highlighting."></span>
-			    <pre>
-			    <code data-url="LICENSE"></code>
-			    </pre>
-			    </section>
-			</div>
-			-->
 		</div>
 
 		<!-- Clone https://github.com/hakimel/reveal.js next to this repo. -->
@@ -159,8 +159,7 @@
 				width: "100%",
 				margin: 0,
 				// Don't use: height: "100%". Otherwise <pre><code> is narrow.
-				//height: "100%", Don't use: disableLayout: true in general.
-				//disableLayout: true
+				// Don't use: disableLayout: true in general.
 			});
 		</script>
 	</body>
