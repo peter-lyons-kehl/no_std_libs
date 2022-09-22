@@ -3,6 +3,7 @@
 	 https://github.com/hakimel/reveal.js/blob/master/index.html. It contains
 	 tabs instead of spaces, because that's how the original file was. Keeping
 	 them as tabs makes it easier to compare/update.
+	 However, this uses a customized theme from https://github.com/peter-kehl/reveal.js.
 -->
 <html>
 	<head>
@@ -15,7 +16,7 @@
 
 		<title>Embedded & low level-friendly, no_std Rust intro</title>
 
-		<!-- Clone https://github.com/hakimel/reveal.js next to this repo. -->
+		<!-- Clone https://github.com/peter-kehl/reveal.js/ next to this repo. -->
 		<!-- Unsure if we need reset.css, but https://revealjs.com demo uses it.
 		-->
 		<link rel="stylesheet" href="../reveal.js/dist/reset.css">
@@ -52,7 +53,7 @@
 			.reveal ol {
 			  display: block;
 			}
-			.reveal {
+			.reveal, * .reveal {
 				touch-action: pinch-zoom !important;
 			}
 		</style>
@@ -69,7 +70,7 @@
 			</div>
 		</div>
 
-		<!-- Clone https://github.com/hakimel/reveal.js next to this repo. -->
+		<!-- Clone https://github.com/peter-kehl/reveal.js next to this repo. -->
 		<script src="../reveal.js/dist/reveal.js"></script>
 
 		<!-- The following JS order may not matter, but let's keep it the same
@@ -81,14 +82,12 @@
 		repo. -->
 		<script src="../revealjs-embed-code/embed-code.js"></script>
 
-		<!-- Clone https://github.com/hakimel/reveal.js next to this repo. -->
 		<script src="../reveal.js/plugin/highlight/highlight.js"></script>
 
 		<!-- Clone https://denehyg.github.io/reveal.js-menu next to this repo.
 		-->
 		<script src="../reveal.js-menu/menu.js"></script>
 
-		<!-- Clone https://github.com/hakimel/reveal.js next to this repo. -->
 		<script src="../reveal.js/plugin/search/search.js"></script>
 		<script>
 			// More info about initialization & config:
