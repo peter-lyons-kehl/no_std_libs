@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=0.2,
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.2,
 		maximum-scale=10.0, user-scalable=yes">
 		<link rel="icon" type="image/png" href="favicon.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -59,9 +59,9 @@
 		</style>
 	</head>
 	<body>
-		<div class="reveal" data-prevent-swipe>
-			<div class="slides"><!-- data-prevent-swipe didn't apply at div class="slides" level -->
-    	        <section data-markdown="README.md"></section><!-- data-prevent-swipe didn't apply -->
+		<div class="reveal"><!-- data-prevent-swipe works at the top level <div> -->
+			<div class="slides">
+    	        <section data-markdown="README.md"></section>
 				<!-- Viewing this other than from github.com/peter-kehl? Clone
 					 https://github.com/ranging-rs/with_heap next to this repo -->
     	        <section data-markdown="../with_heap/README.md"></section>
