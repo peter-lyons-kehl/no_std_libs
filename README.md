@@ -4,41 +4,33 @@
 <!-- .slide: data-visibility="hidden" -->
 # SEE SLIDES INSTEAD
 
-Unless you are on a mobile/tiny screen, see either
-
-- [slides online](https://peter-kehl.github.io/no_std_rust_lib_presentation), or
-- [slides locally](./index.html), **but** through a local web server (rather than directly from a
-  filesystem). See `python3` below.
-
-Those two ways of seeing slides include any source code referred to below. (If you continue to read
-this content as is, you'd need to open the below source code links separately.)
-
-Any comments in the referred sources starting with "presentation-" are anchors/delimiters for the
-above slides.
-
 ---
 
-# Embedded & low level-friendly, `no_std` Rust crates
+# Embedded-friendly, `no_std` Rust crates
 
-<!-- The following applies also when viewing this via ./index.html and with a local web server.
+<!-- The following applies also when viewing this via ./index.html served by a local (or other) web server.
 -->
-Viewing this [published as
-slides](https://peter-kehl.github.io/no_std_rust_lib_presentation)?
+# Essentials
 
- 1. **Not** for mobiles/tiny screens. See a limited
-    [alternative
-    view](https://github.com/peter-kehl/no_std_rust_lib_presentation/blob/main/README.md)
-    instead.
- 2. **Zoom out** until you see
-    numbers shown down to `0` below. (Why? Because the slides can't be scrolled down!)
- 3. Prefer Firefox (showing code blocks better than Chrome).
- 4. Press **?** (question mark) to get a help screen.
- 5. Press the bottom left button for a menu (with a list of slides & themes).
- 6. Press **`o`** (lowercase), or **`ESC`** key, to toggle an **overview** of the nearby slides.
- 7. Press **`Ctrl Shift F`** to show (or hide) a **search** input (at the top right). Type the text
-    and **Enter**. Click anywhere on the slide to use the keys for navigation again. This search is
-    **sticky**: Any matching text will stay highlighted, even as you navigate to other slides. (It
-    highlights any matches on the overview screen (**o**), too.)
+- **Not** for mobiles/tiny screens. See a limited
+  [alternative
+  view](https://github.com/peter-kehl/no_std_rust_lib_presentation/blob/main/README.md)
+  instead.
+- **Zoom out** until you see
+  numbers shown down to `0` below. (Why? Because the slides can't be scrolled down!)
+- Prefer Firefox (showing code blocks better than Chrome).
+
+# Extra tips
+
+- Navigate forth and back with arrow keys.
+- Press **?** (question mark) to for help.
+- Press the bottom left button for a menu (with a list of slides & themes).
+- Press **`o`** (lowercase), or **`ESC`** key, to show (or hide) an **overview** of the nearby
+  slides. (Navigate through the overview with arrow keys.)
+- Press **`Ctrl Shift F`** to show (or hide) a **search** input (at the top right). Type the text
+  and **Enter**. Click anywhere on the slide to use the keys for navigation again. This search is
+  **sticky**: Any matching text will stay highlighted, even as you navigate to other slides. (It
+  highlights any matches on the overview screen (**o**), too.)
 
 ```html
     5
@@ -55,70 +47,61 @@ slides](https://peter-kehl.github.io/no_std_rust_lib_presentation)?
 Note: The content from this line until the next slide (until the next horizontal line `---` in
 source of this content in
 [`README.md`](https://github.com/peter-kehl/no_std_rust_lib_presentation/blob/main/README.md?plain=1))
-is a "presenter's note". When viewing this in a browser as slides [on GitHub
-Pages](https://peter-kehl.github.io/no_std_rust_lib_presentation) or [locally](index.html) (not
-opened from a filesystem, but through a local web server), you can show these notes by pressing
-**S** (lowercase). (You may need to allow browser to open a new window). See [Reveal.js > speaker
-view](https://revealjs.com/speaker-view).
+is hidden in [slides online](https://peter-kehl.github.io/no_std_rust_lib_presentation) (and also if
+viewing the slides through another public/local web server).
+
+# Reading this not as slides
+
+This is Written in [Markdown](https://revealjs.com/markdown), rendered by
+[Reveal.js](https://github.com/hakimel/reveal.js) (also [https://revealjs.com](revealjs.com))
+through [index.html](index.html) (but only when accessed through a web server).
 
 If you're seeing this as a [continuous
-document](https://github.com/peter-kehl/no_std_rust_lib_presentation/blob/main/README.md)
-(instead of [slides](https://peter-kehl.github.io/no_std_rust_lib_presentation)]):
+document](https://github.com/peter-kehl/no_std_rust_lib_presentation/blob/main/README.md) (instead
+of [slides](https://peter-kehl.github.io/no_std_rust_lib_presentation)]):
 
-- You will not be able to see source code examples as a part of this document.
-  Instead, follow links to the respective source code. Those links highlight
-  respective line ranges (which is valid unless this presentation gets out of
-  data with examples).
-- You will need to open other `README_....md` documents that follow this file
-  (see the end of this file, and end of the successive `README_....md`
-  documents).
+- You will not be able to see source code examples as a part of this document. Instead, follow links
+  to the respective source code. Those links highlight respective line ranges (which is valid unless
+  this presentation gets out of sync with examples).
+- You will need to open other `README*.md` documents that follow this content (see the end of
+  this file, and end of the successive `README*.md` documents). See **source of**
+  [index.html](./index.html).
 
-This presentation loads external files (example code sources that it highlights
-and injects in its contents). In order to show them:
+This presentation loads external files (sources of example code). In order to show them:
 
- 1. Access this from a webserver (GitHub Pages, or a custom/local webserver).
+ 1. Access this from a webserver (GitHub Pages, or another public/local webserver).
  2. But don't open it from a local file opened directly in browser. See [Reveal.js >
     Markdown > External
     Markdown](https://revealjs.com/markdown/#external-markdown).
- 3. You do _not_
-    need `npm` - for example, you can run `python3 -m http.server` instead.
- 4. But
-    you need to run the webserver for a directory at least one level above the
-    clone of this project - so that the webserver serves the neighbor projects,
-    too. See `..` in [index.html](index.html) for neighbor projects required.
+ 3. You do _not_ need `npm` - for example, you can run `python3 -m http.server` instead.
+ 4. But you need to run the webserver for a directory at least one level above the clone of this
+    project - so that the webserver serves the neighbor projects, too. See `..` in **source of**
+    [index.html](index.html) for neighbor projects required.
+ 5. Beware that, as of August 2022, `python3 -m http.server` and/or Firefox caused local
+    `README*.md` files to be cached for up to 24 hours. Even refreshing the page in Firefox didn't
+    help. It required purging Firefox cache (about:preferences#privacy > "Cookies and Site Data" >
+    "Clear Data" button > "Cached Web Content").
+ 6. Have the neighbor directories. On GitHub pages, fork all related projects for the same
+    organization or user as this project. See [`index.html`](index.html) for list of those projects.
+    Then configure all those related forked GitHub repositories to publish their `main` (or
+    `master`) branch to GitHub Pages. Alternatively, change the relative CSS and JS URL's in
+    [`index.html`](index.html). When testing locally, update your forks and their local clones from
+    the upstream repositories.
 
- 5. Beware that, as of August 2022, `python3 -m http.server` and/or Firefox
-    caused `README*.md` files to be cached for up to 24 hours. Even refreshing
-    the page in Firefox didn't help. It required purging Firefox cache
-    (about:preferences#privacy > "Cookies and Site Data" > "Clear Data" button >
-    "Cached Web Content").
- 6. Have the neighbor directories. On GitHub pages, fork all related projects
-    for the same organization or user as this project. See
-    [`index.html`](index.html) for list of those projects. Then configure all
-    those related forked GitHub repositories to publish their `main` (or
-    `master`) branch to GitHub Pages. Alternatively, change the relative CSS and
-    JS URL's in [`index.html`](index.html). When testing locally, update your
-    forks and their local clones from the upstream repositories.
+    Using relative URLs for plugins gives a benefit: People who fork/copy this project can use the
+    same source code. Such relative URLs refer to their own GitHub forks of the plugins, hence not
+    consuming GitHub pages bandwidth of the original project.
 
-    Using relative URLs for plugins gives a benefit: People who fork/copy this
-    project can use the same source code. Such relative URLs refer to their own
-    GitHub forks of the plugins, hence not consuming GitHub pages bandwidth of
-    the original project.
+When this includes `README*.md` files from neighbor projects, and when it includes (and highlights)
+source code (as examples), it assumes that those projects are on GitHub. [`index.html`](index.html)
+also assumes that the neighbor projects are on GitHub.
 
-When this includes (& highlights) source code (of other projects, used as
-examples), it assumes that those projects are on GitHub.
-[`index.html`](index.html) also assumes that the neighbor projects are on
-GitHub. However, all these principles are independent of GitHub. You may be able
-to apply this to any decent source code hub that can publish the files' raw
-content and with `text/javascript` MIME for JS files, such as GitLab.
-
-TODO LATER: Move to a separate (visible) slide: Written in
-[Markdown](https://revealjs.com/markdown), rendered by
-[Reveal.js](https://github.com/hakimel/reveal.js) (also
-[https://revealjs.com](revealjs.com)). See also this [presentation's
-source](https://github.com/peter-kehl/no_std_rust_lib_presentation/blob/main/README.md?plain=1).
+However, all the above principles (about viewing these slides) are independent of GitHub. You may be
+able to apply this to any decent source code hub that can serve the files' raw content and can serve
+source of JS files with `text/javascript` MIME.
 
 ## Rendered with: Reveal.js
+
 If you'd like to render this locally (for example, when editing `README.md`),
 you need to run a web server. Then you can access this in a web browser as (a
 part of) `index.html`. See [Reveal.js > Markdown > External
@@ -161,6 +144,7 @@ See [highlight.js docs](https://highlightjs.readthedocs.io/en/latest) and its
 [wiki](https://github.com/highlightjs/highlight.js/wiki).
 
 ## Alternative: Remark.js
+
 If you don't want to clone and track Reveal.js, and if you're happy with simpler
 and lightweight alternative, try [Remark.js](https://remarkjs.com) (see also its
 [wiki](https://github.com/gnab/remark/wiki)). It allows your presentations to
@@ -184,44 +168,50 @@ to allow highlighting of selected lines of example code lines, either.
 
 Both Reveal.js and Remark.js support code source highlighting. However, only
 Reveal.js can
- - highlight specified parts of (lines), and
- - display (parts of) external source files.
 
-Unfortunately, Reveal.js doesn't support vertical scrolling through the slides:
-https://github.com/hakimel/reveal.js/issues/118. 
+- highlight specified parts of (lines), and
+- display (parts of) external source files.
+
+Unfortunately, Reveal.js [doesn't support vertical scrolling](https://github.com/hakimel/reveal.js/issues/118) through the slides. Please give that issue thums up.
 <!-- Requiring an empty line, or a comment, here: before (but not necessarily after) the following --- (slide separator). Otherwise https://github.com/peter-kehl/no_std_rust_lib_presentation/edit/main/README.md rendered the previous paragraph as bold/large.
 -->
 ---
+
 # Audience and purpose
- * general Rust developers moving to low level
- * non-Rust low level developers moving to Rust
+
+- general Rust developers moving to low level or `no_std`
+- non-Rust low level developers moving to Rust
 
 # In scope
- * Rust only; focusing on the language (less so on development tools)
- * [`no_std`](https://docs.rust-embedded.org/book/intro/no-std.html) library
+
+- Rust only; focusing on the language (less so on development tools)
+- [`no_std`](https://docs.rust-embedded.org/book/intro/no-std.html) library
    `crates` (without `std` library), _with_ or _without_ heap
+
 ---
+
 # Related, but mostly out of scope
- * hardware, deployment, embedded debugging
- * low level development in general (techniques, architectures, tools)
- * specifics of [real
-   time](https://doc.rust-lang.org/nightly/embedded-book/interoperability/index.html#interoperability-with-rtoss)
-   applications and use with RTOS (Real Time OS)
-   * Rust *is* suitable for real time (because of no garbage collection)
-   * for `std` applications (in Rust), too
- * `wasm` (Web Assembly), although [`no_std` crates are usually
+
+- hardware, deployment, embedded debugging
+- low level development in general (techniques, architectures, tools)
+- specifics of [real
+  time](https://doc.rust-lang.org/nightly/embedded-book/interoperability/index.html#interoperability-with-rtoss)
+  applications and use with RTOS (Real Time OS)
+  - Rust *is* suitable for real time (because of no garbage collection)
+  - this applies to both `no_std` and `std`
+ - `wasm` (Web Assembly), although [`no_std` crates are usually
    wasm-friendly](https://rahul-thakoor.github.io/using-no-standard-library-crates-with-webassembly)
- * [ABI](https://doc.rust-lang.org/nightly/reference/abi.html) (Application
+ - [ABI](https://doc.rust-lang.org/nightly/reference/abi.html) (Application
    Binary Interface), especially
-   * [`#[no_mangle]`](https://doc.rust-lang.org/nightly/reference/abi.html#the-no_mangle-attribute)
-   * [type layout](https://doc.rust-lang.org/nightly/reference/type-layout.html)
+   - [`#[no_mangle]`](https://doc.rust-lang.org/nightly/reference/abi.html#the-no_mangle-attribute)
+   - [type layout](https://doc.rust-lang.org/nightly/reference/type-layout.html)
      and the [Rustonomicon (Unsafe
      Rust)](https://doc.rust-lang.org/nightly/nomicon) > [Alternative
      Representations](https://doc.rust-lang.org/nightly/nomicon/other-reprs.html).
-     * Rustonomicon has parts applicable to safe and/or `std` Rust, too. One of
+     - Rustonomicon has parts applicable to safe and/or `std` Rust, too. One of
        its gems: [Higher-Rank Trait
        Bounds](https://doc.rust-lang.org/nightly/nomicon/hrtb.html).
- * [`async/await` in
+ - [`async/await` in
    no_std](https://ferrous-systems.com/blog/stable-async-on-embedded)
 
 ---
