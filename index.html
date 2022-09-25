@@ -1,188 +1,198 @@
 <!doctype html>
 <!-- This file is based on
-	 https://github.com/hakimel/reveal.js/blob/master/index.html. It contains
-	 tabs instead of spaces, because that's how the original file was. Keeping
-	 them as tabs makes it easier to compare/update.
-	 However, this uses a customized theme from https://github.com/peter-kehl/reveal.js.
+     https://github.com/hakimel/reveal.js/blob/master/index.html. It contains
+     tabs instead of spaces, because that's how the original file was. Keeping
+     them as tabs makes it easier to compare/update.
+     However, this uses a customized theme from https://github.com/peter-kehl/reveal.js.
 -->
 <html>
-	<head>
-		<meta charset="utf-8">
-		<!-- See and give thumbs up to https://github.com/hakimel/reveal.js/issues/175 -->
-		<meta name="viewport" content="width=device-width, initial-scale=0.3, minimum-scale=0.1,
-		maximum-scale=10.0, user-scalable=yes">
-		<link rel="icon" type="image/png" href="favicon.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <head>
+        <meta charset="utf-8">
+        <!-- See and give thumbs up to https://github.com/hakimel/reveal.js/issues/175 -->
+        <meta name="viewport" content="width=device-width, initial-scale=0.3, minimum-scale=0.1,
+        maximum-scale=10.0, user-scalable=yes">
+        <link rel="icon" type="image/png" href="favicon.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 
-		<title>Embedded-friendly, no_std Rust libraries</title>
+        <title>Embedded-friendly, no_std Rust libraries</title>
 
-		<!-- Clone https://github.com/peter-kehl/reveal.js/ next to this repo. -->
-		<!-- Unsure if we need reset.css, but https://revealjs.com demo uses it.
-		-->
-		<link rel="stylesheet" href="../reveal.js/dist/reset.css">
+        <!-- Clone https://github.com/peter-kehl/reveal.js/ next to this repo. -->
+        <!-- Unsure if we need reset.css, but https://revealjs.com demo uses it.
+        -->
+        <link rel="stylesheet" href="../reveal.js/dist/reset.css">
 
-		<link rel="stylesheet" href="../reveal.js/dist/reveal.css">
-		<!-- Keep theme & highlight-theme in sync with one of "themes:"
-			 configuration entries for "menu" plugin below.
-		-->
-		<!-- If we loaded several themes, the one loaded last would become the
-			 default.
+        <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+        <!-- Keep theme & highlight-theme in sync with one of "themes:"
+             configuration entries for "menu" plugin below.
+        -->
+        <!-- If we loaded several themes, the one loaded last would become the
+             default.
 
-			 https://github.com/denehyg/reveal.js-menu replaces that initial
-			 theme with any of the built-in themes that the user chooses.
-			 (reveal.js-menu needs "id" here.)
-		-->
-		<link rel="stylesheet"
-		href="../reveal.js/dist/theme/black_compact_verbatim_headers.css"
-		id="theme">
+             https://github.com/denehyg/reveal.js-menu replaces that initial
+             theme with any of the built-in themes that the user chooses.
+             (reveal.js-menu needs "id" here.)
+        -->
+        <link rel="stylesheet"
+        href="../reveal.js/dist/theme/black_compact_verbatim_headers.css"
+        id="theme">
 
-		<!-- Theme used for syntax highlighted code. (reveal.js-menu needs "id"
-			 here.)
-		-->
-		<link rel="stylesheet"
-		href="https://highlightjs.org/static/demo/styles/base16/windows-high-contrast.css"
-		id="highlight-theme">
+        <!-- Theme used for syntax highlighted code. (reveal.js-menu needs "id"
+             here.)
+        -->
+        <link rel="stylesheet"
+        href="https://highlightjs.org/static/demo/styles/base16/windows-high-contrast.css"
+        id="highlight-theme">
 
-		<style type="text/css">
-			.reveal p {
-			  text-align: left;
-			}
-			.reveal ul {
-			  display: block;
-			}
-			.reveal ol {
-			  display: block;
-			}
-			.hide_with_reveal_js {
-				display: none !important;
-			}
-			/** As per https://stackoverflow.com/a/47703337/1049315 */
-			@media (hover: hover) and (pointer: fine) {
-				.without_keyboard {
-					display: none !important;
+        <style type="text/css">
+            .reveal p {
+              text-align: left;
+            }
+            .reveal ul {
+              display: block;
+            }
+            .reveal ol {
+              display: block;
+            }
+            .hide_with_reveal_js {
+                display: none !important;
+            }
+            /** As per https://stackoverflow.com/a/47703337/1049315 */
+            @media (hover: hover) and (pointer: fine) {
+                .without_keyboard {
+                    display: none !important;
+                }
+            }
+            @media not( (hover: hover) and (pointer: fine)) {
+                .with_keyboard {
+                    display: none !important;
+                }
+            }
+        </style>
+    </head>
+    <body onload="initialize_slides()">
+        <div class="reveal">
+            <div class="slides">
+                <section data-markdown="README_FIRST_SLIDE.md"></section>
+                <section data-markdown="README_NAVIGATION.md"></section>
+                <section data-markdown="README.md"></section>
+                <!-- Viewing this other than from github.com/peter-kehl? Clone
+                     https://github.com/ranging-rs/with_heap next to this repo -->
+                <section data-markdown="../with_heap/README.md"></section>
+                <section data-markdown="README_BUILDS_AND_TESTING.md"></section>
+                <section data-markdown="README_MORE_RESOURCES.md"></section>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+              function initialize_slides() {
+				if (document.location.protocol.startsWith("http")) {
+				    var css = document.createElement('style');
+                    css.type = "text/css";
+                    css.innerHTML = ".hide_with_web_server {display: none !important;}";
+                    document.head.appendChild(css);
 				}
-			}
-			@media not( (hover: hover) and (pointer: fine)) {
-				.with_keyboard {
-					display: none !important;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section data-markdown="README_FIRST_SLIDE.md"></section>
-				<section data-markdown="README_NAVIGATION.md"></section>
-    	        <section data-markdown="README.md"></section>
-				<!-- Viewing this other than from github.com/peter-kehl? Clone
-					 https://github.com/ranging-rs/with_heap next to this repo -->
-    	        <section data-markdown="../with_heap/README.md"></section>
-    	        <section data-markdown="README_BUILDS_AND_TESTING.md"></section>
-    	        <section data-markdown="README_MORE_RESOURCES.md"></section>
-			</div>
-		</div>
+            }
+        </script>
+        <!-- Clone https://github.com/peter-kehl/reveal.js next to this repo. -->
+        <script src="../reveal.js/dist/reveal.js"></script>
 
-		<!-- Clone https://github.com/peter-kehl/reveal.js next to this repo. -->
-		<script src="../reveal.js/dist/reveal.js"></script>
+        <!-- The following JS order may not matter, but let's keep it the same
+             as in Reveal.initialize(...).
+        -->
+        <script src="../reveal.js/plugin/markdown/markdown.js"></script>
 
-		<!-- The following JS order may not matter, but let's keep it the same
-			 as in Reveal.initialize(...).
-		-->
-		<script src="../reveal.js/plugin/markdown/markdown.js"></script>
+        <!-- Clone https://github.com/befocken/revealjs-embed-code next to this
+        repo. -->
+        <script src="../revealjs-embed-code/embed-code.js"></script>
 
-		<!-- Clone https://github.com/befocken/revealjs-embed-code next to this
-		repo. -->
-		<script src="../revealjs-embed-code/embed-code.js"></script>
+        <script src="../reveal.js/plugin/highlight/highlight.js"></script>
 
-		<script src="../reveal.js/plugin/highlight/highlight.js"></script>
+        <!-- Clone https://denehyg.github.io/reveal.js-menu next to this repo.
+        -->
+        <script src="../reveal.js-menu/menu.js"></script>
 
-		<!-- Clone https://denehyg.github.io/reveal.js-menu next to this repo.
-		-->
-		<script src="../reveal.js-menu/menu.js"></script>
+        <script src="../reveal.js/plugin/search/search.js"></script>
+        <script>
+            // More info about initialization & config:
+            // - https://revealjs.com/initialization/
+            // - https://revealjs.com/config/
+            Reveal.initialize({
+                slideNumber: "c/t",
+                hash: true,
+                hashOneBasedIndex: true,
 
-		<script src="../reveal.js/plugin/search/search.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				slideNumber: "c/t",
-				hash: true,
-				hashOneBasedIndex: true,
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [
+                    // The following four plugins have to be initialized in this
+                    // order, so they apply in this order and before any other
+                    // plugins.
+                    RevealMarkdown,
+                    EmbedCode,
+                    RevealHighlight,
+                    RevealMenu,
+                    RevealSearch ],
+                
+                // As much as I love "overview" (activated by lowercase "o" key) on desktop, it
+                // disables two-finger zoom on mobile, unfortunately. See
+                // https://github.com/hakimel/reveal.js/issues/175#issuecomment-9429562.
+                //overview: false,
+                //touch: false,
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [
-					// The following four plugins have to be initialized in this
-					// order, so they apply in this order and before any other
-					// plugins.
-					RevealMarkdown,
-					EmbedCode,
-					RevealHighlight,
-					RevealMenu,
-					RevealSearch ],
-				
-				// As much as I love "overview" (activated by lowercase "o" key) on desktop, it
-				// disables two-finger zoom on mobile, unfortunately. See
-				// https://github.com/hakimel/reveal.js/issues/175#issuecomment-9429562.
-				//overview: false,
-				//touch: false,
+                // As per
+                // https://github.com/denehyg/reveal.js-menu#configuration
+                menu: {
+                    //themes: true,
+                    themes:  [
+                        {
+                            name: 'Dark',
+                            theme: '../reveal.js/dist/theme/black_compact_verbatim_headers.css',
+                            // Reveal.js comes with only two highlighting
+                            // themes, both darkish. You could use:
+                            // highlightTheme:
+                            // '../reveal.js/plugin/highlight/monokai.css'
+                            //
+                            // highlightTheme:
+                            // '../reveal.js/plugin/highlight/zenburn.css'
+                            //
+                            // OR choose from many themes from
+                            // https://highlightjs.org, for example:
+                            //
+                            // The only dark high contrast highlight theme:
+                            highlightTheme: 'https://highlightjs.org/static/demo/styles/base16/windows-high-contrast.css'
+                            //
+                            // But, if you expect high traffic, clone
+                            // https://github.com/highlightjs/highlight.js next
+                            // to this repo and use (for example):
+                            //
+                            // highlightTheme:
+                            // '../highlight.js/src/styles/base16/windows-high-contrast.css'
+                        },
+                        {
+                            name: 'Light',
+                            theme: '../reveal.js/dist/theme/white_compact_verbatim_headers.css',
+                            // No light highlight themes in Reveal.js. The only
+                            // light high contrast highlight theme:
+                            highlightTheme: 'https://highlightjs.org/static/demo/styles/base16/windows-high-contrast-light.css'
+                            //
+                            // But, if you expect high traffic, clone
+                            // https://github.com/highlightjs/highlight.js next
+                            // to this repo and use (for example):
+                            //
+                            // highlightTheme:
+                            // '../highlight.js/src/styles/base16/windows-high-contrast-light.css'
+                        }
 
-				// As per
-				// https://github.com/denehyg/reveal.js-menu#configuration
-				menu: {
-					//themes: true,
-					themes:  [
-						{
-							name: 'Dark',
-							theme: '../reveal.js/dist/theme/black_compact_verbatim_headers.css',
-							// Reveal.js comes with only two highlighting
-							// themes, both darkish. You could use:
-							// highlightTheme:
-							// '../reveal.js/plugin/highlight/monokai.css'
-							//
-							// highlightTheme:
-							// '../reveal.js/plugin/highlight/zenburn.css'
-							//
-							// OR choose from many themes from
-							// https://highlightjs.org, for example:
-							//
-							// The only dark high contrast highlight theme:
-							highlightTheme: 'https://highlightjs.org/static/demo/styles/base16/windows-high-contrast.css'
-							//
-							// But, if you expect high traffic, clone
-							// https://github.com/highlightjs/highlight.js next
-							// to this repo and use (for example):
-							//
-							// highlightTheme:
-							// '../highlight.js/src/styles/base16/windows-high-contrast.css'
-						},
-						{
-							name: 'Light',
-							theme: '../reveal.js/dist/theme/white_compact_verbatim_headers.css',
-							// No light highlight themes in Reveal.js. The only
-							// light high contrast highlight theme:
-							highlightTheme: 'https://highlightjs.org/static/demo/styles/base16/windows-high-contrast-light.css'
-							//
-							// But, if you expect high traffic, clone
-							// https://github.com/highlightjs/highlight.js next
-							// to this repo and use (for example):
-							//
-							// highlightTheme:
-							// '../highlight.js/src/styles/base16/windows-high-contrast-light.css'
-						}
-
-					],
-					themesPath: '../reveal.js/dist/theme/',
-					transitions: ['None', 'Fade', 'Slide']
-				},
-				// width and margin help <pre><code> have more space
-				width: "100%",
-				margin: 0,
-				// Don't use: height: "100%". Otherwise <pre><code> is narrow.
-				// Don't use: disableLayout: true in general.
-			});
-		</script>
-	</body>
+                    ],
+                    themesPath: '../reveal.js/dist/theme/',
+                    transitions: ['None', 'Fade', 'Slide']
+                },
+                // width and margin help <pre><code> have more space
+                width: "100%",
+                margin: 0,
+                // Don't use: height: "100%". Otherwise <pre><code> is narrow.
+                // Don't use: disableLayout: true in general.
+            });
+        </script>
+    </body>
 </html>
