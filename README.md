@@ -4,11 +4,16 @@
 <!-- .slide: data-visibility="hidden" -->
 # SEE SLIDES INSTEAD
 
+If you are seeing this, consider viewing [presentation
+slides](https://peter-kehl.github.io/no_std_rust_lib_presentation) instead. Or see
+<README_NAVIGATION.md> for how alternative online or local navigation, or a VS Code tour.
+
 - **Not** for mobiles/tiny screens. See a limited [alternative
   view](https://github.com/peter-kehl/no_std_rust_lib_presentation/blob/main/README.md) instead.
 
 ---
 
+<!-- .slide: data-visibility="hidden" -->
 # Reading this not as slides
 
 This is Written in [Markdown](https://revealjs.com/markdown), rendered by

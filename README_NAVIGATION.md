@@ -9,10 +9,9 @@ actual slides.) See
 - the GitHub project (or its clone/copy) you that referred you to this file; or
 - `index.html` at the root of the actual presentation that referred to this file; or
 - if you open this on GitHub pages (under `https://some-domain.github.io`), or through a local/other
-  webserver - then see <../../index.html> for the whole presentation.
-
-See also the original author's
-[list of presentations](https://github.com/peter-kehl/peter-kehl/blob/main/README.md).
+  webserver - then see <../../index.html> for the whole presentation. or
+- the original author's [list of
+presentations](https://github.com/peter-kehl/peter-kehl/blob/main/README.md).
 
 If you are reading this, or any related `README*.md` files (referred to from `index.html` of the
 actual presentation):
@@ -47,7 +46,8 @@ actual presentation):
    <li>You can scroll somewhat (on touchscreens only), but use two fingers to scroll.</li>
    <li>Prefer Firefox (showing code blocks better than Chrome).</li>
    <li>Bottom left button shows a list of slides & themes.</li>
-   <li>Alternatively, see this as a set of [limited continuous documents](blob/main/README.md).</li>
+   <li>Alternatively, see this as a set of
+       <a href="blob/main/README.md">limited continuous documents</a>.</li>
 </ol>
 <h1 class="with_keyboard">Essentials</h1>
 <ol class="with_keyboard">
@@ -56,7 +56,8 @@ actual presentation):
        up/down/right/left, unfortunately.</li>
    <li>Prefer Firefox (showing code blocks better than Chrome).</li>
    <li>Bottom left button shows a list of slides & themes.</li>
-   <li>Alternatively, see this as a set of [limited continuous documents](blob/main/README.md).</li>
+   <li>Alternatively, see this as a set of
+       <a href="blob/main/README.md">limited continuous documents</a>.</li>
 </ol>
 <h1 class="with_keyboard">Extra tips</h1>
 <ol class="with_keyboard">
