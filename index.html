@@ -8,13 +8,14 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<!-- See and give thumbs up to https://github.com/hakimel/reveal.js/issues/175 -->
 		<meta name="viewport" content="width=device-width, initial-scale=0.3, minimum-scale=0.1,
 		maximum-scale=10.0, user-scalable=yes">
 		<link rel="icon" type="image/png" href="favicon.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 
-		<title>Embedded & low level-friendly, no_std Rust intro</title>
+		<title>Embedded-friendly, no_std Rust libraries</title>
 
 		<!-- Clone https://github.com/peter-kehl/reveal.js/ next to this repo. -->
 		<!-- Unsure if we need reset.css, but https://revealjs.com demo uses it.
@@ -53,11 +54,27 @@
 			.reveal ol {
 			  display: block;
 			}
+			.hide_with_reveal_js {
+				display: none !important;
+			}
+			/** As per https://stackoverflow.com/a/47703337/1049315 */
+			@media (hover: hover) and (pointer: fine) {
+				.without_keyboard {
+					display: none !important;
+				}
+			}
+			@media not( (hover: hover) and (pointer: fine)) {
+				.with_keyboard {
+					display: none !important;
+				}
+			}
 		</style>
 	</head>
 	<body>
-		<div class="reveal"><!-- data-prevent-swipe works at the top level <div> -->
+		<div class="reveal">
 			<div class="slides">
+				<section data-markdown="README_FIRST_SLIDE.md"></section>
+				<section data-markdown="README_NAVIGATION.md"></section>
     	        <section data-markdown="README.md"></section>
 				<!-- Viewing this other than from github.com/peter-kehl? Clone
 					 https://github.com/ranging-rs/with_heap next to this repo -->
@@ -109,7 +126,7 @@
 				// As much as I love "overview" (activated by lowercase "o" key) on desktop, it
 				// disables two-finger zoom on mobile, unfortunately. See
 				// https://github.com/hakimel/reveal.js/issues/175#issuecomment-9429562.
-				overview: false,
+				//overview: false,
 				//touch: false,
 
 				// As per
