@@ -6,10 +6,11 @@
 
 If you are seeing this, consider viewing [presentation
 slides](https://peter-kehl.github.io/no_std_rust_lib_presentation) instead. Or see
-<README_NAVIGATION.md> for how alternative online or local navigation, or a VS Code tour.
+<README_NAVIGATION.md> for
 
-- **Not** for mobiles/tiny screens. See a limited [alternative
-  view](https://github.com/peter-kehl/no_std_rust_lib_presentation/blob/main/README.md) instead.
+- alternative online or local navigation, or
+- VS Code tour, or
+- video recording (if any)
 
 ---
 
@@ -31,8 +32,9 @@ This presentation loads external files (sources of example code). In order to sh
     [index.html](index.html) for neighbor projects required.
  5. Beware that, as of August 2022, `python3 -m http.server` and/or Firefox caused local
     `README*.md` files to be cached for up to 24 hours. Even refreshing the page in Firefox didn't
-    help. It required purging Firefox cache (about:preferences#privacy > "Cookies and Site Data" >
-    "Clear Data" button > "Cached Web Content").
+    help. It required purging Firefox cache: Firefox special URL `about:preferences#privacy` (or
+    Preferences/Settings > Privacy & Security) > "Cookies and Site Data" > "Clear Data..." button >
+    choose "Cached Web Content" > "Clear Data" button.
  6. Have the neighbor directories. On GitHub pages, fork all related projects for the same
     organization or user as this project. See [`index.html`](index.html) for list of those projects.
     Then configure all those related forked GitHub repositories to publish their `main` (or

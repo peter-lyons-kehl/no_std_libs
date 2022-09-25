@@ -2,9 +2,9 @@
 
 # SEE SLIDES
 
-This file is only a part of presentation slides. If you are reading this, consider viewing slides
-instead. However, several presentations use this file. (Therefore this can't point you to the
-actual slides.) See
+This file is only a part of multiple sets of presentation slides. If you are reading this, consider
+viewing slides instead. However, this can't point you to the actual slides. (Several presentations
+use this file.) See
 
 - the GitHub project (or its clone/copy) you that referred you to this file; or
 - `index.html` at the root of the actual presentation that referred to this file; or
@@ -17,10 +17,11 @@ If you are reading this, or any related `README*.md` files (referred to from `in
 actual presentation):
 
 - You will not be able to see source code examples as a part of the `README*md` documents. Instead,
-  follow links to the respective source code. Those links highlight respective line ranges. Beware
-  that the source code loaded in the slides, or shown on a video recording (if available), may be
-  newer than the source code links.
-- You will need to open other `README*.md` documents that follow: Dee the end of this
+  follow links to the respective source code. Those links highlight respective line ranges. However,
+  source code loaded in the slides may be newer than the source code links in `README*md` files. And
+  source code shown on a video recording (if there is one) may be older or newer (than source code
+  links in `README*md` files).
+- You will need to open other `README*.md` documents that follow. See the end of this
   file, and end of the successive `README*.md` documents.
 
 ---
