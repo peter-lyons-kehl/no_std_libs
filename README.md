@@ -10,12 +10,12 @@ slides](https://peter-kehl.github.io/no_std_rust_lib_presentation) instead. Or s
 
 - alternative online or local navigation, or
 - VS Code tour, or
-- video recording (if any)
+- video recording(s) (if any).
 
 ---
 
 <!-- .slide: data-visibility="hidden" -->
-# Reading this not as slides
+# Reading this not as slides?
 
 This is Written in [Markdown](https://revealjs.com/markdown), rendered by
 [Reveal.js](https://github.com/hakimel/reveal.js) (also [https://revealjs.com](revealjs.com))

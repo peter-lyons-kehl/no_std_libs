@@ -1,7 +1,8 @@
 <!doctype html>
-<!-- This file is based on https://github.com/hakimel/reveal.js/blob/master/index.html. It contains
-tabs instead of spaces, because that's how the original file was. Keeping them as tabs makes it
-easier to compare/update. However, this uses a customized theme from
+<!-- TODO: revert back to tabs from https://github.com/hakimel/reveal.js/blob/master/index.html -->
+<!-- This file is based on https://github.com/hakimel/reveal.js/blob/master/index.html. It uses TABS
+and NO SPACES for indentation, because that's how the original file was. Keeping them as tabs makes
+it easier to compare/update. However, this uses a customized theme from
 https://github.com/peter-kehl/reveal.js.
 -->
 <html>
@@ -16,7 +17,8 @@ https://github.com/peter-kehl/reveal.js.
 
         <title>Embedded-friendly, no_std Rust libraries</title>
 
-        <!-- Clone https://github.com/peter-kehl/reveal.js/ next to this repo. -->
+        <!-- Clone https://github.com/peter-kehl/reveal.js/ next to this repo and enable GitHub
+Pages for it. -->
         <!-- Unsure if we need reset.css, but https://revealjs.com demo uses it.
         -->
         <link rel="stylesheet" href="../reveal.js/dist/reset.css">
@@ -70,26 +72,29 @@ themes that the user chooses. (reveal.js-menu needs "id" here.)
         <div class="reveal">
             <div class="slides">
                 <section>
-                    <!-- This is intentionally not in a Markdown file, so that it shows up even if
-                         this file is loaded directly from a filesystem (rather through a webserver).
+                    <!-- This is intentionally NOT in a Markdown file, so that it shows up even if
+this file is loaded directly from a filesystem (rather through a webserver).
                     -->
 					<h1>Embedded-friendly, no_std Rust libraries</h1>
 					<ul class="hide_with_web_server">
-						<li>Suggest you open <a href="index.html">index.html</a>. However, not from a
-						filesystem - but through a webserver instead.</li>
-						<li>Or see <a href="README_NAVIGATION.md">README_NAVIGATION.md</a> for how
-						alternative online or local navigation, or a VS Code tour. The presentation
-						content starts at <a href="README.md">README.md</a>.
+						<li>Suggest you access <code>index.html</code>. However, NOT from a
+						filesystem! Access it through a webserver instead. For an example of how,
+						see	<code>python3</code> in <a
+						href="README_NAVIGATION.md">README_NAVIGATION.md</a>.</li>
+						<li>Or see <a href="README_NAVIGATION.md">README_NAVIGATION.md</a> for
+						alternative online or local navigation, or a VS Code tour, or video
+						recording(s) (if any). The presentation content starts at <a
+						href="README.md">README.md</a>.
 						</li>
 						<li>Or see <a
 						href="https://peter-kehl.github.io/no_std_rust_lib_presentation">the
-						original</a> presentation online.</li>
+						original presentation online</a>.</li>
 					</ul>
                 </section>
                 <section data-markdown="README_NAVIGATION.md"></section>
                 <section data-markdown="README.md"></section>
                 <!-- Viewing this other than from github.com/peter-kehl? Clone
-https://github.com/ranging-rs/with_heap next to this repo -->
+https://github.com/ranging-rs/with_heap next to this repo and enable GitHub Pages for it. -->
                 <section data-markdown="../with_heap/README.md"></section>
                 <section data-markdown="README_BUILDS_AND_TESTING.md"></section>
                 <section data-markdown="README_MORE_RESOURCES.md"></section>
@@ -103,10 +108,22 @@ https://github.com/ranging-rs/with_heap next to this repo -->
                     css.type = "text/css";
                     css.innerHTML = ".hide_with_web_server {display: none !important;}";
                     document.head.appendChild(css);
+
+					if (document.location.host.endsWith("github.io")) {
+						var css = document.createElement('style');
+						css.type = "text/css";
+						css.innerHTML = ".hide_on_github_pages {display: none !important;}";
+						document.head.appendChild(css);
+					}
                 }
             }
         </script>
-        <!-- Clone https://github.com/peter-kehl/reveal.js next to this repo. -->
+        <!-- Clone https://github.com/rajgoel/reveal.js-plugins next to this repo and enable GitHub
+Pages for it.. -->
+        <script src="../reveal.js-plugins/anything/plugin.js"></script>
+
+        <!-- Clone https://github.com/peter-kehl/reveal.js next to this repo and enable GitHub Pages
+for it.. -->
         <script src="../reveal.js/dist/reveal.js"></script>
 
         <!-- The following JS order may not matter, but let's keep it the same as in
@@ -114,17 +131,23 @@ Reveal.initialize(...).
         -->
         <script src="../reveal.js/plugin/markdown/markdown.js"></script>
 
-        <!-- Clone https://github.com/befocken/revealjs-embed-code next to this repo. -->
+        <!-- Clone https://github.com/befocken/revealjs-embed-code next to this repo and enable
+GitHub Pages for it.. -->
         <script src="../revealjs-embed-code/embed-code.js"></script>
 
         <script src="../reveal.js/plugin/highlight/highlight.js"></script>
 
-        <!-- Clone https://denehyg.github.io/reveal.js-menu next to this repo.
+        <!-- Clone https://denehyg.github.io/reveal.js-menu next to this repo and enable GitHub
+Pages for it..
         -->
         <script src="../reveal.js-menu/menu.js"></script>
 
         <script src="../reveal.js/plugin/search/search.js"></script>
-        <script>
+        <script type="text/javascript">
+			var presentation_github_repo
+			if (document.location.protocol.startsWith("http")) {
+
+			}
             // More info about initialization & config:
             // - https://revealjs.com/initialization/
             // - https://revealjs.com/config/
@@ -138,6 +161,7 @@ Reveal.initialize(...).
                     // The following four plugins have to be initialized in this order, so they
                     // apply in this order and before any other plugins.
                     RevealMarkdown,
+					RevealAnything,
                     EmbedCode,
                     RevealHighlight,
                     RevealMenu,
@@ -167,8 +191,8 @@ Reveal.initialize(...).
                             highlightTheme: 'https://highlightjs.org/static/demo/styles/base16/windows-high-contrast.css'
                             //
                             // But, if you expect high traffic, clone
-                            // https://github.com/highlightjs/highlight.js next to this repo and use
-                            // (for example):
+                            // https://github.com/highlightjs/highlight.js next to this repo, enable
+                            // GitHub Pages for it, and use (for example):
                             //
                             // highlightTheme:
                             // '../highlight.js/src/styles/base16/windows-high-contrast.css'
@@ -180,7 +204,7 @@ Reveal.initialize(...).
                             // highlight theme:
                             highlightTheme: 'https://highlightjs.org/static/demo/styles/base16/windows-high-contrast-light.css'
                             //
-                            // But, if you expect high traffic, clone
+                            // But, if you expect high traffic, clone and enable GitHub Pages for it.
                             // https://github.com/highlightjs/highlight.js next to this repo and use
                             // (for example):
                             //
@@ -189,6 +213,15 @@ Reveal.initialize(...).
                         }
 
                     ],
+					anything: [
+						{
+							className: "presentation_github_repo",
+							defaults: null, // Not needed & not used at all.
+							initialize: (function(container, options){
+								container.innerHTML = 
+							})
+						}
+					],
                     themesPath: '../reveal.js/dist/theme/',
                     transitions: ['None', 'Fade', 'Slide']
                 },
