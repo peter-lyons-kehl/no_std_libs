@@ -110,7 +110,7 @@ https://github.com/ranging-rs/with_heap next to this repo and enable GitHub Page
                     css.innerHTML = ".hide_with_web_server {display: none !important;}";
                     document.head.appendChild(css);
 
-					if (document.location.host.endsWith("github.io")) {
+					if (document.location.host.endsWith(".github.io")) {
 						var css = document.createElement('style');
 						css.type = "text/css";
 						css.innerHTML = ".hide_on_github_pages {display: none !important;}";
@@ -161,8 +161,8 @@ Pages for it..
 			// non-GitHub Pages webserver).
 			var presentation_github_repo_blob_dir = './';
 
-			if (document.location.protocol.startsWith("http") && document.location.host.endsWith("github.io")) {
-				var github_io_substr_index = document.location.host.indexOf("github.io");
+			if (document.location.protocol.startsWith("http") && document.location.host.endsWith(".github.io")) {
+				var github_io_substr_index = document.location.host.indexOf(".github.io");
 				var project_owner = document.location.host.substring(0, github_io_substr_index);
 				
 				var pathname = document.location.pathname;
@@ -181,6 +181,7 @@ Pages for it..
 				var presentation_directory = pathname.substring(path_second_slash_index+1, path_last_slash_index);
 				presentation_github_repo_blob_dir = "https://github.com/" +project_owner+ "/" +
 					project_name + "/blob/main/" + presentation_directory+ "/";
+				debugger;
 			}
 
             // More info about initialization & config:
@@ -239,9 +240,9 @@ Pages for it..
                             // highlight theme:
                             highlightTheme: 'https://highlightjs.org/static/demo/styles/base16/windows-high-contrast-light.css'
                             //
-                            // But, if you expect high traffic, clone and enable GitHub Pages for it.
-                            // https://github.com/highlightjs/highlight.js next to this repo and use
-                            // (for example):
+                            // But, if you expect high traffic, clone and enable GitHub Pages for
+                            // it. https://github.com/highlightjs/highlight.js next to this repo and
+                            // use (for example):
                             //
                             // highlightTheme:
                             // '../highlight.js/src/styles/base16/windows-high-contrast-light.css'
@@ -253,6 +254,7 @@ Pages for it..
 							className: "presentation_github_repo_relative_link",
 							defaults: null, // Not needed & not used at all.
 							initialize: (function(link, options){
+								debugger;
 								link.innerHTML = "TODO";
 								link.href = presentation_github_repo_blob_dir + link.href;
 							})
