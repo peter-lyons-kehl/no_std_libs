@@ -144,10 +144,44 @@ Pages for it..
 
         <script src="../reveal.js/plugin/search/search.js"></script>
         <script type="text/javascript">
-			var presentation_github_repo
-			if (document.location.protocol.startsWith("http")) {
+			// If index.html is loaded from
+			// project-owner.github.io/project-name/some/path/index.html (on GitHub Pages), then
+			// presentation_github_repo will a URL to the "main" branch's "blob" listing of the same
+			// "some/path" (sub)directory. (For the above example, this URL would be
+			// https://github.com/project-owner/project-name/blob/main/some/path/). That allows us
+			// to show highlighted source code on GitHub.
+			//
+			// The above requires that the GitHub project is NOT the "primary" GitHub page of its
+			// project-owner (which, if used, usually has a project name project-name.github.io)!
+			//
+			// The above doesn't work with "master" (branch), only with "main".
+			//
+			// Otherwise this is the current folder (so that the user can open the files from the
+			// non-GitHub Pages webserver).
+			var presentation_github_repo_blob_dir = './';
 
+			if (document.location.protocol.startsWith("http") && document.location.host.endsWith("github.io")) {
+				var github_io_substr_index = document.location.host.indexOf("github.io");
+				var project_owner = document.location.host.substring(0, github_io_substr_index);
+				
+				var pathname = document.location.pathname;
+				var path_first_slash_index = pathname.indexOf('/');
+				var path_second_slash_index;
+				if (path_first_slash_index >= 0) {
+					path_second_slash_index = pathname.indexOf('/', path_first_slash_index+1);
+				}
+				if (path_first_slash_index < 0 || path_second_slash_index < 0) {
+					console.error("Do not publish this as webroot. Instead, publish it under a (sub)directory.");
+				}
+				var project_name = pathname.substring(path_first_slash_index+1, path_second_slash_index);
+				
+				var path_last_slash_index = pathname.lastIndexOf('/');
+				// This presentation's (sub(sub...))directory under its GitHub project.
+				var presentation_directory = pathname.substring(path_second_slash_index+1, path_last_slash_index);
+				presentation_github_repo_blob_dir = "https://github.com/" +project_owner+ "/" +
+					project_name + "/blob/main/" + presentation_directory+ "/";
 			}
+
             // More info about initialization & config:
             // - https://revealjs.com/initialization/
             // - https://revealjs.com/config/
@@ -215,10 +249,11 @@ Pages for it..
                     ],
 					anything: [
 						{
-							className: "presentation_github_repo",
+							className: "presentation_github_repo_relative_link",
 							defaults: null, // Not needed & not used at all.
-							initialize: (function(container, options){
-								container.innerHTML = 
+							initialize: (function(link, options){
+								link.innerHTML = "TODO";
+								link.href = presentation_github_repo_blob_dir + link.href;
 							})
 						}
 					],
