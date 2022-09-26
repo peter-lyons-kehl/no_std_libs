@@ -199,8 +199,9 @@ Pages for it..
                 plugins: [
                     // The following four plugins have to be initialized in this order, so they
                     // apply in this order and before any other plugins.
-                    RevealMarkdown,
 					RevealAnything,
+                    RevealMarkdown,
+					//RevealAnything,
                     EmbedCode,
                     RevealHighlight,
                     RevealMenu,
@@ -252,20 +253,18 @@ Pages for it..
                         }
 
                     ],
-					anything: [
-						{
-							className: "presentation_github_repo_relative_link",
-							defaults: null, // Not needed & not used at all.
-							initialize: (function(link, options){
-								debugger;
-								link.innerHTML = "TODO";
-								link.href = presentation_github_repo_blob_dir + link.href;
-							})
-						}
-					],
                     themesPath: '../reveal.js/dist/theme/',
                     transitions: ['None', 'Fade', 'Slide']
                 },
+				anything: [
+					{
+						className: "presentation_github_repo_relative_link",
+						// "defaults" field is optional
+						initialize: (function(link, options_unused){
+							link.href = presentation_github_repo_blob_dir + link.href;
+						})
+					}
+			],
                 // width and margin help <pre><code> have more space
                 width: "100%",
                 margin: 0,
