@@ -178,10 +178,13 @@ Pages for it..
 				
 				var path_last_slash_index = pathname.lastIndexOf('/');
 				// This presentation's (sub(sub...))directory under its GitHub project.
-				var presentation_directory = pathname.substring(path_second_slash_index+1, path_last_slash_index);
+				if (path_second_slash_index < path_last_slash_index) {
+					var presentation_directory_and_slash = pathname.substring(path_second_slash_index+1, path_last_slash_index)+ '/';
+				} else {
+					var presentation_directory_and_slash = '';
+				}
 				presentation_github_repo_blob_dir = "https://github.com/" +project_owner+ "/" +
-					project_name + "/blob/main/" + presentation_directory+ "/";
-				debugger;
+					project_name + "/blob/main/" + presentation_directory_and_slash;
 			}
 
             // More info about initialization & config:
