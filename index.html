@@ -9,7 +9,7 @@ https://github.com/peter-kehl/reveal.js.
     <head>
         <meta charset="utf-8">
         <!-- See and give thumbs up to https://github.com/hakimel/reveal.js/issues/175 -->
-        <meta name="viewport" content="width=device-width, initial-scale=0.7, user-scalable=no>
+        <meta name="viewport" content="width=device-width, user-scalable=yes">
         <link rel="icon" type="image/png" href="favicon.png">
         <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
         <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -23,8 +23,9 @@ Pages for it. -->
         <link rel="stylesheet" href="../reveal.js/dist/reset.css">
 
         <link rel="stylesheet" href="../reveal.js/dist/reveal.css">
-        <!-- Keep theme & highlight-theme in sync with one of "themes:" configuration entries for
-"menu" plugin below.
+        <!-- 
+            Keep theme & highlight-theme in sync with one of "themes:" configuration entries for
+            "menu" plugin below.
         -->
         <!-- If we loaded several themes, the one loaded last would become the default.
 
@@ -41,27 +42,46 @@ themes that the user chooses. (reveal.js-menu needs "id" here.)
         id="highlight-theme">
 
         <style type="text/css">
+            /*
+              If you are reusing
+              https://peter-kehl.github.io/present_on_github_with_reveal.js/README_NAVIGATION.md in
+              other presentations, you can hide any of the following CSS classes, if not used:
+              - .vs_code_tours,
+              - .videos and
+              - .vs_code_github_dev
+
+              with CSS: display: none !important;
+            */
             .reveal p {
               text-align: left;
             }
             .reveal ul {
               display: block;
+              flex-wrap: wrap !important;
             }
             .reveal ol {
               display: block;
+              flex-wrap: wrap !important;
             }
 			/** TODO remove hide_with_reveal_js if not used*/
             .hide_with_reveal_js {
                 display: none !important;
             }
-            /** As per https://stackoverflow.com/a/47703337/1049315 */
+            /** Thanks to https://stackoverflow.com/a/47703337/1049315 */
             @media (hover: hover) and (pointer: fine) {
-                .without_keyboard {
+                /* We are on a computer. Hide our mobile-specific content: */
+                .only_on_mobile {
                     display: none !important;
                 }
             }
-            @media not( (hover: hover) and (pointer: fine)) {
-                .with_keyboard {
+            @media not all and (hover: hover) and (pointer: fine) {
+                /* We are on a mobile. Hide our computer-specific content: */
+                .only_on_computer {
+                    display: none !important;
+                }
+            }
+            @media (orientation: landscape) {
+                .only_on_portrait {
                     display: none !important;
                 }
             }
@@ -73,8 +93,11 @@ themes that the user chooses. (reveal.js-menu needs "id" here.)
                 height: 100%;
                 bottom: 0px;
             }
-            section * {
-                flex-wrap: wrap !important;
+            /* Thanks to https://www.ryadel.com/en/css3-media-query-target-only-ie-ie6-ie11-firefox-chrome-safari-edge */
+            @media not all and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+                .only_in_chrome {
+                    display: none !important;
+                }
             }
         </style>
     </head>
@@ -218,7 +241,25 @@ Pages for it..
                 hashOneBasedIndex: true,
                 // As per https://salferrarello.com/creating-slide-decks-with-reveal-js:
                 history: true,
+                
+                // For better screen utilization on mobile/responsive. However, this makes the
+                // back/forth slide navigation arrows almost invisible at their default position
+                // (bottom right) on both Firefox & Chrome for Android (as of September 2022).
+                // Hence we also changed controlsLayout below.
                 disableLayout: true,
+
+                // On Firefox for small Android, the default (faded) back arrow is almost invisible.
+                controlsBackArrows: 'visible',
+
+                // With disableLayout: true, both Firefox & Chrome for Android (as of Sep 2022)
+                // almost hide the control arrows in their default location (bottom right). But
+                // 'edges' works better.
+                controlsLayout: 'edges',
+
+                // width and margin help <pre><code> have more space
+                width: "100%",
+                margin: 0,
+                // Don't use: height: "100%". Otherwise <pre><code> is narrow.
 
                 // Learn about plugins: https://revealjs.com/plugins/
                 plugins: [
@@ -283,18 +324,25 @@ Pages for it..
                 },
 				anything: [
 					{
+                        // No default "options".
+                        
+                        // Change the given link from relative to absolute based on the current
+                        // presentation's GitHub repository (as inferred from its GitHub Pages URL).
+                        // On GitHub the link will point to a (highlighted) source code view.
+                        // Outside of GitHub it points relative to directory of this index.html.
 						className: "presentation_github_repo_relative_link",
-						// "defaults" field is optional
+						// The HTML comment inside the link (<a href="relative/source/link">any
+						// link-text<!-- "relative/source/link" --> any link text</a>) duplicates
+						// the (relative) href.
+                        //
+                        // Why? We can't easily use the existing link.href value, because the
+						// browser (Firefox 104, at least) changes it from relative to (the
+						// resolved) absolute URL.
 						initialize: (function(link, options){
 							link.href = presentation_github_repo_blob_dir + options;
 						})
 					}
-			],
-                // width and margin help <pre><code> have more space
-                width: "100%",
-                margin: 0,
-                // Don't use: height: "100%". Otherwise <pre><code> is narrow. Don't use:
-                // disableLayout: true in general.
+			]
             });
         </script>
     </body>

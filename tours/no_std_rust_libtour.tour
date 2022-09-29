@@ -1,0 +1,11 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "no_std_rust_lib.tour",
+  "steps": [
+    {
+      "file": "README.md",
+      "description": "Related, but mostly out of scope",
+      "pattern": "^[^\\S\\n]*# Related, but mostly out of scope"
+    }
+  ]
+}
