@@ -93,7 +93,7 @@ for
        `build.target`](https://doc.rust-lang.org/nightly/cargo/reference/config.html#buildtarget),
        for example:
 
-       ```
+       ```rust
        [build]
        target = "aarch64-unknown-none-softfloat"
        ```
@@ -403,3 +403,15 @@ version](https://github.com/peter-kehl/x-rust/blob/main/rust/rna-transcription-n
 <https://github.com/peter-kehl/x-rust/blob/main/rust/rna-transcription-std/src/lib.rs>
 
 <https://github.com/peter-kehl/x-rust/blob/main/rust/rna-transcription-no_std-no_heap/src/lib.rs>
+
+---
+
+<!-- markdownlint-disable MD033 -->
+<pre class="language-rust r-stretch project_github_repo_blob_relative_code">
+<code
+data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs"
+data-line-start-delimiter="#![allow(rustdoc::bare_urls)]" data-line-end-delimiter="pub mod
+index;">
+</code>
+</pre>
+<!-- markdownlint-enable MD033    -->

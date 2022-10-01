@@ -97,30 +97,33 @@ for the whole presentation.
 ---
 
 <!--
-Ways of embedding & highlighting source code:
- no <pre>, just <code data-...>
- - good: Screen utilization: Takes up to the whole screen.
- - bad: No highlighting!
- - bad: Centered!
- - bad: No vertical scrollbars.
+    Ways of embedding & highlighting source code:
+ 
+    no <pre>, just <code data-...>
+    - good: Screen utilization: Takes up to the whole screen.
+    - bad: No highlighting!
+    - bad: Centered!
+    - bad: No vertical scrollbars.
 
- <pre class="..."> and <code data-...>
- - good: Highlighting
- - good: Vertical scrollbars
- - bad: Little screen utilization: takes only a part of the screen!
+    <pre class="..."> and <code data-...>
+    - good: Highlighting
+    - good: Vertical scrollbars
+    - bad: Little screen utilization: takes only a part of the screen!
 
- Use: <pre class="language-rust r-stretch"><code data-...>
+    Use: <pre class="language-rust r-stretch"><code data-...>
 
- class="hljs" for <code> is optional - it gets highlighted without it, too
+    class="hljs" for <code> is optional - it gets highlighted without it, too
 
-No way to include an external source code form Markdown with three back ticks ```.
+    No way to include an external source code form Markdown with three back ticks ```.
 -->
-<!-- class="language-rust" seems to be enough, no need for both "language-rust code-wrapper" -->
-<!-- <span class="r-fit-text"> here din't make it use the whole screen. Neither helped <pre class="language-rust r-fit-text">
-
-As per https://revealjs.com/layout, there can be only one item with "r-stretch" per slide!
+<!-- 
+    class="language-rust" seems to be enough, no need for both "language-rust code-wrapper"
 -->
-BEFORE
+<!--
+    <span class="r-fit-text"> here din't make it use the whole screen. Neither helped <pre class="language-rust r-fit-text">
+    
+    But: as per https://revealjs.com/layout, there can be only one item with "r-stretch" per slide!
+-->
 <pre class="language-rust r-stretch">
 <code
 data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs"
@@ -128,12 +131,12 @@ data-line-start-delimiter="#![allow(unused)]" data-line-end-delimiter="pub mod
 index;">
 </code>
 </pre>
-AFTER
 
 Note:
-TODO highlight selected lines with <code data-line-numbers="3,8-10">
-TODO put GitHub code line range link at a commit here - to make this
+TODO highlight selected lines with <code data-line-numbers="3,8-10"> - or use delimiters as above
+
+TODO put GitHub code line range link at a commit as an alternative  - to make this
 accessible.
 
-[arrform](https://docs.rs/arrform/latest/arrform) is an heapless no_std alternative to format!(...).
+[arrform](https://docs.rs/arrform/latest/arrform) is an heapless no_std alternative to `format!(...)`.
 New to Rust? Exclamation mark indicates a macro invocation. 

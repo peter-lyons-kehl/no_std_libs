@@ -128,11 +128,14 @@ this file is loaded directly from a filesystem (rather through a webserver).
                 <section
                 data-markdown="../present_on_github_with_reveal.js/README_NAVIGATION.md"></section>
                 <section data-markdown="README.md"></section>
-                <!-- Viewing this other than from github.com/peter-kehl? Clone
-https://github.com/ranging-rs/with_heap next to this repo and enable GitHub Pages for it. -->
+                <!-- 
+                    Viewing this other than from a project under github.com/peter-kehl? Then clone
+                    https://github.com/ranging-rs/with_heap next to this repo and enable GitHub
+                    Pages for it.
+                -->
                 <section data-markdown="../with_heap/README.md"></section>
                 <section data-markdown="README_BUILDS_AND_TESTING.md"></section>
-                <section data-markdown="README_MORE_RESOURCES.md"></section>
+                <!--<section data-markdown="README_MORE_RESOURCES.md"></section>-->
             </div>
         </div>
 
@@ -184,6 +187,10 @@ Pages for it..
 
         <script src="../reveal.js/plugin/search/search.js"></script>
         <script type="text/javascript">
+            "use strict";
+
+            var project_github_repo = "ranging-rs/slicing-rs";
+
             // More info about initialization & config:
             // - https://revealjs.com/initialization/
             // - https://revealjs.com/config/
@@ -216,10 +223,10 @@ Pages for it..
                 // Learn about plugins: https://revealjs.com/plugins/
                 plugins: [
                     // The following four plugins have to be initialized in this order, so they
-                    // apply in this order and before any other plugins.
+                    // process content in this order.
                     RevealMarkdown,
-					RevealAnything,
-					// RevealAnything,
+                    // Before EmbedCode, so that we can adjust <code>'s data-url
+                    RevealAnything,
                     EmbedCode,
                     RevealHighlight,
                     RevealMenu,
@@ -291,7 +298,11 @@ Pages for it..
                         // of directories.
 						className: "presentation_github_repo_tree_relative_link",
 						initialize: make_tree_link_relative_to_presentation_github_repo
-					}
+					},
+                    {
+                        className: "project_github_repo_blob_relative_code",
+                        initialize: make_blob_code_relative_to_project_github_repo
+                    }
 			]
             });
         </script>
