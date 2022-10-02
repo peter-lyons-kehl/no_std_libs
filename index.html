@@ -16,8 +16,12 @@ https://github.com/peter-kehl/reveal.js.
 
         <title>Embedded-friendly, no_std Rust libraries</title>
 
-        <!-- Clone https://github.com/peter-kehl/reveal.js/ next to this repo and enable GitHub
-Pages for it. -->
+        <!-- 
+            Clone https://github.com/peter-kehl/reveal.js/ next to this repo and enable GitHub Pages
+            for it. Do not use the (original) https://github.com/rajgoel/reveal.js-plugins until
+            https://github.com/rajgoel/reveal.js-plugins/issues/154 is resolved. And give this issue
+            thums up, please.
+        -->
         <!-- Unsure if we need reset.css, but https://revealjs.com demo uses it.
         -->
         <link rel="stylesheet" href="../reveal.js/dist/reset.css">
@@ -189,6 +193,7 @@ Pages for it..
         <script type="text/javascript">
             "use strict";
 
+            // For ../present_on_github_with_reveal.js/script.js
             var project_github_repo = "ranging-rs/slicing-rs";
 
             // More info about initialization & config:
@@ -198,7 +203,7 @@ Pages for it..
                 slideNumber: "c/t",
                 hash: true,
                 hashOneBasedIndex: true,
-                // As per https://salferrarello.com/creating-slide-decks-with-reveal-js:
+                // Thanks to https://salferrarello.com/creating-slide-decks-with-reveal-js:
                 history: true,
                 
                 // For better screen utilization on mobile/responsive. However, this makes the
@@ -291,16 +296,20 @@ Pages for it..
                         // That is not automated any more (it's not inferred from href value).
                         //
                         // TODO Re-consider.
+                        //
+                        // From ../present_on_github_with_reveal.js/script.js
 						initialize: make_blob_link_relative_to_presentation_github_repo
 					},
 					{
                         // Like presentation_github_repo_blob_relative_link, but this is for listing
                         // of directories.
 						className: "presentation_github_repo_tree_relative_link",
+                        // From ../present_on_github_with_reveal.js/script.js
 						initialize: make_tree_link_relative_to_presentation_github_repo
 					},
                     {
                         className: "project_github_repo_blob_relative_code",
+                        // From ../present_on_github_with_reveal.js/script.js
                         initialize: make_blob_code_relative_to_project_github_repo
                     }
 			]
