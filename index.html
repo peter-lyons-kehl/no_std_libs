@@ -164,6 +164,11 @@ this file is loaded directly from a filesystem (rather through a webserver).
             https://github.com/peter-kehl/present_on_github_with_reveal.js next to this repo and
             enable GitHub Pages for it.
         -->
+        <script type="text/javascript">
+            // For ../present_on_github_with_reveal.js/script.js
+            // TODO uncomment:
+            //var project_github_repo = "ranging-rs/slicing-rs";
+        </script>
         <script src="../present_on_github_with_reveal.js/script.js"></script>
         <!-- Clone https://github.com/rajgoel/reveal.js-plugins next to this repo and enable GitHub
 Pages for it.. -->
@@ -192,9 +197,6 @@ Pages for it..
         <script src="../reveal.js/plugin/search/search.js"></script>
         <script type="text/javascript">
             "use strict";
-
-            // For ../present_on_github_with_reveal.js/script.js
-            var project_github_repo = "ranging-rs/slicing-rs";
 
             // More info about initialization & config:
             // - https://revealjs.com/initialization/
@@ -288,29 +290,30 @@ Pages for it..
                 },
 				anything: [
 					{
-						className: "presentation_github_repo_blob_relative_link",
+						className: "link_relative_to_presentation_github_repo_blob",
 						// The HTML comment inside the link (<a href="relative/source/link">any
 						// link-text<!-- "relative/source/link" --> any link text</a>) duplicates
 						// the (relative) href.
                         //
                         // That is not automated any more (it's not inferred from href value).
                         //
-                        // TODO Re-consider.
+                        // TODO Apply automation - once we have
+						// relative_url_to_code_github_repo() in script.js; or REMOVE THIS COMMENT.
                         //
                         // From ../present_on_github_with_reveal.js/script.js
-						initialize: make_blob_link_relative_to_presentation_github_repo
+						initialize: make_link_relative_to_presentation_github_repo_blob
 					},
 					{
                         // Like presentation_github_repo_blob_relative_link, but this is for listing
                         // of directories.
-						className: "presentation_github_repo_tree_relative_link",
+						className: "link_relative_to_presentation_github_repo_tree",
                         // From ../present_on_github_with_reveal.js/script.js
-						initialize: make_tree_link_relative_to_presentation_github_repo
+						initialize: make_link_relative_to_presentation_github_repo_tree
 					},
                     {
-                        className: "project_github_repo_blob_relative_code",
+                        className: "code_relative_to_code_github_repo_raw",
                         // From ../present_on_github_with_reveal.js/script.js
-                        initialize: make_blob_code_relative_to_project_github_repo
+                        initialize: make_code_relative_to_code_github_repo_raw
                     }
 			]
             });

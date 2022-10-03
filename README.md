@@ -375,7 +375,7 @@ for
 # no_std without heap > collect() alternatives
 
 When developing for `no_heap`, we can't `collect()` from iterators. That makes some tasks that need
-access to all items at the same time (like sorting) very difficult.
+random access (access to all items at the same time, like sorting) difficult.
 
 This would need limit on number of items to be known at build time. Then the caller would pass a
 (mutable) reference to an array, or a slice, where we would manually collect the items (in a `for`
@@ -407,7 +407,7 @@ version](https://github.com/peter-kehl/x-rust/blob/main/rust/rna-transcription-n
 ---
 
 <!-- markdownlint-disable MD033 -->
-<pre class="language-rust r-stretch project_github_repo_blob_relative_code">
+<pre class="language-rust r-stretch code_relative_to_code_github_repo_raw">
 <code
 data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs"
 data-line-start-delimiter="#![allow(rustdoc::bare_urls)]" data-line-end-delimiter="pub mod
