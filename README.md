@@ -409,7 +409,7 @@ version](https://github.com/peter-kehl/x-rust/blob/main/rust/rna-transcription-n
 <!-- markdownlint-disable MD033 -->
 <pre class="language-rust r-stretch code_relative_to_code_github_repo_raw">
 <code
-data-url="https://raw.githubusercontent.com/ranging-rs/slicing-rs/main/src/lib.rs"
+data-url="src/lib.rs"
 data-line-start-delimiter="#![allow(rustdoc::bare_urls)]" data-line-end-delimiter="pub mod
 index;">
 </code>
