@@ -45,65 +45,7 @@ themes that the user chooses. (reveal.js-menu needs "id" here.)
         href="https://highlightjs.org/static/demo/styles/base16/windows-high-contrast.css"
         id="highlight-theme">
 
-        <style type="text/css">
-            /*
-              If you are reusing
-              https://peter-kehl.github.io/present_on_github_with_reveal.js/README_NAVIGATION.md in
-              other presentations, you can hide any of the following CSS classes, if not used:
-              - .vs_code_tours,
-              - .videos and
-              - .vs_code_github_dev
-
-              with CSS: display: none !important;
-            */
-            .reveal p {
-              text-align: left;
-            }
-            .reveal ul {
-              display: block;
-              flex-wrap: wrap !important;
-            }
-            .reveal ol {
-              display: block;
-              flex-wrap: wrap !important;
-            }
-			/** TODO remove hide_with_reveal_js if not used*/
-            .hide_with_reveal_js {
-                display: none !important;
-            }
-            /** Thanks to https://stackoverflow.com/a/47703337/1049315 */
-            @media (hover: hover) and (pointer: fine) {
-                /* We are on a computer. Hide our mobile-specific content: */
-                .only_on_mobile {
-                    display: none !important;
-                }
-            }
-            @media not all and (hover: hover) and (pointer: fine) {
-                /* We are on a mobile. Hide our computer-specific content: */
-                .only_on_computer {
-                    display: none !important;
-                }
-            }
-            @media (orientation: landscape) {
-                .only_on_portrait {
-                    display: none !important;
-                }
-            }
-            section {
-                overflow-y: scroll !important;
-                overflow-x: hidden !important;
-
-                /* Don't use fixed "height". Do have "bottom: 0px" */
-                height: 100%;
-                bottom: 0px;
-            }
-            /* Thanks to https://www.ryadel.com/en/css3-media-query-target-only-ie-ie6-ie11-firefox-chrome-safari-edge */
-            @media not all and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
-                .only_in_chrome {
-                    display: none !important;
-                }
-            }
-        </style>
+        <link rel="stylesheet" href="../present_on_github_with_reveal.js/style.css">
     </head>
     <body onload="initialize_slides()">
         <div class="reveal">
