@@ -55,6 +55,8 @@ themes that the user chooses. (reveal.js-menu needs "id" here.)
 this file is loaded directly from a filesystem (rather through a webserver).
                     -->
 					<h1>Embedded-friendly, no_std Rust libraries</h1>
+                    <!-- The following can't be in a section on its own, because if a <section> has
+                    no (visible) content, it will still show at least one slide. -->
 					<ul class="hide_with_web_server">
 						<li>Suggest you access this file (<code>index.html</code>) NOT from a
 						filesystem, but through a webserver instead. For an example of how, see
@@ -75,6 +77,8 @@ this file is loaded directly from a filesystem (rather through a webserver).
                 data-markdown="../present_on_github_with_reveal.js/README_NAVIGATION.md"></section>
                 <section data-markdown="README.md"></section>
                 <!-- 
+                    TODO move to the top of the file; also other "clone" instructions, too.
+
                     Viewing this other than from a project under github.com/peter-kehl? Then clone
                     https://github.com/ranging-rs/with_heap next to this repo and enable GitHub
                     Pages for it.
@@ -84,29 +88,13 @@ this file is loaded directly from a filesystem (rather through a webserver).
                 <!--<section data-markdown="README_MORE_RESOURCES.md"></section>-->
             </div>
         </div>
-
-        <script type="text/javascript">
-              function initialize_slides() {
-                if (document.location.protocol.startsWith("http")) {
-                    var css = document.createElement('style');
-                    css.type = "text/css";
-                    css.innerHTML = ".hide_with_web_server {display: none !important;}";
-                    document.head.appendChild(css);
-
-					if (document.location.host.endsWith(".github.io")) {
-						var css = document.createElement('style');
-						css.type = "text/css";
-						css.innerHTML = ".hide_on_github_pages {display: none !important;}";
-						document.head.appendChild(css);
-					}
-                }
-            }
-        </script>
         <!-- 
             https://github.com/peter-kehl/present_on_github_with_reveal.js next to this repo and
             enable GitHub Pages for it.
         -->
         <script type="text/javascript">
+            "use strict";
+            
             // For ../present_on_github_with_reveal.js/script.js
             // TODO test if we infer/extract the 2nd part when outside of GitHub Pages
             var code_github_repo = "ranging-rs/slicing-rs";
@@ -140,125 +128,7 @@ Pages for it..
         <script type="text/javascript">
             "use strict";
 
-            // More info about initialization & config:
-            // - https://revealjs.com/initialization/
-            // - https://revealjs.com/config/
-            Reveal.initialize({
-                slideNumber: "c/t",
-                hash: true,
-                hashOneBasedIndex: true,
-                // Thanks to https://salferrarello.com/creating-slide-decks-with-reveal-js:
-                history: true,
-                
-                // For better screen utilization on mobile/responsive. However, this makes the
-                // back/forth slide navigation arrows almost invisible at their default position
-                // (bottom right) on both Firefox & Chrome for Android (as of September 2022).
-                // Hence we also changed controlsLayout below.
-                disableLayout: true,
-
-                // On Firefox for small Android, the default (faded) back arrow is almost invisible.
-                controlsBackArrows: 'visible',
-
-                // With disableLayout: true, both Firefox & Chrome for Android (as of Sep 2022)
-                // almost hide the control arrows in their default location (bottom right). But
-                // 'edges' works better.
-                controlsLayout: 'edges',
-
-                // width and margin help <pre><code> have more space
-                width: "100%",
-                margin: 0,
-                // Don't use: height: "100%". Otherwise <pre><code> is narrow.
-
-                // Learn about plugins: https://revealjs.com/plugins/
-                plugins: [
-                    // The following four plugins have to be initialized in this order, so they
-                    // process content in this order.
-                    RevealMarkdown,
-                    // Before EmbedCode, so that we can adjust <code>'s data-url
-                    RevealAnything,
-                    EmbedCode,
-                    RevealHighlight,
-                    RevealMenu,
-                    RevealSearch ],
-                
-                // As much as I love "overview" (activated by lowercase "o" key) on desktop, it
-                // disables two-finger zoom on mobile, unfortunately. See
-                // https://github.com/hakimel/reveal.js/issues/175#issuecomment-9429562. overview:
-                // false, touch: false,
-
-                // As per https://github.com/denehyg/reveal.js-menu#configuration
-                menu: {
-                    // themes: true,
-                    themes:  [
-                        {
-                            name: 'Dark',
-                            theme: '../reveal.js/dist/theme/black_compact_verbatim_headers.css',
-                            // Reveal.js comes with only two highlighting themes, both darkish. You
-                            // could use: highlightTheme:
-                            // '../reveal.js/plugin/highlight/monokai.css'
-                            //
-                            // highlightTheme: '../reveal.js/plugin/highlight/zenburn.css'
-                            //
-                            // OR choose from many themes from https://highlightjs.org, for example:
-                            //
-                            // The only dark high contrast highlight theme:
-                            highlightTheme: 'https://highlightjs.org/static/demo/styles/base16/windows-high-contrast.css'
-                            //
-                            // But, if you expect high traffic, clone
-                            // https://github.com/highlightjs/highlight.js next to this repo, enable
-                            // GitHub Pages for it, and use (for example):
-                            //
-                            // highlightTheme:
-                            // '../highlight.js/src/styles/base16/windows-high-contrast.css'
-                        },
-                        {
-                            name: 'Light',
-                            theme: '../reveal.js/dist/theme/white_compact_verbatim_headers.css',
-                            // No light highlight themes in Reveal.js. The only light high contrast
-                            // highlight theme:
-                            highlightTheme: 'https://highlightjs.org/static/demo/styles/base16/windows-high-contrast-light.css'
-                            //
-                            // But, if you expect high traffic, clone and enable GitHub Pages for
-                            // it. https://github.com/highlightjs/highlight.js next to this repo and
-                            // use (for example):
-                            //
-                            // highlightTheme:
-                            // '../highlight.js/src/styles/base16/windows-high-contrast-light.css'
-                        }
-
-                    ],
-                    themesPath: '../reveal.js/dist/theme/',
-                    transitions: ['None', 'Fade', 'Slide']
-                },
-				anything: [
-					{
-						className: "link_relative_to_presentation_github_repo_blob",
-						// The HTML comment inside the link (<a href="relative/source/link">any
-						// link-text<!-- "relative/source/link" --> any link text</a>) duplicates
-						// the (relative) href.
-                        //
-                        // That is not automated any more (it's not inferred from href value).
-                        //
-                        // TODO Apply automation - once we have
-						// relative_url_to_code_github_repo() in script.js; or REMOVE THIS COMMENT.
-                        //
-                        // From ../present_on_github_with_reveal.js/script.js
-						initialize: make_link_relative_to_presentation_github_repo_blob
-					},
-					{
-                        // Like presentation_github_repo_blob_relative_link, but this is for listing
-                        // of directories.
-						className: "link_relative_to_presentation_github_repo_tree",
-                        // From ../present_on_github_with_reveal.js/script.js
-						initialize: make_link_relative_to_presentation_github_repo_tree
-					},
-                    {
-                        className: "code_relative_to_code_github_repo_raw",
-                        // From ../present_on_github_with_reveal.js/script.js
-                        initialize: make_code_relative_to_code_github_repo_raw
-                    }
-			]
-            });
+            Reveal.initialize( reveal_js_config() );
         </script>
     </body>
 </html>

@@ -4,14 +4,11 @@
 <!-- .slide: data-visibility="hidden" -->
 # Slides and alternative navigation
 
-If you are seeing this, consider viewing [presentation
-slides](https://peter-kehl.github.io/no_std_rust_lib_presentation) instead. Or see
-[README_NAVIGATION.md (online)](https://github.com/peter-kehl/present_on_github_with_reveal.js/blob/main/README_NAVIGATION.md)
-for
-
-- alternative online or local navigation, or
-- VS Code tour, or
-- video recording(s) (if any).
+If you are seeing this, consider viewing [presentation slides
+(online)](https://peter-kehl.github.io/no_std_rust_lib_presentation) instead. Or see
+[README_NAVIGATION.md
+(online)](https://github.com/peter-kehl/present_on_github_with_reveal.js/blob/main/README_NAVIGATION.md)
+for alternatives.
 
 ---
 
@@ -22,14 +19,45 @@ for
 
 # In scope
 
-- Rust only; focusing on the language (less so on development tools)
-- [`no_std`](https://docs.rust-embedded.org/book/intro/no-std.html) library `crates` (without `std`
-   library), _with_ or _without_ heap
+- developing [`no_std`](https://docs.rust-embedded.org/book/intro/no-std.html) library `crates`
+   (without [`std`](https://doc.rust-lang.org/nightly/std/) library), _with_ or _without_ heap
+
+---
+
+# Limited scope: Cross-platform
+
+- also for `std` (where `std` library exists)
+- Cargo documentation keeps this [quite
+   hidden](https://doc.rust-lang.org/nightly/cargo/faq.html#does-cargo-handle-multi-platform-packages-or-cross-compilation)
+  - [`.cargo/config.toml` -->
+      `build.target`](https://doc.rust-lang.org/nightly/cargo/reference/config.html#buildtarget),
+      for example:
+
+      ```rust
+      [build]
+      target = "aarch64-unknown-none-softfloat"
+      ```
+
+  - or: [`cargo build
+      --target`](https://doc.rust-lang.org/nightly/cargo/commands/cargo-build.html#compilation-options)
+- Architectures supported by Rust - in [three
+   tiers](https://doc.rust-lang.org/nightly/rustc/target-tier-policy.html). See also [the rustc
+   book](https://doc.rust-lang.org/nightly/rustc) > [Platform
+   Support](https://doc.rust-lang.org/nightly/rustc/platform-support.html). Beware many Tier 2
+   wouldn't build a simple application (not even as heapless `no_std`).
+- [Cargo book > Platform specific
+   dependencies](https://doc.rust-lang.org/nightly/cargo/reference/specifying-dependencies.html#platform-specific-dependencies)
+- per-platform build/linking configuration - have
+   [`.cargo/config.toml`](https://doc.rust-lang.org/cargo/reference/config.html)
+- [features](https://doc.rust-lang.org/nightly/cargo/reference/features.html) = compile
+  time-selectable subsets of library
+  [`crates`](https://doc.rust-lang.org/nightly/cargo/appendix/glossary.html#crate)
 
 ---
 
 # Related, but mostly out of scope
 
+- `no_std` binaries
 - hardware, deployment, embedded debugging
 - low level development in general (techniques, architectures, tools)
 - specifics of [real
@@ -48,126 +76,36 @@ for
     - Rustonomicon has parts applicable to safe and/or `std` Rust, too. One of its gems:
        [Higher-Rank Trait Bounds](https://doc.rust-lang.org/nightly/nomicon/hrtb.html).
 - [`async/await` in no_std](https://ferrous-systems.com/blog/stable-async-on-embedded)
+- `no_std`-compatible crates
 
 ---
 
 - [`unsafe` code](https://doc.rust-lang.org/nightly/book/ch19-01-unsafe-rust.html)
-  - is... unsafe, indeed. Especially so in `std`, because some mistakes are very difficult to notice
-     and/or reproduce. Even on the same machine, model or architecture, incorrect memory access
-     (race conditions...) may show up only under specific conditions (threads and the related state,
-     CPU caches per-core or shared between cores...).
-  - more complicated across CPU's/architectures and on NUMA (non uniform memory architecture) - on
-     x86 it used to be mostly AMD, but Intel has had it on server CPU's, plus on desktops since
-     [12th generation CPU's](https://en.wikipedia.org/wiki/Alder_Lake#Scheduler_support)).
-
-     Even if a multi-level cache CPU or NUMA can detect cross-core access and it flushes/reloads the
-     relevant data in the cache(s), that may counteract any gains expected from `unsafe`.
-  - probably easier on `no_std` embedded, because of no threads & no other applications or processes
+  - seemingly easier in embedded, because of no threads & no other applications/processes. But that may lead to hidden bugs that show up only once using the same code in non-embedded later.
   - FFI (Foreign Function
      Interface)/[Interoperability](https://doc.rust-lang.org/nightly/embedded-book/interoperability/index.html)
     - [calling external code from Rust:
        `extern`](https://doc.rust-lang.org/nightly/book/ch19-01-unsafe-rust.html#using-extern-functions-to-call-external-code)
     - [calling Rust functions from
        C](https://dev.to/dandyvica/how-to-call-rust-functions-from-c-on-linux-h37)
-    - the mainstream [Rust from
-       Python](https://saidvandeklundert.net/learn/2021-11-18-calling-rust-from-python-using-pyo3)
-       with [pyo3 and
-       maturin](https://towardsdatascience.com/nine-rules-for-writing-python-extensions-in-rust-d35ea3a4ec29)
-       is for standard Python, so `std`-only.
-       [pyo3::with_embedded_python_interpreter()](https://docs.rs/pyo3/latest/pyo3/fn.with_embedded_python_interpreter.html)
-       and [RustPython/RustPython](https://github.com/RustPython/RustPython) "embed" Python into
-       Rust, but they don't focus on embedded systems (and they most likely require `std`).
 - [Rust](https://doc.rust-lang.org) and [Cargo &
    dependencies](https://doc.rust-lang.org/nightly/cargo/reference/specifying-dependencies.html) in
    general
 
 ---
 
-# Limited scope
-
-- cross-platform
-  - also for `std` (where `std` library exists)
-  - Cargo documentation keeps this [quite
-     hidden](https://doc.rust-lang.org/nightly/cargo/faq.html#does-cargo-handle-multi-platform-packages-or-cross-compilation)
-    - [`.cargo/config.toml` -->
-       `build.target`](https://doc.rust-lang.org/nightly/cargo/reference/config.html#buildtarget),
-       for example:
-
-       ```rust
-       [build]
-       target = "aarch64-unknown-none-softfloat"
-       ```
-
-    - or: [`cargo build
-       --target`](https://doc.rust-lang.org/nightly/cargo/commands/cargo-build.html#compilation-options)
-  - Architectures supported by Rust - in [three
-     tiers](https://doc.rust-lang.org/nightly/rustc/target-tier-policy.html). See also [the rustc
-     book](https://doc.rust-lang.org/nightly/rustc) > [Platform
-     Support](https://doc.rust-lang.org/nightly/rustc/platform-support.html). Beware many Tier 2
-     wouldn't build a simple application (not even as heapless `no_std`).
-  - [Cargo book > Platform specific
-     dependencies](https://doc.rust-lang.org/nightly/cargo/reference/specifying-dependencies.html#platform-specific-dependencies)
-  - per-platform build/linking configuration - have
-     [`.cargo/config.toml`](https://doc.rust-lang.org/cargo/reference/config.html)
-  - [`features`](https://doc.rust-lang.org/nightly/cargo/reference/features.html)
-    - compile time-selectable subsets of library
-     [`crates`](https://doc.rust-lang.org/nightly/cargo/appendix/glossary.html#crate)
-
----
-
-## Ecosystem
-
-- the focus here is on Rust [`#![no_std]`]((<https://docs.rust-embedded.org/book/intro/no-std.html>)
-   language challenges, patterns and tips
-- we mention very little about architectures, `no_std` crates or tools
-<!--  and only
-   * main stream, or
-   * ones with the least development pain (easy debugging), or
-   * ones with high or emerging Rust support
-   * ones with an emulator
- -->
----
-
 # Prerequisites
 
 - no need for low level experience
-- common (and a few uncommon) aspects of general (but not necessarily low level) Rust, especially
+- common (and a few uncommon) aspects of general Rust, especially
   - setting up a project and basics of
      [cargo](https://doc.rust-lang.org/nightly/book/ch01-03-hello-cargo.html)
   - [package layout](https://doc.rust-lang.org/nightly/cargo/guide/project-layout.html)
   - [dependencies](https://doc.rust-lang.org/nightly/cargo/guide/dependencies.html)
-  - [`features`](https://doc.rust-lang.org/nightly/cargo/reference/features.html)
-  - architecture or `feature`-based [conditional
+  - [features](https://doc.rust-lang.org/nightly/cargo/reference/features.html)
+  - architecture or feature-based [conditional
      compilation](https://doc.rust-lang.org/nightly/reference/conditional-compilation.html) with
      `#[cfg(...)]`(<https://doc.rust-lang.org/rust-by-example/attribute/cfg.html>) attribute.
-  - [slices](https://doc.rust-lang.org/nightly/book/ch04-03-slices.html)
-  - [enums](https://doc.rust-lang.org/nightly/book/ch06-01-defining-an-enum.html)
-    - not as simple as Java/C++ enums, but potentially carrying variant-specific data field(s) (like
-     Scala's and Haskell's algebraic types)
-  - [iterators](https://doc.rust-lang.org/nightly/book/ch13-02-iterators.html) (like [C#
-     iterators](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/iterators),
-     or
-     [java.util.stream.Stream](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/stream/Stream.html);
-     but not like
-     [java.util.Iterator](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Iterator.html)!)
-
----
-
-- [generics](https://doc.rust-lang.org/nightly/book/ch10-00-generics.html) and especially [generic
-     data types](https://doc.rust-lang.org/nightly/book/ch10-01-syntax.html). (Like templates in
-     C++, or [generics in other languages](https://www.wikiwand.com/en/Generic_programming). But no
-     type erasure like in [Java
-     generics](https://docs.oracle.com/javase/tutorial/java/generics/erasure.html) or some [Haskell
-     generics](https://wiki.haskell.org/Generics).)
-- [const generics](https://rust-lang.github.io/rfcs/2000-const-generics.html). As of mid 2022, const
-     generics are not in the Rust book (not even in `nightly`). See the above or the [Rust
-     Reference](https://doc.rust-lang.org/nightly/reference/items/generics.html#const-generics).
-     (See also [Vancouver Rust's
-     presentation](https://github.com/vancouver-rs/talks/tree/master/const-generics).)
-- anything in this document starting with "_New to Rust?_"
-- optional (for deeper understanding of some code examples):
-     [core::option](https://doc.rust-lang.org/nightly/core/option/index.html) and
-     [core::result](https://doc.rust-lang.org/nightly/core/result/index.html)
 - experience with a statically typed and compiled language
 - basics of linking, heap and stack
 - Rust [installation](https://doc.rust-lang.org/nightly/book/ch01-01-installation.html) including
@@ -263,8 +201,8 @@ for
 
    Also, embedded devices often have no/restricted connectivity, and no other software running, so
    `nightly` may be secure enough. Plus, any upgrades replace the whole application, so even if
-   `nightly` API changes, nothing outside of your embedded application changes on because of it (the
-   updated Rust's API). You you can go ahead and apply such changes bravely.
+   `nightly` API changes, nothing outside of your embedded application changes (if the only change
+   was in the Rust `core` or ABI). You you can go ahead and apply such changes bravely.
 
    If you need `beta` or `nightly`, specify it per-project in
    [`rust-toolchain.toml`](https://rust-lang.github.io/rustup/overrides.html#the-toolchain-file).
@@ -278,7 +216,7 @@ for
    API, [Rust book](https://doc.rust-lang.org/nightly/book) and [Cargo
    book](https://doc.rust-lang.org/nightly/cargo) have a `nightly` prefix. They clearly mention
    which parts are `nightly` (or `beta`) only. You can access it as `beta` by changing the prefix,
-   or seee the stable by removing the prefix.
+   or see the stable by removing the prefix.
 
    See also the [Rust RFC book](https://rust-lang.github.io/rfcs).
 
@@ -295,6 +233,10 @@ for
 
 - like with `no_std` with heap, but without `alloc`
 - common for microcontrollers
+
+# More
+
+See [no_std_rna_patterns](../no_std_rna_patterns).
 
 ---
 
