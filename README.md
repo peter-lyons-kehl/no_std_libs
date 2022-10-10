@@ -249,3 +249,19 @@ index;">
 </code>
 </pre>
 <!-- markdownlint-enable MD033    -->
+
+---
+
+<!-- TODO: REMOVE - JUST A TEST.-->
+<!-- markdownlint-disable MD033 -->
+<!-- https://github.com/peter-kehl/no_std_rna_patterns/blob/main/00_test_harness/../00_utils/Cargo.toml redirects to https://github.com/peter-kehl/no_std_rna_patterns/blob/main/00_utils/Cargo.toml. But revealjs-embed-code doesn't support redirects. So we handle it ourselves.
+
+https://raw.githubusercontent.com/ranging-rs/with_heap/main/Cargo.toml
+https://raw.githubusercontent.com/ranging-rs/with_heap/main/src/../Cargo.toml
+-->
+<pre class="language-rust r-stretch">
+<code
+data-url="https://raw.githubusercontent.com/ranging-rs/with_heap/main/src/../Cargo.toml">
+</code>
+</pre>
+<!-- markdownlint-enable MD033    -

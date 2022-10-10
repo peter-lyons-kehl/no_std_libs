@@ -8,6 +8,16 @@ https://github.com/peter-kehl/reveal.js.
 <html>
     <head>
         <meta charset="utf-8">
+        <!-- 
+            Viewing this other than from (any project under) https://github.com/peter-kehl? Then
+            clone the following next to this repository and enable GitHub Pages for all of them:
+            - https://github.com/peter-kehl/reveal.js
+            - https://github.com/peter-kehl/present_on_github_with_reveal.js
+            - https://github.com/rajgoel/reveal.js-plugins
+            - https://github.com/ranging-rs/with_heap
+            - https://github.com/befocken/revealjs-embed-code
+            - https://denehyg.github.io/reveal.js-menu
+        -->
         <!-- See and give thumbs up to https://github.com/hakimel/reveal.js/issues/175 -->
         <meta name="viewport" content="width=device-width, user-scalable=yes">
         <link rel="icon" type="image/png" href="favicon.png">
@@ -65,7 +75,7 @@ this file is loaded directly from a filesystem (rather through a webserver).
 						<li>Or see <a
 						href="https://github.com/peter-kehl/present_on_github_with_reveal.js/blob/main/README_NAVIGATION.md">README_NAVIGATION.md</a>
 						for alternative online or local navigation, or a VS Code tour, or video
-						recording(s) (if any). The presentation content starts at <a
+						recording(s) (if any). The presentation content starts in <a
 						href="README.md">README.md</a>.
 						</li>
 						<li>Or see <a
@@ -76,13 +86,6 @@ this file is loaded directly from a filesystem (rather through a webserver).
                 <section
                 data-markdown="../present_on_github_with_reveal.js/README_NAVIGATION.md"></section>
                 <section data-markdown="README.md"></section>
-                <!-- 
-                    TODO move to the top of the file; also other "clone" instructions, too.
-
-                    Viewing this other than from a project under github.com/peter-kehl? Then clone
-                    https://github.com/ranging-rs/with_heap next to this repo and enable GitHub
-                    Pages for it.
-                -->
                 <section data-markdown="../with_heap/README.md"></section>
                 <section data-markdown="README_BUILDS_AND_TESTING.md"></section>
                 <!--<section data-markdown="README_MORE_RESOURCES.md"></section>-->
@@ -95,35 +98,22 @@ this file is loaded directly from a filesystem (rather through a webserver).
         <script type="text/javascript">
             "use strict";
             
-            // For ../present_on_github_with_reveal.js/script.js
-            // TODO test if we infer/extract the 2nd part when outside of GitHub Pages
+            // For ../present_on_github_with_reveal.js/script.js TODO test if we infer/extract the
+            // 2nd part when on of GitHub Pages
             var code_github_repo = "ranging-rs/slicing-rs";
         </script>
         <script src="../present_on_github_with_reveal.js/script.js"></script>
-        <!-- Clone https://github.com/rajgoel/reveal.js-plugins next to this repo and enable GitHub
-Pages for it.. -->
-        <script src="../reveal.js-plugins/anything/plugin.js"></script>
 
-        <!-- Clone https://github.com/peter-kehl/reveal.js next to this repo and enable GitHub Pages
-for it.. -->
+        <script src="../reveal.js-plugins/anything/plugin.js"></script>
         <script src="../reveal.js/dist/reveal.js"></script>
 
         <!-- The following JS order may not matter, but let's keep it the same as in
 Reveal.initialize(...).
         -->
         <script src="../reveal.js/plugin/markdown/markdown.js"></script>
-
-        <!-- Clone https://github.com/befocken/revealjs-embed-code next to this repo and enable
-GitHub Pages for it.. -->
         <script src="../revealjs-embed-code/embed-code.js"></script>
-
         <script src="../reveal.js/plugin/highlight/highlight.js"></script>
-
-        <!-- Clone https://denehyg.github.io/reveal.js-menu next to this repo and enable GitHub
-Pages for it..
-        -->
         <script src="../reveal.js-menu/menu.js"></script>
-
         <script src="../reveal.js/plugin/search/search.js"></script>
         <script type="text/javascript">
             "use strict";
