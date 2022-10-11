@@ -1,11 +1,11 @@
 <!-- The following comment hides this section from being shown by
-     https://peter-kehl.github.io/no_std_rust_lib_presentation.
+     https://peter-kehl.github.io/no_std_rust_libs.
 -->
 <!-- .slide: data-visibility="hidden" -->
 # Slides and alternative navigation
 
 If you are seeing this, consider viewing [presentation slides
-(online)](https://peter-kehl.github.io/no_std_rust_lib_presentation) instead. Or see
+(online)](https://peter-kehl.github.io/no_std_rust_libs) instead. Or see
 [README_NAVIGATION.md
 (online)](https://github.com/peter-kehl/present_on_github_with_reveal.js/blob/main/README_NAVIGATION.md)
 for alternatives.
@@ -241,7 +241,7 @@ See [no_std_rna_patterns](../no_std_rna_patterns).
 ---
 
 <!-- markdownlint-disable MD033 -->
-<pre class="language-rust r-stretch code_relative_to_code_github_repo_raw">
+<pre class="language-rust r-stretch pre_relative_to_code_github_repo_raw">
 <code
 data-url="src/lib.rs"
 data-line-start-delimiter="#![allow(rustdoc::bare_urls)]" data-line-end-delimiter="pub mod
@@ -254,7 +254,7 @@ index;">
 
 <!-- TODO: REMOVE - JUST A TEST.-->
 <!-- markdownlint-disable MD033 -->
-<!-- https://github.com/peter-kehl/no_std_rna_patterns/blob/main/00_test_harness/../00_utils/Cargo.toml redirects to https://github.com/peter-kehl/no_std_rna_patterns/blob/main/00_utils/Cargo.toml. But revealjs-embed-code doesn't support redirects. So we handle it ourselves.
+<!-- https://github.com/peter-kehl/no_std_rna_patterns/blob/main/00_test_harness/../00_utils/Cargo.toml redirects to https://github.com/peter-kehl/no_std_rna_patterns/blob/main/00_utils/Cargo.toml. But revealjs-embed-code doesn't support redirects. So we have to normalize the URL ourselves.
 
 https://raw.githubusercontent.com/ranging-rs/with_heap/main/Cargo.toml
 https://raw.githubusercontent.com/ranging-rs/with_heap/main/src/../Cargo.toml
