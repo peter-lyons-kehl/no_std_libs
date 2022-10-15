@@ -46,8 +46,8 @@ https://github.com/peter-kehl/reveal.js.
 https://github.com/denehyg/reveal.js-menu replaces that initial theme with any of the built-in
 themes that the user chooses. (reveal.js-menu needs "id" here.)
         -->
-        <link rel="stylesheet" href="../reveal.js/dist/theme/black_contrast_compact_verbatim_headers.css"
-        id="theme">
+        <link rel="stylesheet"
+        href="../reveal.js/dist/theme/black_contrast_compact_verbatim_headers.css" id="theme">
 
         <!-- Theme used for syntax highlighted code. (reveal.js-menu needs "id" here.)
         -->
@@ -57,7 +57,7 @@ themes that the user chooses. (reveal.js-menu needs "id" here.)
 
         <link rel="stylesheet" href="../present_on_github_with_reveal.js/style.css">
     </head>
-    <body onload="initialize_slides()">
+    <body>
         <div class="reveal">
             <div class="slides">
                 <section>
@@ -75,26 +75,22 @@ this file is loaded directly from a filesystem (rather through a webserver).
 						<li>Suggest you access this file (<code>index.html</code>) NOT from a
 						filesystem, but through a webserver instead. For an example of how, see
 						<code>python3</code> in <a
-						href="https://github.com/peter-kehl/present_on_github_with_reveal.js/blob/main/README_NAVIGATION.md">README_NAVIGATION.md</a>.</li>
+						href="https://github.com/peter-kehl/present_on_github_with_reveal.js/blob/main/README-NAVIGATE-SLIDES.md">README-NAVIGATE-SLIDES.md</a>.</li>
 						<li>Or see <a
-						href="https://github.com/peter-kehl/present_on_github_with_reveal.js/blob/main/README_NAVIGATION.md">README_NAVIGATION.md</a>
+						href="https://github.com/peter-kehl/present_on_github_with_reveal.js/blob/main/README-NAVIGATE-SLIDES.md">README-NAVIGATE-SLIDES.md</a>
 						for alternative online or local navigation, or a VS Code tour, or video
 						recording(s) (if any). The presentation content starts in <a
 						href="README.md">README.md</a>.
 						</li>
-						<li>Or see <a
-						href="https://peter-kehl.github.io/no_std_rust_libs">the
+						<li>Or see <a href="https://peter-kehl.github.io/no_std_rust_libs">the
 						original presentation online</a>.</li>
 					</ul>
                 </section>
-                <section
-                data-markdown="../present_on_github_with_reveal.js/README_NAVIGATION.md" id="README_NAVIGATION"></section>
-                <section
-                data-markdown="../present_on_github_with_reveal.js/README_CODETOUR.md" class="only_on_computer"></section>
+                <section data-markdown="../present_on_github_with_reveal.js/README-NAVIGATE-SLIDES.md"
+                id="README-NAVIGATE-SLIDES"></section>
                 <section data-markdown="README.md"></section>
                 <section data-markdown="../with_heap/README.md"></section>
-                <section data-markdown="README_BUILDS_AND_TESTING.md"></section>
-                <!--<section data-markdown="README_MORE_RESOURCES.md"></section>-->
+                <section data-markdown="README-BUILDS-AND-TESTING.md"></section>
             </div>
         </div>
         <!-- 
@@ -124,6 +120,7 @@ Reveal.initialize(...).
         <script type="text/javascript">
             "use strict";
 
+            initialize_slides();
             Reveal.initialize( reveal_js_config() );
         </script>
     </body>

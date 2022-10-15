@@ -5,9 +5,8 @@
 # Slides and alternative navigation
 
 If you are seeing this, consider viewing [presentation slides
-(online)](https://peter-kehl.github.io/no_std_rust_libs) instead. Or see
-[README_NAVIGATION.md
-(online)](https://github.com/peter-kehl/present_on_github_with_reveal.js/blob/main/README_NAVIGATION.md)
+(online)](https://peter-kehl.github.io/no_std_rust_libs) instead. Or see [README-NAVIGATE-SLIDES.md
+(online)](https://github.com/peter-kehl/present_on_github_with_reveal.js/blob/main/README-NAVIGATE-SLIDES.md)
 for alternatives.
 
 ---
@@ -264,4 +263,4 @@ https://raw.githubusercontent.com/ranging-rs/with_heap/main/src/../Cargo.toml
 data-url="https://raw.githubusercontent.com/ranging-rs/with_heap/main/src/../Cargo.toml">
 </code>
 </pre>
-<!-- markdownlint-enable MD033    -
+<!-- markdownlint-enable MD033 -->

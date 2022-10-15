@@ -1,4 +1,5 @@
 {
     "bookmarks.saveBookmarksInProject": true,
-    "bookmarks.useWorkaroundForFormatters": true
+    "bookmarks.useWorkaroundForFormatters": true,
+    "editor.wordWrapColumn": 100
 }
