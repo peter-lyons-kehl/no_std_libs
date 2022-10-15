@@ -32,7 +32,12 @@ https://github.com/peter-kehl/reveal.js.
             https://github.com/rajgoel/reveal.js-plugins/issues/154 is resolved. And give this issue
             thums up, please.
         -->
-        <!-- Unsure if we need reset.css, but https://revealjs.com demo uses it.
+        <!--
+            Unsure if we need reset.css, but both
+            - https://github.com/hakimel/reveal.js/blob/master/index.html and
+            - https://github.com/hakimel/reveal.js/blob/master/demo.html
+
+            use it.
         -->
         <link rel="stylesheet" href="../reveal.js/dist/reset.css">
 
@@ -104,19 +109,22 @@ this file is loaded directly from a filesystem (rather through a webserver).
             // 2nd part when on of GitHub Pages
             var code_github_repo = "ranging-rs/slicing-rs";
         </script>
-        <script src="../present_on_github_with_reveal.js/script.js"></script>
 
-        <script src="../reveal.js-plugins/anything/plugin.js"></script>
         <script src="../reveal.js/dist/reveal.js"></script>
 
-        <!-- The following JS order may not matter, but let's keep it the same as in
-Reveal.initialize(...).
+        <script src="../reveal.js-plugins/anything/plugin.js"></script>
+
+        <!-- 
+            The following JS order may not matter, but let's keep it the same as in
+            `reveal_js_config()` in ../present_on_github_with_reveal.js/script.js.
         -->
         <script src="../reveal.js/plugin/markdown/markdown.js"></script>
         <script src="../revealjs-embed-code/embed-code.js"></script>
         <script src="../reveal.js/plugin/highlight/highlight.js"></script>
         <script src="../reveal.js-menu/menu.js"></script>
         <script src="../reveal.js/plugin/search/search.js"></script>
+        
+        <script src="../present_on_github_with_reveal.js/script.js"></script>
         <script type="text/javascript">
             "use strict";
 

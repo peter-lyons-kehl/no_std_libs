@@ -80,7 +80,8 @@ for alternatives.
 ---
 
 - [`unsafe` code](https://doc.rust-lang.org/nightly/book/ch19-01-unsafe-rust.html)
-  - seemingly easier in embedded, because of no threads & no other applications/processes. But that may lead to hidden bugs that show up only once using the same code in non-embedded later.
+  - seemingly easier in embedded, because of no threads & no other applications/processes. But that
+    may lead to hidden bugs that show up only once using the same code in non-embedded later.
   - FFI (Foreign Function
      Interface)/[Interoperability](https://doc.rust-lang.org/nightly/embedded-book/interoperability/index.html)
     - [calling external code from Rust:
