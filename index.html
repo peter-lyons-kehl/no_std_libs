@@ -33,11 +33,12 @@ https://github.com/peter-kehl/reveal.js.
             thums up, please.
         -->
         <!--
-            Unsure if we need reset.css, but both
+            Unsure if we need ../reveal.js/dist/reset.css. Both
             - https://github.com/hakimel/reveal.js/blob/master/index.html and
             - https://github.com/hakimel/reveal.js/blob/master/demo.html
 
-            use it.
+            use it. But https://revealjs.com/markup/ doesn't say to use it. It doesn't seem to
+            matter.
         -->
         <link rel="stylesheet" href="../reveal.js/dist/reset.css">
 
@@ -92,7 +93,7 @@ this file is loaded directly from a filesystem (rather through a webserver).
 					</ul>
                 </section>
                 <section data-markdown="../present_on_github_with_reveal.js/README-NAVIGATE-SLIDES.md"
-                id="README-NAVIGATE-SLIDES"></section>
+                id="SECTION-BEFORE-NAVIGATE-WITH-CODETOUR"></section>
                 <section data-markdown="README.md"></section>
                 <section data-markdown="../with_heap/README.md"></section>
                 <section data-markdown="README-BUILDS-AND-TESTING.md"></section>
@@ -112,24 +113,24 @@ this file is loaded directly from a filesystem (rather through a webserver).
 
         <script src="../reveal.js/dist/reveal.js"></script>
 
-        <script src="../reveal.js-plugins/anything/plugin.js"></script>
-
         <!-- 
             The following JS order may not matter, but let's keep it the same as in
             `reveal_js_config()` in ../present_on_github_with_reveal.js/script.js.
         -->
         <script src="../reveal.js/plugin/markdown/markdown.js"></script>
+        <script src="../reveal.js-plugins/anything/plugin.js"></script>
         <script src="../revealjs-embed-code/embed-code.js"></script>
         <script src="../reveal.js/plugin/highlight/highlight.js"></script>
         <script src="../reveal.js-menu/menu.js"></script>
         <script src="../reveal.js/plugin/search/search.js"></script>
-        
+
         <script src="../present_on_github_with_reveal.js/script.js"></script>
         <script type="text/javascript">
             "use strict";
 
-            initialize_slides();
-            Reveal.initialize( reveal_js_config() );
+            present_on_github_with_reveal_before_ini();
+            Reveal.initialize( present_on_github_with_reveal_get_config() );
+            present_on_github_with_reveal_after_ini();
         </script>
     </body>
 </html>

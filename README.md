@@ -11,6 +11,10 @@ for alternatives.
 
 ---
 
+<!-- .slide: id="Audience-Purpose-Scope" -->
+<!-- .element: class="header_only_for_menu" -->
+# Audience, Purpose, Scope
+
 # Audience and purpose
 
 - general Rust developers moving to low level or `no_std`
@@ -23,11 +27,15 @@ for alternatives.
 
 ---
 
-# Limited scope: Cross-platform
+<!-- .slide: id="Limited_Scope" -->
+<!-- .element: class="header_only_for_menu" -->
+## Limited Scope
 
-- also for `std` (where `std` library exists)
+# Limited scope: Cross-platform & features
+
+- Independent of `std` or `no_std`.
 - Cargo documentation keeps this [quite
-   hidden](https://doc.rust-lang.org/nightly/cargo/faq.html#does-cargo-handle-multi-platform-packages-or-cross-compilation)
+   hidden](https://doc.rust-lang.org/nightly/cargo/faq.html#does-cargo-handle-multi-platform-packages-or-cross-compilation):
   - [`.cargo/config.toml` -->
       `build.target`](https://doc.rust-lang.org/nightly/cargo/reference/config.html#buildtarget),
       for example:
@@ -46,15 +54,16 @@ for alternatives.
    wouldn't build a simple application (not even as heapless `no_std`).
 - [Cargo book > Platform specific
    dependencies](https://doc.rust-lang.org/nightly/cargo/reference/specifying-dependencies.html#platform-specific-dependencies)
-- per-platform build/linking configuration - have
-   [`.cargo/config.toml`](https://doc.rust-lang.org/cargo/reference/config.html)
-- [features](https://doc.rust-lang.org/nightly/cargo/reference/features.html) = compile
+- Per-platform build/linking configuration - have
+   [`.cargo/config.toml`](https://doc.rust-lang.org/cargo/reference/config.html).
+- [features](https://doc.rust-lang.org/nightly/cargo/reference/features.html): Compile
   time-selectable subsets of library
-  [`crates`](https://doc.rust-lang.org/nightly/cargo/appendix/glossary.html#crate)
+  [`crates`](https://doc.rust-lang.org/nightly/cargo/appendix/glossary.html#crate).
 
 ---
 
-# Related, but mostly out of scope
+<!-- .slide: id="Out_of_Scope" -->
+# Out of Scope
 
 - `no_std` binaries
 - hardware, deployment, embedded debugging
@@ -94,6 +103,7 @@ for alternatives.
 
 ---
 
+<!-- .slide: id="Prerequisites" -->
 # Prerequisites
 
 - no need for low level experience
@@ -115,6 +125,7 @@ for alternatives.
 
 ---
 
+<!-- .slide: id="no_std" -->
 # no_std
 
 - for low level (without an operating system, or a part of an OS kernel)
@@ -140,13 +151,23 @@ for alternatives.
 
 ---
 
-- stack-only (no heap: no
-   [`std::boxed::Box`](https://doc.rust-lang.org/nightly/std/boxed/struct.Box.html), no
+<!-- .slide: id="no_std-variations" -->
+<!-- .element: class="header_only_for_menu" -->
+# no_std variations
+
+## stack-only (no heap)
+
+No
+
+- [`std::boxed::Box`](https://doc.rust-lang.org/nightly/std/boxed/struct.Box.html), no
    [`std::vec::Vec`](https://doc.rust-lang.org/nightly/std/vec/struct.Vec.html), not even
    [`std::String`](https://doc.rust-lang.org/nightly/std/string/struct.String.html)...) by default,
    [`std::rc::Rc`](https://doc.rust-lang.org/std/rc/struct.Rc.html),
    [`std::sync::Arc`](https://doc.rust-lang.org/std/sync/struct.Arc.html)
-- heap - only if you have an `allocator`:
+
+# heap
+
+- only if you have an `allocator`
   - register
      [`#[global_allocator]`](https://doc.rust-lang.org/nightly/std/prelude/v1/macro.global_allocator.html)
   - then use [`alloc`](https://doc.rust-lang.org/nightly/alloc/index.html) library
@@ -168,8 +189,12 @@ for alternatives.
      Even if our `struct` (or `enum`) instances can't be ordered in human terms, or if the actual
      order doesn't matter for us, we could define some (predictable) order and use
      `BTreeSet/BTreeMap` for most types.
-- either way (heapless or with heap)
-  - no
+
+# any no_std
+
+(heapless or with heap)
+
+- no
      [`std::collections::HashSet`](https://doc.rust-lang.org/nightly/std/collections/struct.HashSet.html),
      nor
      [`std::collections::HashMap`](https://doc.rust-lang.org/nightly/std/collections/struct.HashMap.html)
@@ -191,6 +216,10 @@ for alternatives.
    `no_std`) crates.
 
 ---
+
+<!-- .slide: id="nightly" -->
+
+# Nightly
 
 - Embrace [`nightly` channel](https://rust-lang.github.io/rustup/concepts/toolchains.html) (version)
    of Rust. `no_std` development is challenging enough. Help yourself by new language ergonomics &
@@ -222,6 +251,7 @@ for alternatives.
 
 ---
 
+<!-- .slide: id="no_std-with_heap" -->
 # no_std with heap
 
 - Import `core::` and `alloc::` (instead of `std::`) wherever you can - even in `std` development.
@@ -240,6 +270,7 @@ See [no_std_rna_patterns](../no_std_rna_patterns).
 
 ---
 
+<!-- .slide: id="no_std-variations" -->
 <!-- markdownlint-disable MD033 -->
 <pre class="language-rust r-stretch pre_relative_to_code_github_repo_raw">
 <code
@@ -259,9 +290,21 @@ index;">
 https://raw.githubusercontent.com/ranging-rs/with_heap/main/Cargo.toml
 https://raw.githubusercontent.com/ranging-rs/with_heap/main/src/../Cargo.toml
 -->
+<!--
+    Adding CSS class `code-wrapper` to `<pre>` and classes hljs rust language-rust to <code> didn't
+    change anything.
+-->
 <pre class="language-rust r-stretch">
-<code
-data-url="https://raw.githubusercontent.com/ranging-rs/with_heap/main/src/../Cargo.toml">
+<code data-url="https://raw.githubusercontent.com/ranging-rs/with_heap/main/src/../Cargo.toml">
 </code>
 </pre>
 <!-- markdownlint-enable MD033 -->
+
+---
+
+<!--
+    <code> without <pre> shows the source as wrapped text... and it doesn't auto-apply highlighing:
+    
+<code data-url="https://raw.githubusercontent.com/ranging-rs/with_heap/main/src/lib.rs"
+class="hljs rust language-rust"> </code>
+-->

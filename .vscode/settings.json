@@ -1,5 +1,9 @@
 {
     "bookmarks.saveBookmarksInProject": true,
     "bookmarks.useWorkaroundForFormatters": true,
-    "editor.wordWrapColumn": 100
+    "editor.wordWrapColumn": 100,
+    "line-length-checker.lineLength": 100,
+    "line-length-checker.blacklist": [
+        "**/*.md"
+    ]
 }
