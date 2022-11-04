@@ -12,7 +12,7 @@ https://github.com/peter-kehl/reveal.js.
             Viewing this from other than (any project under) https://github.com/peter-kehl? Then
             clone the following next to this repository and enable GitHub Pages for all of them:
             - https://github.com/peter-kehl/reveal.js (until TODO is completed)
-            - https://github.com/peter-kehl/present_on_github_with_reveal.js
+            - https://github.com/peter-kehl/present_markdown_reveal.js
             - https://github.com/rajgoel/reveal.js-plugins
             - https://github.com/ranging-rs/with_heap
             - https://github.com/befocken/revealjs-embed-code
@@ -61,7 +61,7 @@ themes that the user chooses. (reveal.js-menu needs "id" here.)
         href="https://highlightjs.org/static/demo/styles/base16/windows-high-contrast.css"
         id="highlight-theme">
 
-        <link rel="stylesheet" href="../present_on_github_with_reveal.js/style.css">
+        <link rel="stylesheet" href="../present_markdown_reveal.js/style.css">
     </head>
     <body>
         <div class="reveal">
@@ -75,15 +75,15 @@ this file is loaded directly from a filesystem (rather through a webserver).
                         <li>alternatively see the <a
                         href="https://peter-kehl.github.io/no_std_rust_libs/">original</a>.</li>
                     </ul>
-                    <!-- The following can't be in a section on its own, because if a <section> has
-                    no (visible) content, it will still show at least one slide. -->
+                    <!-- The following can't be in a <section> on its own, because if a <section>
+                    has no (visible) content, it will still show at least one slide. -->
 					<ul class="hide_with_web_server">
 						<li>Suggest you access this file (<code>index.html</code>) NOT from a
 						filesystem, but through a webserver instead. For an example of how, see
 						<code>python3</code> in <a
-						href="https://github.com/peter-kehl/present_on_github_with_reveal.js/blob/main/README-NAVIGATE-SLIDES.md">README-NAVIGATE-SLIDES.md</a>.</li>
+						href="https://github.com/peter-kehl/present_markdown_reveal.js/blob/main/README-NAVIGATE-SLIDES.md">README-NAVIGATE-SLIDES.md</a>.</li>
 						<li>Or see <a
-						href="https://github.com/peter-kehl/present_on_github_with_reveal.js/blob/main/README-NAVIGATE-SLIDES.md">README-NAVIGATE-SLIDES.md</a>
+						href="https://github.com/peter-kehl/present_markdown_reveal.js/blob/main/README-NAVIGATE-SLIDES.md">README-NAVIGATE-SLIDES.md</a>
 						for alternative online or local navigation, or a VS Code tour, or video
 						recording(s) (if any). The presentation content starts in <a
 						href="README.md">README.md</a>.
@@ -92,22 +92,30 @@ this file is loaded directly from a filesystem (rather through a webserver).
 						original presentation online</a>.</li>
 					</ul>
                 </section>
-                <section data-markdown="../present_on_github_with_reveal.js/README-NAVIGATE-SLIDES.md"
+                <!--
+                    The following id="SECTION-BEFORE-NAVIGATE-WITH-CODETOUR" disappears/gets
+                    replaced by the "id" of the first slide from
+                    ../present_markdown_reveal.js/README-NAVIGATE-SLIDES.md. However, before it gets
+                    replaced, it serves to inject
+                    ../present_markdown_reveal.js/README-NAVIGATE-VS_CODE-CODETOUR.md when seen on a
+                    desktop.
+                -->
+                <section data-markdown="../present_markdown_reveal.js/README-NAVIGATE-SLIDES.md"
                 id="SECTION-BEFORE-NAVIGATE-WITH-CODETOUR"></section>
                 <section data-markdown="README.md"></section>
-                <section data-markdown="../with_heap/README.md"></section>
-                <section data-markdown="README-BUILDS-AND-TESTING.md"></section>
+                <section
+                data-markdown="../present_markdown_reveal.js/README-RELATED-ISSUES.md"></section>
             </div>
         </div>
         <!-- 
-            https://github.com/peter-kehl/present_on_github_with_reveal.js next to this repo and
-            enable GitHub Pages for it.
+            https://github.com/peter-kehl/present_markdown_reveal.js next to this repo and enable
+            GitHub Pages for it.
         -->
         <script type="text/javascript">
             "use strict";
             
-            // For ../present_on_github_with_reveal.js/script.js TODO test if we infer/extract the
-            // 2nd part when on of GitHub Pages
+            // For ../present_markdown_reveal.js/script.js TODO test if we infer/extract the 2nd
+            // part when on of GitHub Pages
             var code_github_repo = "ranging-rs/slicing-rs";
         </script>
 
@@ -115,7 +123,7 @@ this file is loaded directly from a filesystem (rather through a webserver).
 
         <!-- 
             The following JS order may not matter, but let's keep it the same as in
-            `reveal_js_config()` in ../present_on_github_with_reveal.js/script.js.
+            `reveal_js_config()` in ../present_markdown_reveal.js/script.js.
         -->
         <script src="../reveal.js/plugin/markdown/markdown.js"></script>
         <script src="../reveal.js-plugins/anything/plugin.js"></script>
@@ -124,13 +132,13 @@ this file is loaded directly from a filesystem (rather through a webserver).
         <script src="../reveal.js-menu/menu.js"></script>
         <script src="../reveal.js/plugin/search/search.js"></script>
 
-        <script src="../present_on_github_with_reveal.js/script.js"></script>
+        <script src="../present_markdown_reveal.js/script.js"></script>
         <script type="text/javascript">
             "use strict";
 
-            present_on_github_with_reveal_before_ini();
-            Reveal.initialize( present_on_github_with_reveal_get_config() );
-            present_on_github_with_reveal_after_ini();
+            present_markdown_reveal_before_ini();
+            Reveal.initialize( present_markdown_reveal_get_config() );
+            present_markdown_reveal_after_ini();
         </script>
     </body>
 </html>

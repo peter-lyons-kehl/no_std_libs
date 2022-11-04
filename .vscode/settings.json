@@ -5,5 +5,23 @@
     "line-length-checker.lineLength": 100,
     "line-length-checker.blacklist": [
         "**/*.md"
-    ]
+    ],
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        ".gitignore": true,
+        ".markdownlint.*": true,
+        "favicon*": true,
+        ".vscrof": true,
+        ".vscode": true,
+        ".tours": true,
+        "tours": true,
+        "index.html": true,
+        "LICENSE*": true,
+        "README*": true
+    }
 }
