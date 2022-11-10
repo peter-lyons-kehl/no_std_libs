@@ -7,6 +7,25 @@
         "**/*.md"
     ],
     "files.exclude": {
+        "**/.git": false,
+        "**/.svn": false,
+        "**/.hg": false,
+        "**/CVS": false,
+        "**/.DS_Store": false,
+        "**/Thumbs.db": false,
+        ".gitignore": false,
+        ".markdownlint.*": false,
+        "favicon*": false,
+        ".vscrof": false,
+        ".vscode": false,
+        ".tours": false,
+        "tours": false,
+        "index.html": false,
+        "LICENSE*": false,
+        "README*": false,
+        "*.md": false
+    },
+    "explorerExclude.backup": {
         "**/.git": true,
         "**/.svn": true,
         "**/.hg": true,
@@ -22,6 +41,7 @@
         "tours": true,
         "index.html": true,
         "LICENSE*": true,
-        "README*": true
+        "README*": true,
+        "*.md": true
     }
 }

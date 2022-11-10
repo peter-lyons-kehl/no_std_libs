@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "stkb.rewrap",
+        "alefragnani.bookmarks",
+        "peterschmalfeldt.explorer-exclude",
+        "supertsy5.line-length-checker-vscode",
+        "davidanson.vscode-markdownlint"
+    ]
+}

@@ -19,17 +19,17 @@ for alternatives.
 - general Rust developers moving to low level or `no_std`
 - non-Rust low level developers moving to Rust
 
-# In scope
+# Scope > In
 
 - developing [`no_std`](https://docs.rust-embedded.org/book/intro/no-std.html) library `crates`
    (without [`std`](https://doc.rust-lang.org/nightly/std/) library), _with_ or _without_ heap
 
 ---
 
-<!-- .slide: id="Limited-Scope" -->
-## Limited Scope <!-- .element: class="header_only_for_menu" -->
+<!-- .slide: id="Scope-Limited" -->
+## Scope > Limited <!-- .element: class="header_only_for_menu" -->
 
-# Limited scope: Cross-platform & features
+# Limited: Cross-platform & features
 
 - Independent of `std` or `no_std`.
 - Cargo documentation keeps this [quite
@@ -60,8 +60,8 @@ for alternatives.
 
 ---
 
-<!-- .slide: id="Out-of-Scope" -->
-# Out of Scope
+<!-- .slide: id="Scope-Out" -->
+# Scope > Out
 
 - `no_std` binaries
 - hardware, deployment, embedded debugging
@@ -86,8 +86,8 @@ for alternatives.
 
 ---
 
-<!-- .slide: id="Unsafe" -->
-# Unsafe
+<!-- .slide: id="Scope-Out-Unsafe" -->
+# Scope > Out > Unsafe
 
 - [`unsafe` code](https://doc.rust-lang.org/nightly/book/ch19-01-unsafe-rust.html)
   - seemingly easier in embedded, because of no threads & no other applications/processes. But that
@@ -132,9 +132,9 @@ for alternatives.
 - for low level (without an operating system, or a part of an OS kernel)
 - Have [`#![no_std]`]((<https://docs.rust-embedded.org/book/intro/no-std.html>) line at the top of
    your [crate](https://doc.rust-lang.org/nightly/cargo/appendix/glossary.html#crate) (`lib.rs` or a
-   top level source file for a binary). See also
-   [`package`](https://doc.rust-lang.org/nightly/cargo/appendix/glossary.html#package) and
-   [`target](https://doc.rust-lang.org/nightly/cargo/appendix/glossary.html#target).
+   top level source file for a binary). See also [Rust glossary >
+   `package`](https://doc.rust-lang.org/nightly/cargo/appendix/glossary.html#package) and [Rust
+   glossary > `target`](https://doc.rust-lang.org/nightly/cargo/appendix/glossary.html#target).
 - no default fatal error
    ([`panic`](https://doc.rust-lang.org/nightly/book/ch09-01-unrecoverable-errors-with-panic.html#unwinding-the-stack-or-aborting-in-response-to-a-panic))
    handler; you must choose either
@@ -157,13 +157,13 @@ for alternatives.
 
 ## stack-only (no heap)
 
-No
+No availability of
 
-- [`std::boxed::Box`](https://doc.rust-lang.org/nightly/std/boxed/struct.Box.html), no
-   [`std::vec::Vec`](https://doc.rust-lang.org/nightly/std/vec/struct.Vec.html), not even
-   [`std::String`](https://doc.rust-lang.org/nightly/std/string/struct.String.html)...) by default,
-   [`std::rc::Rc`](https://doc.rust-lang.org/std/rc/struct.Rc.html),
-   [`std::sync::Arc`](https://doc.rust-lang.org/std/sync/struct.Arc.html)
+- [`std::boxed::Box`](https://doc.rust-lang.org/nightly/std/boxed/struct.Box.html)
+- [`std::vec::Vec`](https://doc.rust-lang.org/nightly/std/vec/struct.Vec.html)
+- [`std::String`](https://doc.rust-lang.org/nightly/std/string/struct.String.html),
+- [`std::rc::Rc`](https://doc.rust-lang.org/std/rc/struct.Rc.html),
+- [`std::sync::Arc`](https://doc.rust-lang.org/std/sync/struct.Arc.html)
 
 # heap
 
@@ -219,11 +219,11 @@ No
 
 <!-- .slide: id="Nightly" -->
 
-# Nightly
+# Embrace Nightly
 
 - Embrace [`nightly` channel](https://rust-lang.github.io/rustup/concepts/toolchains.html) (version)
-   of Rust. `no_std` development is challenging enough. Help yourself by new language ergonomics &
-   `core` library API (for example,
+   of Rust. `no_std` development is challenging enough. Help yourself by new, often ergonomical,
+   features of the language & `core` library API (for example,
    [`#[bench]`](https://doc.rust-lang.org/nightly/cargo/reference/cargo-targets.html#benchmarks)). A
    lot of `nightly` API has become part of `beta` and `stable` (and anything new goes through
    `nightly` and `stable`, anyway). See the [Rust Forge](https://forge.rust-lang.org) schedule.
