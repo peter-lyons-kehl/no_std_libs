@@ -24,7 +24,7 @@ https://github.com/peter-kehl/reveal.js.
         <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
         <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 
-        <title>Embedded-friendly, no_std Rust libraries</title>
+        <title>no_std libraries in Rust</title>
 
         <!-- 
             Clone https://github.com/peter-kehl/reveal.js/ next to this repo and enable GitHub Pages
@@ -47,7 +47,7 @@ https://github.com/peter-kehl/reveal.js.
             Keep theme & highlight-theme in sync with one of "themes:" configuration entries for
             "menu" plugin below.
         -->
-        <!-- If we loaded several themes, the one loaded last would become the default.
+        <!-- If we loaded several themes, the one loaded last becomes the default.
 
 https://github.com/denehyg/reveal.js-menu replaces that initial theme with any of the built-in
 themes that the user chooses. (reveal.js-menu needs "id" here.)
@@ -66,30 +66,69 @@ themes that the user chooses. (reveal.js-menu needs "id" here.)
     <body>
         <div class="reveal">
             <div class="slides">
+                <!-- TODO DOCUMENT: if a <section> has no (visible) content, it will still show at
+                    least one slide!
+                -->
                 <section>
                     <!-- This is intentionally NOT in a Markdown file, so that it shows up even if
 this file is loaded directly from a filesystem (rather through a webserver).
                     -->
 					<h1>no_std libraries in Rust</h1>
-                    <ul class="hide_on_github_pages">
-                        <li>alternatively see the <a
-                        href="https://peter-kehl.github.io/no_std_rust_libs/">original</a>.</li>
-                    </ul>
-                    <!-- The following can't be in a <section> on its own, because if a <section>
-                    has no (visible) content, it will still show at least one slide. -->
-					<ul class="hide_with_web_server">
-						<li>Suggest you access this file (<code>index.html</code>) NOT from a
-						filesystem, but through a webserver instead. For an example of how, see
-						<code>python3</code> in <a
-						href="https://github.com/peter-kehl/present_markdown_reveal.js/blob/main/README-NAVIGATE-SLIDES.md">README-NAVIGATE-SLIDES.md</a>.</li>
-						<li>Or see <a
-						href="https://github.com/peter-kehl/present_markdown_reveal.js/blob/main/README-NAVIGATE-SLIDES.md">README-NAVIGATE-SLIDES.md</a>
-						for alternative online or local navigation, or a VS Code tour, or video
-						recording(s) (if any). The presentation content starts in <a
-						href="README.md">README.md</a>.
+                    <ul>
+                        <li class="hide_on_github_pages">
+                            Alternatively see the <a
+                            href="https://peter-kehl.github.io/no_std_libs/">original</a>.
+                        </li>
+						<li class="hide_with_web_server">
+                            Suggest you access this file (<code>index.html</code>) NOT from a
+                            filesystem, but through a webserver instead. For an example of how, see
+						    <code>python3</code> and more instruction in
+						    <code>README-NAVIGATE-SLIDES.md</code>
+                            <span class="hide_on_github_pages">
+                                in a <a
+                                href="../present_markdown_reveal.js/README-NAVIGATE-SLIDES.md">local
+                                (neighbor) clone</a> of
+						        <a
+						        href="https://github.com/peter-kehl/present_markdown_reveal.js"></a>present_markdown_reveal.js</a>
+						        (if you cloned it next to this clone) or
+                            </span>
+                            <a
+                            href="https://github.com/peter-kehl/present_markdown_reveal.js/blob/main/README-NAVIGATE-SLIDES.md">on
+                            GitHub</a>.
+                        </li>
+						<li>
+                            Or see <code>README-NAVIGATE-VS_CODE-CODETOUR.md</code>
+                            <span class="hide_on_github_pages">
+                                in a <a
+                                href="../present_markdown_reveal.js/README-NAVIGATE-VS_CODE-CODETOUR.md">local
+                                (neighbor) clone</a> of <a
+                                href="https://github.com/peter-kehl/present_markdown_reveal.js">present_markdown_reveal.js</a>
+						        (if you cloned it next to this clone) or
+                            </span>
+                            <a
+                            href="https://github.com/peter-kehl/present_markdown_reveal.js/blob/main/README-NAVIGATE-VS_CODE-CODETOUR.md">on
+                            GitHub</a>
+						    for navigation with VS Code extension `CodeTour`.
+                        </li>
+                        <li class="hide_with_web_server">
+                            The presentation content starts in <a
+                            href="README.md"><code>README.md</code></a>.
 						</li>
-						<li>Or see <a href="https://peter-kehl.github.io/no_std_rust_libs">the
-						original presentation online</a>.</li>
+						<li>
+                            Or see <a href="https://peter-kehl.github.io/no_std_libs">the original
+                            presentation online</a>.
+                        </li>
+                        <li>
+                            Or see video recording(s)
+                            <span class="hide_on_github_pages">
+                                in a <a href="../no_std_libs-videos">local (neighbor) clone</a> of
+                                <a
+                                href="https://github.com/peter-kehl/no_std_libs-videos"><code>no_std_libs-videos</code></a>
+                                (if you cloned it next to this clone) or see them
+                            </span>
+                            on <a href="https://github.com/peter-kehl/no_std_libs-videos">GitHub</a>
+                            or on <a href="https://www.youtube.com/@peter-kehl">YouTube</a>.
+                        </li>
 					</ul>
                 </section>
                 <!--

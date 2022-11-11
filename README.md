@@ -1,11 +1,11 @@
 <!-- The following comment hides this section from being shown by
-     https://peter-kehl.github.io/no_std_rust_libs.
+     https://peter-kehl.github.io/no_std_libs.
 -->
 <!-- .slide: data-visibility="hidden" -->
 # Slides and alternative navigation
 
 If you are seeing this, consider viewing [presentation slides
-(online)](https://peter-kehl.github.io/no_std_rust_libs) instead. Or see [README-NAVIGATE-SLIDES.md
+(online)](https://peter-kehl.github.io/no_std_libs) instead. Or see [README-NAVIGATE-SLIDES.md
 (online)](https://github.com/peter-kehl/present_markdown_reveal.js/blob/main/README-NAVIGATE-SLIDES.md)
 for alternatives.
 
@@ -14,12 +14,22 @@ for alternatives.
 <!-- .slide: id="Audience-Purpose-Scope" -->
 # Audience, Purpose, Scope <!-- .element: class="header_only_for_menu" -->
 
-# Audience and purpose
+## Audience and purpose
 
 - general Rust developers moving to low level or `no_std`
 - non-Rust low level developers moving to Rust
 
-# Scope > In
+## Disambiguation
+
+Rust has `#![no_std]` declaration, but it doesn't have `#![std]`. Instead, if you don't have
+`#![no_std]` at the top of your crate, availability of `std` library is implied.
+
+Here we use `std` to refer to
+
+- either Rust [`std`](https://doc.rust-lang.org/nightly/std/index.html) library, or
+- crates not declared as `no_std` (that is, crates that can use `std`).
+
+## Scope > In
 
 - developing [`no_std`](https://docs.rust-embedded.org/book/intro/no-std.html) library `crates`
    (without [`std`](https://doc.rust-lang.org/nightly/std/) library), _with_ or _without_ heap
@@ -129,43 +139,51 @@ for alternatives.
 <!-- .slide: id="no_std" -->
 # no_std
 
-- for low level (without an operating system, or a part of an OS kernel)
-- Have [`#![no_std]`]((<https://docs.rust-embedded.org/book/intro/no-std.html>) line at the top of
-   your [crate](https://doc.rust-lang.org/nightly/cargo/appendix/glossary.html#crate) (`lib.rs` or a
-   top level source file for a binary). See also [Rust glossary >
+A Rust `no_std` crate can work with, or without, heap. Either way, it
+
+- is for low level (without an operating system, or a part of an OS kernel)
+- starts with a [`#![no_std]`]((<https://docs.rust-embedded.org/book/intro/no-std.html>) line at the
+   top of your [crate](https://doc.rust-lang.org/nightly/cargo/appendix/glossary.html#crate)
+   (`lib.rs` or a top level source file for a binary). See also [Rust glossary >
    `package`](https://doc.rust-lang.org/nightly/cargo/appendix/glossary.html#package) and [Rust
    glossary > `target`](https://doc.rust-lang.org/nightly/cargo/appendix/glossary.html#target).
-- no default fatal error
+- if binary, it has no default fatal error
    ([`panic`](https://doc.rust-lang.org/nightly/book/ch09-01-unrecoverable-errors-with-panic.html#unwinding-the-stack-or-aborting-in-response-to-a-panic))
-   handler; you must choose either
-- you can provide a custom
-   [`#[panic_handler]`](https://doc.rust-lang.org/nightly/std/alloc/trait.GlobalAlloc.html))
-- no [`std`](https://doc.rust-lang.org/nightly/std/index.html) library (no modules starting with
-   `std::`), but
-- a limited subset of `std` is available as
-   [`core`](https://doc.rust-lang.org/nightly/core/index.html). For example, instead of
-   [`std::option::Option`](https://doc.rust-lang.org/nightly/std/option/enum.Option.html), use
-   [`core::option::Option`](https://doc.rust-lang.org/nightly/core/option/enum.Option.html). There's
-   also [`core::result::Result`](https://doc.rust-lang.org/nightly/core/result/enum.Result.html),
-   [`core::iter::Iterator`](https://doc.rust-lang.org/nightly/core/iter/trait.Iterator.html),
-   [`alloc::borrow::Cow](https://doc.rust-lang.org/alloc/borrow/enum.Cow.html)...
+  handler; you must either
+  - set it to `abort`, or
+  - use one of existing (embedded-friendly) [`panic_handler`-defining
+    crates](https://doc.rust-lang.org/nightly/embedded-book/start/panicking.html)
+- provide a custom [`panic_handler`](https://doc.rust-lang.org/nightly/nomicon/panic-handler.html)
+- if binary, and it uses heap, provide a [global
+  allocator](https://doc.rust-lang.org/nightly/std/alloc/trait.GlobalAlloc.html))
+- has no access to [`std`](https://doc.rust-lang.org/nightly/std/index.html) library (no module
+   paths starting with `std::`), but
+- has a limited subset of `std` available as
+  [`core`](https://doc.rust-lang.org/nightly/core/index.html). For example,
+  - [`core::option::Option`](https://doc.rust-lang.org/nightly/core/option/enum.Option.html) instead
+    of [`std::option::Option`](https://doc.rust-lang.org/nightly/std/option/enum.Option.html),
+  - [`core::result::Result`](https://doc.rust-lang.org/nightly/core/result/enum.Result.html),
+  - [`core::iter::Iterator`](https://doc.rust-lang.org/nightly/core/iter/trait.Iterator.html),
+  - [`alloc::borrow::Cow`](https://doc.rust-lang.org/alloc/borrow/enum.Cow.html)...
 
 ---
 
-<!-- .slide: id="no_std-variations" -->
-# no_std variations <!-- .element: class="header_only_for_menu" -->
+<!-- .slide: id="no_std-Without-Heap" -->
+# no_std > Without Heap
 
-## stack-only (no heap)
+- all data is on stack, or static
+- common for microcontrollers
+- no availability of
+  - [`std::boxed::Box`](https://doc.rust-lang.org/nightly/std/boxed/struct.Box.html)
+  - [`std::vec::Vec`](https://doc.rust-lang.org/nightly/std/vec/struct.Vec.html)
+  - [`std::String`](https://doc.rust-lang.org/nightly/std/string/struct.String.html),
+  - [`std::rc::Rc`](https://doc.rust-lang.org/std/rc/struct.Rc.html),
+  - [`std::sync::Arc`](https://doc.rust-lang.org/std/sync/struct.Arc.html)...
 
-No availability of
+---
 
-- [`std::boxed::Box`](https://doc.rust-lang.org/nightly/std/boxed/struct.Box.html)
-- [`std::vec::Vec`](https://doc.rust-lang.org/nightly/std/vec/struct.Vec.html)
-- [`std::String`](https://doc.rust-lang.org/nightly/std/string/struct.String.html),
-- [`std::rc::Rc`](https://doc.rust-lang.org/std/rc/struct.Rc.html),
-- [`std::sync::Arc`](https://doc.rust-lang.org/std/sync/struct.Arc.html)
-
-# heap
+<!-- .slide: id="no_std-With-Heap" -->
+# no_std > With Heap
 
 - only if you have an `allocator`
   - register
@@ -190,35 +208,24 @@ No availability of
      order doesn't matter for us, we could define some (predictable) order and use
      `BTreeSet/BTreeMap` for most types.
 
-# any no_std
+---
 
-(heapless or with heap)
+<!-- .slide: id="no_std-Any" -->
+# no_std > Any
+
+Any `no_std` code (whether heapless or with heap) is limited:
 
 - no
      [`std::collections::HashSet`](https://doc.rust-lang.org/nightly/std/collections/struct.HashSet.html),
      nor
      [`std::collections::HashMap`](https://doc.rust-lang.org/nightly/std/collections/struct.HashMap.html)
      (since computing hashes needs a source of entropy).
-
-     Are you creating a library for both `std` and `no_std`, and you'd like to use `HashSet/HashMap`
-     on `std`? You could define a trait, and implement it for `HashSet` (or `HashMap`) and for your
-     `no_std`-compatible type. Then makde your API use
-  - const generics (heapless `no_std`-compatible, and can be instantiated and then returned from a
-       function), or
-  - or `&dyn` _`trait`_ (heapless `no_std`-compatible, but can't be instantiated and then returned
-       from a function), or
-  - `Box<&dyn` _`trait>`_ (`no_std` with heap)
-  - no [`std::thread::Thread`](https://doc.rust-lang.org/nightly/std/thread/struct.Thread.html) (and
-     no multi-threading)
-- Rust has `#![no_std]`, but it doesn't have `#![std]`. (Instead, availability of `std` library is
-   implied if you don't have `#![no_std]`). Here we use `std` to refer to
-   [`std`](https://doc.rust-lang.org/nightly/std/index.html) library, or to general purpose (no
-   `no_std`) crates.
+- no [`std::thread::Thread`](https://doc.rust-lang.org/nightly/std/thread/struct.Thread.html) (and
+  no multi-threading)
 
 ---
 
-<!-- .slide: id="Nightly" -->
-
+<!-- .slide: id="Embrace-Nightly" -->
 # Embrace Nightly
 
 - Embrace [`nightly` channel](https://rust-lang.github.io/rustup/concepts/toolchains.html) (version)
@@ -251,29 +258,8 @@ No availability of
 
 ---
 
-<!-- .slide: id="no_std-with-and-without-heap" -->
-# no_std with and without heap <!-- .element: class="header_only_for_menu" -->
-
-TODO Merge this with the above.
-
-# no_std with heap
-
-- Import `core::` and `alloc::` (instead of `std::`) wherever you can - even in `std` development.
-   That brings awareness about what parts of your library are `no_std`-friendly. `std` [re-exports
-   `core` and `alloc` parts](https://doc.rust-lang.org/nightly/src/std/lib.rs.html), so your library
-   (whether `no_std` or `std`) will automatically work with `std` crates, too.
-
-# no_std without heap
-
-- like with `no_std` with heap, but without `alloc`
-- common for microcontrollers
-
-# More
-
-See [no_std_rna_patterns](../no_std_rna_patterns).
-
----
-
+<!-- TODO USE SIMILAR: -->
+<!-- .slide: data-visibility="hidden" -->
 <!-- .slide: id="no_std-variations" -->
 <!-- markdownlint-disable MD033 -->
 <pre class="language-rust r-stretch pre_relative_to_code_github_repo_raw">
@@ -286,10 +272,10 @@ index;">
 <!-- markdownlint-enable MD033    -->
 
 ---
-
-<!-- TODO: REMOVE - JUST A TEST.-->
+<!-- TODO DOCUMENT AND REMOVE -->
+<!-- .slide: data-visibility="hidden" -->
 <!-- markdownlint-disable MD033 -->
-<!-- https://github.com/peter-kehl/no_std_rna_patterns/blob/main/00_test_harness/../00_utils/Cargo.toml redirects to https://github.com/peter-kehl/no_std_rna_patterns/blob/main/00_utils/Cargo.toml. But revealjs-embed-code doesn't support redirects. So we have to normalize the URL ourselves.
+<!-- https://github.com/peter-kehl/no_std_patterns/blob/main/00_test_harness/../00_utils/Cargo.toml redirects to https://github.com/peter-kehl/no_std_patterns/blob/main/00_utils/Cargo.toml. But revealjs-embed-code doesn't support redirects. So we have to normalize the URL ourselves.
 
 https://raw.githubusercontent.com/ranging-rs/with_heap/main/Cargo.toml
 https://raw.githubusercontent.com/ranging-rs/with_heap/main/src/../Cargo.toml
@@ -306,17 +292,14 @@ https://raw.githubusercontent.com/ranging-rs/with_heap/main/src/../Cargo.toml
 
 ---
 
+<!-- TODO DOCUMENT AND REMOVE -->
+<!-- .slide: data-visibility="hidden" -->
 <!--
     <code> without <pre> shows the source as wrapped text... and it doesn't auto-apply highlighing:
     
 <code data-url="https://raw.githubusercontent.com/ranging-rs/with_heap/main/src/lib.rs"
 class="hljs rust language-rust"> </code>
 -->
-
-<!-- The following comments hides this section from being shown by
-     https://peter-kehl.github.io/embedded_low_level_rust.
--->
-<!-- .slide: data-visibility="hidden" -->
 
 ---
 
@@ -329,29 +312,48 @@ are in a separate crate (auto-generated by `cargo test`). Hence the tests can us
 
 ---
 
-<!-- .slide: id="Builds-and-Integration_Tests" -->
+<!-- .slide: id="Builds-and-Integration-Tests" -->
 # Builds and Integration Tests
 
-- on desktop
-- no simple way to run/debug `no_std` on desktop
-- workaround: separate build verification and testing
-  - build for a `no_std` target (but can't test, not even build the tests)
-  - build `no_std` and `no_std` (and optionally `no_std_heap`) features (for your desktop's target),
-     and run their tests
-  - build `std` and run all tests
-  - can't use a [workspace](https://doc.rust-lang.org/nightly/cargo/reference/workspaces.html) for
-     these alternatives (because all crates in workspace share dependency resolution)
-  - have the above builds in separate crates, under a directory like
-     [`test_crates/`](https://github.com/ranging-rs/slicing-rs/tree/main/test_crates)
-  - test crates can re-use the tests
-  - suggest their folder names to start with a prefix based on/equal to the main crate. That makes
-     navigation easier (especially in VS Code) when you have multiple main crates with
-     similar-sounding sets of build & test crates
-  - for an example see [ranging-rs/slicing-rs](https://github.com/ranging-rs/slicing-rs) ->
-     [test_crates](https://github.com/ranging-rs/slicing-rs/tree/main/test_crates):
-    - [slicing_no_std_bare_build](https://github.com/ranging-rs/slicing-rs/blob/main/test_crates/slicing_no_std_bare_build/Cargo.toml)
-    - [slicing_no_std_heap_build](https://github.com/ranging-rs/slicing-rs/blob/main/test_crates/slicing_no_std_heap_build/Cargo.toml)
-    - [slicing_no_std_bare_test](https://github.com/ranging-rs/slicing-rs/blob/main/test_crates/slicing_no_std_bare_test/Cargo.toml)
-    - [slicing_no_std_heap_test](https://github.com/ranging-rs/slicing-rs/blob/main/test_crates/slicing_no_std_heap_test/Cargo.toml)
-    - [slicing_ok_std_test](https://github.com/ranging-rs/slicing-rs/blob/main/test_crates/slicing_ok_std_test/Cargo.toml)
-    - [slicing_any_std_test](https://github.com/ranging-rs/slicing-rs/blob/main/test_crates/slicing_any_std_test/Cargo.toml)
+- No simple way to run/debug `no_std` binaries on desktop.
+- Workaround: Separate sets of crates:  `*_build` for verification (on `no_std` targets); `*_test`
+  for testing (on desktop).
+  - `*_ok_std_*`, `*_no_std_bare_*` (heapless) and `*_no_std_heap_*` use the relevant functionality.
+  - Can't use a [workspace](https://doc.rust-lang.org/nightly/cargo/reference/workspaces.html) for
+     these alternatives (as all crates in a workspace share dependencies with same features).
+  - So, have the above builds in a separate crate each, under a directory like
+     [`test_crates/`](https://github.com/ranging-rs/slicing-rs/tree/main/test_crates).
+  - `*_test` crates re-use (some of) the tests. Those are centralized under `*_any_std_test_*`.
+  - Suggest their folder names to start with a prefix based on/equal to the main crate. That makes
+    navigation easier (in VS Code) when you open/compare... multiple main crates with
+    similar-sounding sets of build & test crates.
+  - For an example see [`ranging-rs/slicing-rs`](https://github.com/ranging-rs/slicing-rs) &gt;
+     [`test_crates`](https://github.com/ranging-rs/slicing-rs/tree/main/test_crates):
+    - [`slicing_any_std_test`](https://github.com/ranging-rs/slicing-rs/blob/main/test_crates/slicing_any_std_test/Cargo.toml)
+      (tests are not run directly here, but are shared with the following `*_test` crates)
+    - [`slicing_no_std_bare_build`](https://github.com/ranging-rs/slicing-rs/blob/main/test_crates/slicing_no_std_bare_build/Cargo.toml)
+    - [`slicing_no_std_bare_test`](https://github.com/ranging-rs/slicing-rs/blob/main/test_crates/slicing_no_std_bare_test/Cargo.toml)
+    - [`slicing_no_std_heap_build`](https://github.com/ranging-rs/slicing-rs/blob/main/test_crates/slicing_no_std_heap_build/Cargo.toml)
+    - [`slicing_no_std_heap_test`](https://github.com/ranging-rs/slicing-rs/blob/main/test_crates/slicing_no_std_heap_test/Cargo.toml)
+    - [`slicing_ok_std_test`](https://github.com/ranging-rs/slicing-rs/blob/main/test_crates/slicing_ok_std_test/Cargo.toml)
+
+---
+
+<!-- .slide: id="More-Takeaway-for-std" -->
+
+# More
+
+See
+
+- [no_std_patterns](../no_std_patterns) - code is mostly done, but slides are work in progress!, and
+- [rust_incompatible_features](../rust_incompatible_features): When `std`, `no_std_bare` and
+  `no_std_heap` features (and potentially other features, as needed) benefit from being mutually
+  exclusive/incompatible.
+
+# Takeaway for std
+
+- Import `core::` and `alloc::` (instead of `std::`) wherever you can - even in `std` development.
+   That brings awareness about what parts of your library are `no_std`-friendly. `std` [re-exports
+   `core` and `alloc` parts](https://doc.rust-lang.org/nightly/src/std/lib.rs.html), so your library
+   (whether `no_std` or `std`) will automatically work with crates that import the same symbols from
+   `std`.
