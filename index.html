@@ -100,6 +100,7 @@ this file is loaded directly from a filesystem (rather through a webserver).
                             GitHub</a>. The actual presentation content starts in <a
                             href="README.md"><code>README.md</code></a>.
                         </li>
+                        <!--
 						<li>
                             See <code>README-NAVIGATE-VS_CODE-CODETOUR.md</code>
                             <span class="hide_on_github_pages">
@@ -114,6 +115,7 @@ this file is loaded directly from a filesystem (rather through a webserver).
                             GitHub</a>
 						    for navigation with VS Code extension `CodeTour`.
                         </li>
+                        -->
 						<li>
                             See <a href="https://peter-kehl.github.io/no_std_libs">the original
                             presentation online</a>.
@@ -132,15 +134,19 @@ this file is loaded directly from a filesystem (rather through a webserver).
 					</ul>
                 </section>
                 <!--
-                    The following id="SECTION-BEFORE-NAVIGATE-WITH-CODETOUR" disappears/gets
+                    If we wanted to show content of
+                    ../present_markdown_reveal.js/README-NAVIGATE-VS_CODE-CODETOUR.md, we'd make the
+                    following <section> have id="SECTION-BEFORE-NAVIGATE-WITH-CODETOUR".
+
+                    Side note: That id="SECTION-BEFORE-NAVIGATE-WITH-CODETOUR" would disappear/get
                     replaced by the "id" of the first slide from
-                    ../present_markdown_reveal.js/README-NAVIGATE-SLIDES.md. However, before it gets
-                    replaced, it serves to inject
-                    ../present_markdown_reveal.js/README-NAVIGATE-VS_CODE-CODETOUR.md when seen on a
-                    desktop.
+                    ../present_markdown_reveal.js/README-NAVIGATE-SLIDES.md. However, before it
+                    would get replaced, it would serve to inject
+                    ../present_markdown_reveal.js/README-NAVIGATE-VS_CODE-CODETOUR.md (but only when
+                    seen on a desktop).
                 -->
-                <section data-markdown="../present_markdown_reveal.js/README-NAVIGATE-SLIDES.md"
-                id="SECTION-BEFORE-NAVIGATE-WITH-CODETOUR"></section>
+                <section
+                data-markdown="../present_markdown_reveal.js/README-NAVIGATE-SLIDES.md"></section>
                 <section data-markdown="README.md"></section>
                 <section
                 data-markdown="../present_markdown_reveal.js/README-RELATED-ISSUES-SLIDES.md"></section>
