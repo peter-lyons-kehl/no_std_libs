@@ -19,15 +19,15 @@ for alternatives.
 - general Rust developers moving to low level or `no_std`
 - non-Rust low level developers moving to Rust
 
-## Disambiguation
+## Disambiguation of std
 
 Rust has `#![no_std]` declaration, but it doesn't have `#![std]`. Instead, if you don't have
 `#![no_std]` at the top of your crate, availability of `std` library is implied.
 
-Here we use `std` to refer to
+Here we use `std` to refer to either
 
-- either Rust [`std`](https://doc.rust-lang.org/nightly/std/index.html) library, or
-- crates not declared as `no_std` (that is, crates that can use `std`).
+- Rust [`std`](https://doc.rust-lang.org/nightly/std/index.html) library, or
+- crates not declared as `no_std` (that is, crates that can use Rust `std` library).
 
 ## Scope > In
 
@@ -39,7 +39,7 @@ Here we use `std` to refer to
 <!-- .slide: id="Scope-Limited" -->
 ## Scope > Limited <!-- .element: class="header_only_for_menu" -->
 
-# Limited: Cross-platform & features
+# Scope > Limited: Cross-platform & features
 
 - This applies to both `no_std` and `std`.
 - Rust can build for various targets (architectures/environments). But Cargo documentation keeps it
@@ -61,11 +61,11 @@ Here we use `std` to refer to
    tiers](https://doc.rust-lang.org/nightly/rustc/target-tier-policy.html). See also the [rustc
    book](https://doc.rust-lang.org/nightly/rustc) > [Platform
    Support](https://doc.rust-lang.org/nightly/rustc/platform-support.html). Beware many Tier 2
-   wouldn't build a simple (`no_std`) application - not even heapless.
+   targets wouldn't build a simple (`no_std`) application - not even heapless.
 - The [Cargo book > Platform specific
    dependencies](https://doc.rust-lang.org/nightly/cargo/reference/specifying-dependencies.html#platform-specific-dependencies)
-- Per-platform build/linking configuration - have
-   [`.cargo/config.toml`](https://doc.rust-lang.org/cargo/reference/config.html).
+- Per-platform build/linking configuration: have
+   [`.cargo/config.toml`](https://doc.rust-lang.org/nightly/cargo/reference/config.html).
 - [features](https://doc.rust-lang.org/nightly/cargo/reference/features.html): Compile
   time-selectable subsets of library
   [`crates`](https://doc.rust-lang.org/nightly/cargo/appendix/glossary.html#crate).
@@ -81,7 +81,7 @@ Here we use `std` to refer to
 - specifics of [real
   time](https://doc.rust-lang.org/nightly/embedded-book/interoperability/index.html#interoperability-with-rtoss)
   applications and use with RTOS (Real Time OS)
-  - Rust _is_ suitable for real time (because of no garbage collection)
+  - Rust _is_ suitable for real time (because of no garbage collection & compilation)
   - this applies to both `no_std` and `std`
 - `wasm` (Web Assembly), although [`no_std` crates are usually
    wasm-friendly](https://rahul-thakoor.github.io/using-no-standard-library-crates-with-webassembly)
@@ -128,13 +128,14 @@ Here we use `std` to refer to
   - [features](https://doc.rust-lang.org/nightly/cargo/reference/features.html)
   - architecture or feature-based [conditional
      compilation](https://doc.rust-lang.org/nightly/reference/conditional-compilation.html) with
-     [`#[cfg(...)]`](<https://doc.rust-lang.org/rust-by-example/attribute/cfg.html>) attribute.
+     [`#[cfg(...)]`](https://doc.rust-lang.org/nightly/rust-by-example/attribute/cfg.html)
+     attribute.
 - experience with a statically typed and compiled language
 - basics of linking, heap and stack
 - Rust [installation](https://doc.rust-lang.org/nightly/book/ch01-01-installation.html) including
    [`rustup`](https://rust-lang.github.io/rustup) and
    [`cargo`](https://doc.rust-lang.org/nightly/cargo) (the recommended way)
-- Linux/Mac OS/Unix file path notation (in case you are on Windows)
+- Linux/Mac OS/Unix file path notation
 
 ---
 
@@ -144,7 +145,7 @@ Here we use `std` to refer to
 A Rust `no_std` crate can work with, or without, heap. Either way, it
 
 - is for low level (without an operating system; or it serves as a part of an OS kernel)
-- starts with a [`#![no_std]`]((<https://docs.rust-embedded.org/book/intro/no-std.html>) line at the
+- starts with a [`#![no_std]`](https://docs.rust-embedded.org/book/intro/no-std.html) line at the
    top of your [crate](https://doc.rust-lang.org/nightly/cargo/appendix/glossary.html#crate)
    (`lib.rs` or a top level source file for a binary). See also [Rust glossary >
    `package`](https://doc.rust-lang.org/nightly/cargo/appendix/glossary.html#package) and [Rust
@@ -157,16 +158,17 @@ A Rust `no_std` crate can work with, or without, heap. Either way, it
     crates](https://doc.rust-lang.org/nightly/embedded-book/start/panicking.html)
 - provide a custom [`panic_handler`](https://doc.rust-lang.org/nightly/nomicon/panic-handler.html)
 - if binary, and it uses heap, provide a [global
-  allocator](https://doc.rust-lang.org/nightly/std/alloc/trait.GlobalAlloc.html))
-- has no access to [`std`](https://doc.rust-lang.org/nightly/std/index.html) library (no module
-   paths starting with `std::`), but
+  allocator](https://doc.rust-lang.org/nightly/std/alloc/trait.GlobalAlloc.html)
+- has no access to [`std`](https://doc.rust-lang.org/nightly/std/index.html) library - no module
+   paths starting with `std::`, but
 - has a limited subset of `std` available as
-  [`core`](https://doc.rust-lang.org/nightly/core/index.html). For example,
+  [`core`](https://doc.rust-lang.org/nightly/core/index.html) and
+  [`alloc`](https://doc.rust-lang.org/nightly/alloc/index.html). For example:
   - [`core::option::Option`](https://doc.rust-lang.org/nightly/core/option/enum.Option.html) instead
     of [`std::option::Option`](https://doc.rust-lang.org/nightly/std/option/enum.Option.html),
   - [`core::result::Result`](https://doc.rust-lang.org/nightly/core/result/enum.Result.html),
   - [`core::iter::Iterator`](https://doc.rust-lang.org/nightly/core/iter/trait.Iterator.html),
-  - [`alloc::borrow::Cow`](https://doc.rust-lang.org/alloc/borrow/enum.Cow.html)...
+  - [`alloc::borrow::Cow`](https://doc.rust-lang.org/nightly/alloc/borrow/enum.Cow.html).
 
 ---
 
@@ -179,8 +181,8 @@ A Rust `no_std` crate can work with, or without, heap. Either way, it
   - [`std::boxed::Box`](https://doc.rust-lang.org/nightly/std/boxed/struct.Box.html)
   - [`std::vec::Vec`](https://doc.rust-lang.org/nightly/std/vec/struct.Vec.html)
   - [`std::String`](https://doc.rust-lang.org/nightly/std/string/struct.String.html),
-  - [`std::rc::Rc`](https://doc.rust-lang.org/std/rc/struct.Rc.html),
-  - [`std::sync::Arc`](https://doc.rust-lang.org/std/sync/struct.Arc.html)...
+  - [`std::rc::Rc`](https://doc.rust-lang.org/nightly/std/rc/struct.Rc.html),
+  - [`std::sync::Arc`](https://doc.rust-lang.org/nightly/std/sync/struct.Arc.html)...
 
 ---
 
@@ -199,8 +201,8 @@ A Rust `no_std` crate can work with, or without, heap. Either way, it
      alloc::vec;`),
      [`alloc::collections::VecDeque`](https://doc.rust-lang.org/nightly/alloc/collections/index.html#reexport.VecDeque),
      [`alloc::string::String`](https://doc.rust-lang.org/nightly/alloc/string/struct.String.html),
-     [`alloc::rc::Rc`](https://doc.rust-lang.org/alloc/rc/struct.Rc.html),
-     [`alloc::sync::Arc`](https://doc.rust-lang.org/alloc/sync/struct.Arc.html)
+     [`alloc::rc::Rc`](https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html),
+     [`alloc::sync::Arc`](https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html)
   - [`alloc::collections::BTreeSet`](https://doc.rust-lang.org/nightly/alloc/collections/index.html#reexport.BTreeSet),
      [`alloc::collections::BTreeMap`](https://doc.rust-lang.org/nightly/alloc/collections/index.html#reexport.BTreeMap)
      if your items/keys implement
@@ -343,23 +345,20 @@ are in a separate crate (auto-generated by `cargo test`). Hence the tests can us
 
 ---
 
-<!-- .slide: id="no_std-Targets" -->
-# no_std Targets
-
-The above listed `test_crates/*_bare_build` and `test_crates/*_heap_build` need `no_std` targets.
-
+<!-- .slide: id="Timestamped-Nightly" -->
 ## Timestamped Nightly
 
-Suggest not to specify `channel = "nightly"` in `rust-toolchain.toml`. Why?  Unfortunately,
-occasionally some targets are not available (on `nightly`). To prevent that, look up the [rustup
+Suggest not to specify `channel = "nightly"` in `rust-toolchain.toml`. Why?  Occasionally some
+targets are not available (on `nightly`), unfortunately. To prevent that, look up the [rustup
 components history](https://rust-lang.github.io/rustup-components-history). Then in your
 `rust-toolchain.toml` > `[toolchain]` have (for example) `channel = "nightly-2022-08-27"`.
 
-However, only numeric Rust versions also qualify for the minimum supported Rust version -
-[`rust-version`](https://doc.rust-lang.org/nightly/cargo/reference/manifest.html#the-rust-version-field)
-in your crate's `Cargo.toml > [package]`. If you need `nightly`, you can run `rustc --version`. Then
-specify its numeric version (excluding `-nightly`) in `Cargo.toml > [package] > rust-version`. And
-put a timestamped `channel = "nightly-YYYY-MM-DD"` in `rust-toolchain.toml > [toolchain]`.
+However, only numeric Rust versions qualify for the minimum supported Rust version - in your crate's
+`Cargo.toml > [package]` >
+[`rust-version`](https://doc.rust-lang.org/nightly/cargo/reference/manifest.html#the-rust-version-field).
+If you need `nightly`, you can run `rustc --version`. Then specify its numeric version (excluding
+`-nightly`) in `Cargo.toml > [package] > rust-version`. And put a timestamped `channel =
+"nightly-YYYY-MM-DD"` in `rust-toolchain.toml > [toolchain]`.
 
 As of August 2022, these `no_std` targets seem to build smoothly: `aarch64-unknown-none-softfloat,
 aarch64-unknown-none, x86_64-unknown-none, riscv32i-unknown-none-elf, riscv32imac-unknown-none-elf,

@@ -2,6 +2,7 @@
     "recommendations": [
         "stkb.rewrap",
         "alefragnani.bookmarks",
+        "arcsine.chronicler",
         "peterschmalfeldt.explorer-exclude",
         "supertsy5.line-length-checker-vscode",
         "davidanson.vscode-markdownlint"

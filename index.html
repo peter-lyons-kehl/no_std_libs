@@ -62,6 +62,11 @@ themes that the user chooses. (reveal.js-menu needs "id" here.)
         id="highlight-theme">
 
         <link rel="stylesheet" href="../present_markdown_reveal.js/style.css">
+        <style type="text/css">
+            .tours, .bookmarks {
+                display: none;
+            }
+        </style>
     </head>
     <body>
         <div class="reveal">
@@ -79,20 +84,20 @@ this file is loaded directly from a filesystem (rather through a webserver).
                     </p>
                     <ul>
                         <li class="hide_on_github_pages">
-                            See the <a
-                            href="https://peter-kehl.github.io/no_std_libs/">original</a>.
+                            See the <a href="https://peter-kehl.github.io/no_std_libs/">original
+                            presentation online</a>.
                         </li>
 						<li class="hide_with_web_server">
                             Suggest you access this file (<code>index.html</code>) NOT from a
                             filesystem, but through a webserver instead. For an example of how, see
-						    <code>python3</code> and more instruction in
+						    <code>python3 -m http.server</code> and more instruction in
 						    <code>README-NAVIGATE-SLIDES.md</code>
                             <span class="hide_on_github_pages">
                                 in a <a
                                 href="../present_markdown_reveal.js/README-NAVIGATE-SLIDES.md">local
                                 (neighbor) clone</a> of
 						        <a
-						        href="https://github.com/peter-kehl/present_markdown_reveal.js"></a>present_markdown_reveal.js</a>
+						        href="https://github.com/peter-kehl/present_markdown_reveal.js">present_markdown_reveal.js</a>
 						        (if you cloned it next to this clone) or
                             </span>
                             <a
@@ -116,10 +121,6 @@ this file is loaded directly from a filesystem (rather through a webserver).
 						    for navigation with VS Code extension `CodeTour`.
                         </li>
                         -->
-						<li>
-                            See <a href="https://peter-kehl.github.io/no_std_libs">the original
-                            presentation online</a>.
-                        </li>
                         <li>
                             See video recording(s)
                             <span class="hide_on_github_pages">
